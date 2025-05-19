@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
 @layer base {
   :root {
@@ -40,12 +40,17 @@
 
   body {
     @apply bg-anime-midnight text-anime-text;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Rajdhani', 'Noto Sans JP', sans-serif;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Exo', sans-serif;
+    font-family: 'Exo', 'Noto Sans JP', sans-serif;
+  }
+  
+  /* Japanese text elements */
+  .jp-text {
+    font-family: 'Noto Sans JP', sans-serif;
   }
 }
 
@@ -66,8 +71,15 @@
     transform: scaleX(1);
   }
   
+  .section-heading::before {
+    content: attr(data-jp);
+    @apply absolute -top-5 left-0 text-xs text-anime-teal opacity-80 font-normal;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 2px;
+  }
+  
   .anime-card {
-    @apply relative bg-gradient-to-br from-gray-900 to-anime-midnight border border-anime-teal/30 rounded-md p-5 shadow-lg overflow-hidden;
+    @apply relative bg-gradient-to-br from-gray-900 to-anime-midnight border border-anime-teal/30 rounded-md p-5 shadow-lg overflow-hidden transition-all duration-500;
   }
   
   .anime-card::before {
@@ -75,6 +87,11 @@
     @apply absolute inset-0 bg-gradient-to-r from-anime-teal/10 to-anime-crimson/10 opacity-50;
     filter: blur(20px);
     z-index: -1;
+  }
+  
+  .anime-card:hover {
+    @apply border-anime-teal/60;
+    box-shadow: 0 0 25px rgba(15, 155, 142, 0.2);
   }
   
   .nav-link {
@@ -109,8 +126,54 @@
     transform: translateX(0);
   }
   
+  /* Enhanced anime button with better effects */
+  .anime-button-enhanced {
+    @apply px-6 py-3 bg-anime-crimson text-anime-text font-bold rounded relative overflow-hidden transition-all duration-500;
+  }
+  
+  .anime-button-enhanced::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-anime-amber to-anime-crimson opacity-0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .anime-button-enhanced::after {
+    content: '';
+    @apply absolute inset-0 border-2 border-anime-amber rounded opacity-0;
+    transform: scale(1.1);
+    transition: all 0.5s ease;
+  }
+  
+  .anime-button-enhanced:hover::before {
+    @apply opacity-100;
+  }
+  
+  .anime-button-enhanced:hover::after {
+    @apply opacity-100;
+    transform: scale(1);
+  }
+  
+  .anime-button-secondary {
+    @apply px-6 py-3 bg-transparent border-2 border-anime-teal text-anime-text font-bold rounded relative overflow-hidden transition-all duration-500;
+  }
+  
+  .anime-button-secondary::before {
+    content: '';
+    @apply absolute inset-0 bg-anime-teal/20 transform scale-x-0 origin-left;
+    transition: transform 0.5s ease;
+  }
+  
+  .anime-button-secondary:hover::before {
+    @apply transform scale-x-100;
+  }
+  
+  .anime-button-secondary:hover {
+    @apply border-anime-amber text-anime-amber;
+    box-shadow: 0 0 15px rgba(230, 175, 46, 0.3);
+  }
+  
   .skill-bar {
-    @apply h-3 bg-gray-700 rounded-full overflow-hidden relative;
+    @apply h-3 bg-gray-800 rounded-full overflow-hidden relative border border-gray-700;
   }
   
   .skill-progress {
@@ -127,20 +190,47 @@
     transform: translateY(-5px);
   }
   
+  .project-card::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-anime-teal/5 to-anime-crimson/5 opacity-0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .project-card:hover::after {
+    @apply opacity-100;
+  }
+  
   .particles-container {
     @apply absolute inset-0 pointer-events-none overflow-hidden z-0;
   }
   
   .particle {
-    @apply absolute w-1 h-1 rounded-full bg-anime-amber/30;
-    animation: particles 20s linear infinite; /* Increased from 8s to 20s */
+    @apply absolute rounded-full;
+    background: radial-gradient(circle, rgba(230, 175, 46, 0.6) 0%, rgba(230, 175, 46, 0) 70%);
+    animation: particles 25s linear infinite;
+  }
+  
+  .anime-text-glow {
+    text-shadow: 0 0 10px rgba(230, 175, 46, 0.5);
+  }
+  
+  /* Japanese aesthetic elements */
+  .kanji-background {
+    @apply absolute inset-0 overflow-hidden;
+    z-index: 0;
+  }
+  
+  .kanji-element {
+    @apply absolute text-anime-teal/10 font-bold;
+    font-family: 'Noto Sans JP', sans-serif;
+    animation: float 15s ease-in-out infinite;
   }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -155,7 +245,7 @@
   @apply bg-anime-teal;
 }
 
-/* Animation utility classes */
+/* Animation utility classes - improved to persist */
 .animate-delay-100 {
   animation-delay: 0.1s;
 }
@@ -187,15 +277,15 @@
 /* Updated keyframes for longer-lasting animations */
 @keyframes particles {
   0% { transform: translateY(0) rotate(0); opacity: 0; }
-  10% { opacity: 0.5; }
-  50% { transform: translateY(-50px) rotate(180deg); opacity: 0.7; }
-  90% { opacity: 0.5; }
-  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+  10% { opacity: 0.7; }
+  50% { transform: translateY(-50vh) rotate(180deg); opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
 }
 
 @keyframes title-reveal {
   0% { transform: scale(0.95); opacity: 0; }
-  70% { transform: scale(1.03); opacity: 0.7; }
+  70% { transform: scale(1.03); opacity: 0.9; }
   100% { transform: scale(1); opacity: 1; }
 }
 
@@ -204,11 +294,32 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Add new animation for pulsing glow effect */
+/* Add new animation for pulsing glow effect - more persistent */
 @keyframes pulse-glow {
-  0% { opacity: 0.3; box-shadow: 0 0 5px rgba(15,155,142,0.3); }
-  50% { opacity: 0.8; box-shadow: 0 0 20px rgba(15,155,142,0.6); }
-  100% { opacity: 0.3; box-shadow: 0 0 5px rgba(15,155,142,0.3); }
+  0% { opacity: 0.5; box-shadow: 0 0 10px rgba(15,155,142,0.5); }
+  50% { opacity: 0.9; box-shadow: 0 0 25px rgba(15,155,142,0.8); }
+  100% { opacity: 0.5; box-shadow: 0 0 10px rgba(15,155,142,0.5); }
+}
+
+/* New floating animation */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-10px, -15px) rotate(2deg); }
+  50% { transform: translate(10px, -25px) rotate(-1deg); }
+  75% { transform: translate(-5px, -10px) rotate(1deg); }
+}
+
+/* New slow spin animation */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* New scroll hint animation */
+@keyframes scroll-hint {
+  0% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(5px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.5; }
 }
 
 /* Add CSS for animations to stay visible */
@@ -222,4 +333,21 @@
 
 .animate-pulse-glow {
   animation: pulse-glow 4s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 1.5s ease-in-out infinite;
+}
+
+/* Make sure all animations persist */
+.animate-title-reveal, .animate-fade-in {
+  opacity: 1 !important;
 }

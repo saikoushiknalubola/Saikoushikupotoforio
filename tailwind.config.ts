@@ -70,6 +70,10 @@ export default {
 					teal: '#0f9b8e',
 					amber: '#e6af2e',
 					text: '#f7f7f7',
+					purple: '#8B5CF6',
+					magenta: '#D946EF',
+					orange: '#F97316',
+					blue: '#0EA5E9',
 				}
 			},
 			borderRadius: {
@@ -116,9 +120,9 @@ export default {
 					'100%': { transform: 'scale(1)', opacity: '1' }
 				},
 				'pulse-glow': {
-					'0%': { boxShadow: '0 0 5px rgba(231, 175, 47, 0.5)' },
-					'50%': { boxShadow: '0 0 20px rgba(231, 175, 47, 0.8)' },
-					'100%': { boxShadow: '0 0 5px rgba(231, 175, 47, 0.5)' }
+					'0%': { boxShadow: '0 0 5px rgba(231, 175, 47, 0.5)', opacity: '0.5' },
+					'50%': { boxShadow: '0 0 20px rgba(231, 175, 47, 0.8)', opacity: '1' },
+					'100%': { boxShadow: '0 0 5px rgba(231, 175, 47, 0.5)', opacity: '0.5' }
 				},
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },
@@ -126,27 +130,39 @@ export default {
 				},
 				'particles': {
 					'0%': { transform: 'translateY(0) rotate(0)', opacity: '0' },
-					'50%': { transform: 'translateY(-50px) rotate(180deg)', opacity: '0.5' },
-					'100%': { transform: 'translateY(-100px) rotate(360deg)', opacity: '0' }
+					'50%': { transform: 'translateY(-50vh) rotate(180deg)', opacity: '0.7' },
+					'100%': { transform: 'translateY(-100vh) rotate(360deg)', opacity: '0' }
+				},
+				'scroll-hint': {
+					'0%, 100%': { transform: 'translateY(0)', opacity: '0.5' },
+					'50%': { transform: 'translateY(5px)', opacity: '1' }
+				},
+				'spin-slow': {
+					'from': { transform: 'rotate(0deg)' },
+					'to': { transform: 'rotate(360deg)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.3s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out forwards',
 				'fade-out': 'fade-out 0.3s ease-out',
-				'scale-in': 'scale-in 0.2s ease-out',
+				'scale-in': 'scale-in 0.2s ease-out forwards',
 				'scale-out': 'scale-out 0.2s ease-out',
 				'slide-in-right': 'slide-in-right 0.3s ease-out',
 				'slide-out-right': 'slide-out-right 0.3s ease-out',
-				'title-reveal': 'title-reveal 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67)',
-				'pulse-glow': 'pulse-glow 2s infinite',
+				'title-reveal': 'title-reveal 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards',
+				'pulse-glow': 'pulse-glow 3s infinite',
 				'float': 'float 6s ease-in-out infinite',
-				'particles': 'particles 8s linear infinite'
+				'particles': 'particles 20s linear infinite',
+				'scroll-hint': 'scroll-hint 1.5s ease-in-out infinite',
+				'spin-slow': 'spin-slow 10s linear infinite'
 			},
 			backgroundImage: {
 				'hero-pattern': "url('/bg-pattern.png')",
-				'circuit-pattern': "url('/circuit-bg.png')"
+				'circuit-pattern': "url('/circuit-bg.png')",
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
 			}
 		}
 	},
