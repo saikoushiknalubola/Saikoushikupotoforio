@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Scales, Scroll, Eye, Shield, Leaf, Cloud, Heart } from 'lucide-react';
+import { Scale, Scroll, Eye, Shield, Leaf, Cloud, Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface Project {
@@ -21,7 +21,7 @@ const Projects = () => {
       id: 1,
       title: "Nyaayasaathi",
       description: "Developed an AI-driven legal advisory assistant to provide affordable and accessible legal guidance.",
-      icon: Scales,
+      icon: Scale,
       technologies: ["Python", "NLP", "Machine Learning", "Legal Text Analysis"],
       link: "https://github.com/link",
       accentColor: "#0f9b8e"
