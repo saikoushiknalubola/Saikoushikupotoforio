@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Scale, Scroll, Eye, Shield, Leaf, Cloud, Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface Project {
   id: number;
@@ -89,7 +90,26 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="section-heading">Projects Showcase</h2>
+        <div className="flex flex-col md:flex-row items-center md:items-start md:justify-between mb-10">
+          <div>
+            <h2 className="section-heading">Projects Showcase</h2>
+          </div>
+          <div className="mt-8 md:mt-0">
+            <div className="relative">
+              <Avatar className="w-32 h-32 border-4 border-anime-teal shadow-lg">
+                <AvatarImage 
+                  src="/lovable-uploads/1c9860c2-b5c5-43e7-9bbc-b6f6a11fe492.png" 
+                  alt="Saikoushik Nalubola" 
+                  className="object-cover"
+                />
+                <AvatarFallback className="text-2xl bg-anime-midnight text-anime-amber">SN</AvatarFallback>
+              </Avatar>
+              <div className="absolute -bottom-2 -right-2 p-1.5 rounded-full bg-anime-amber">
+                <Scale className="w-5 h-5 text-anime-midnight" />
+              </div>
+            </div>
+          </div>
+        </div>
         
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => {
