@@ -1,101 +1,185 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 240 35% 11%;
+    --foreground: 0 0% 97%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 240 30% 15%;
+    --card-foreground: 0 0% 97%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 30% 15%;
+    --popover-foreground: 0 0% 97%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 240 50% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 79% 42%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 20% 20%;
+    --muted-foreground: 240 10% 80%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 172 80% 33%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 20% 30%;
+    --input: 240 20% 30%;
+    --ring: 172 80% 33%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-anime-midnight text-anime-text;
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Exo', sans-serif;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold mb-6 relative inline-block;
+  }
+  
+  .section-heading::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-1 bg-anime-crimson;
+    transform: scaleX(0.3);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .section-heading:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .anime-card {
+    @apply relative bg-gradient-to-br from-gray-900 to-anime-midnight border border-anime-teal/30 rounded-md p-5 shadow-lg overflow-hidden;
+  }
+  
+  .anime-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-anime-teal/10 to-anime-crimson/10 opacity-50;
+    filter: blur(20px);
+    z-index: -1;
+  }
+  
+  .nav-link {
+    @apply relative px-4 py-2 text-anime-text hover:text-anime-amber transition-colors duration-300;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-anime-amber;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .anime-button {
+    @apply px-6 py-2 bg-anime-crimson text-anime-text font-bold rounded relative overflow-hidden transition-all duration-300 hover:bg-anime-crimson/90;
+  }
+  
+  .anime-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-anime-amber/20 to-anime-crimson/50;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .anime-button:hover::before {
+    transform: translateX(0);
+  }
+  
+  .skill-bar {
+    @apply h-3 bg-gray-700 rounded-full overflow-hidden relative;
+  }
+  
+  .skill-progress {
+    @apply h-full absolute top-0 left-0 rounded-full bg-gradient-to-r from-anime-amber to-anime-crimson;
+    transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  }
+  
+  .project-card {
+    @apply relative bg-gray-900/70 rounded-lg overflow-hidden border border-anime-teal/30 transition-all duration-500;
+  }
+  
+  .project-card:hover {
+    @apply border-anime-amber shadow-[0_0_15px_rgba(230,175,46,0.3)];
+    transform: translateY(-5px);
+  }
+  
+  .particles-container {
+    @apply absolute inset-0 pointer-events-none overflow-hidden z-0;
+  }
+  
+  .particle {
+    @apply absolute w-1 h-1 rounded-full bg-anime-amber/30;
+    animation: particles 8s linear infinite;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-anime-midnight;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-anime-teal/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-anime-teal;
+}
+
+/* Animation utility classes */
+.animate-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animate-delay-700 {
+  animation-delay: 0.7s;
+}
+
+.animate-delay-1000 {
+  animation-delay: 1s;
 }
