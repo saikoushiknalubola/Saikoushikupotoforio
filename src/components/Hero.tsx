@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Hero = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -41,6 +42,23 @@ const Hero = () => {
         <div className="absolute h-[1px] w-[20%] top-[30%] left-[15%] bg-gradient-to-r from-anime-teal to-transparent"></div>
         <div className="absolute h-[1px] w-[15%] top-[50%] right-[20%] bg-gradient-to-l from-anime-crimson to-transparent"></div>
         <div className="absolute h-[30%] w-[1px] top-[50%] right-[20%] bg-gradient-to-b from-anime-crimson to-transparent"></div>
+      </div>
+      
+      {/* Profile Avatar */}
+      <div className="mb-8 animate-fade-in animate-delay-300 opacity-0">
+        <div className="relative">
+          <Avatar className="w-32 h-32 border-4 border-anime-teal shadow-lg">
+            <AvatarImage 
+              src="/lovable-uploads/1c9860c2-b5c5-43e7-9bbc-b6f6a11fe492.png" 
+              alt="Saikoushik Nalubola" 
+              className="object-cover"
+            />
+            <AvatarFallback className="text-2xl bg-anime-midnight text-anime-amber">SN</AvatarFallback>
+          </Avatar>
+          <div className="absolute -bottom-2 -right-2 p-1.5 rounded-full bg-anime-amber">
+            <span className="block w-5 h-5 bg-anime-amber rounded-full border-2 border-anime-midnight"></span>
+          </div>
+        </div>
       </div>
       
       {/* Hero content */}
