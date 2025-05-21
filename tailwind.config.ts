@@ -19,6 +19,12 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'orbitron': ['Orbitron', 'sans-serif'],
+				'rajdhani': ['Rajdhani', 'sans-serif'],
+				'exo': ['Exo', 'sans-serif'],
+				'jp': ['Noto Sans JP', 'sans-serif']
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -63,7 +69,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated Cyberpunk theme colors
+				// Updated Cyberpunk theme colors with more vibrant options
 				anime: {
 					midnight: '#1a1a2e',
 					crimson: '#c4161c',
@@ -74,6 +80,10 @@ export default {
 					magenta: '#D946EF',
 					orange: '#F97316',
 					blue: '#00FFFF',  // Electric blue
+					neonpink: '#FF00FF', // Neon pink
+					neonpurple: '#9b87f5', // Neon purple
+					neonyellow: '#FFE500', // Neon yellow
+					neongreen: '#39FF14', // Neon green
 				}
 			},
 			borderRadius: {
@@ -116,7 +126,7 @@ export default {
 				},
 				'title-reveal': {
 					'0%': { transform: 'scale(0)', opacity: '0' },
-					'50%': { transform: 'scale(1.2)', opacity: '0.5' },
+					'70%': { transform: 'scale(1.05)', opacity: '0.9' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
 				},
 				'pulse-glow': {
@@ -159,6 +169,10 @@ export default {
 					'60%': { transform: 'translate(2px, 2px)' },
 					'80%': { transform: 'translate(2px, -2px)' },
 					'100%': { transform: 'translate(0)' }
+				},
+				'neon-pulse': {
+					'0%, 100%': { textShadow: '0 0 4px #fff, 0 0 10px #fff, 0 0 15px #00FFFF, 0 0 20px #00FFFF' },
+					'50%': { textShadow: '0 0 4px #fff, 0 0 5px #fff, 0 0 10px #00FFFF, 0 0 15px #00FFFF' }
 				}
 			},
 			animation: {
@@ -178,16 +192,14 @@ export default {
 				'spin-slow': 'spin-slow 10s linear infinite',
 				'power-up': 'power-up 0.7s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards',
 				'border-flow': 'border-flow 8s linear infinite',
-				'glitch': 'glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both'
+				'glitch': 'glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both',
+				'neon-pulse': 'neon-pulse 2s infinite'
 			},
 			backgroundImage: {
 				'hero-pattern': "url('/bg-pattern.png')",
 				'circuit-pattern': "url('/circuit-bg.png')",
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
-			},
-			fontFamily: {
-				'orbitron': ['Orbitron', 'sans-serif']
 			}
 		}
 	},

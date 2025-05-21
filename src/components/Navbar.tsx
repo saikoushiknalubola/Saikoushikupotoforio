@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, User, Mountain, Wrench, Circle, Mail, Linkedin, Github, Twitter, Instagram } from 'lucide-react';
+import { Menu, X, User, Briefcase, Code, FileText, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
@@ -34,17 +34,10 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'About', icon: User, href: '#about' },
-    { name: 'Experience', icon: Mountain, href: '#experience' },
-    { name: 'Projects', icon: Wrench, href: '#projects' },
-    { name: 'Skills', icon: Circle, href: '#skills' },
+    { name: 'Experience', icon: Briefcase, href: '#experience' },
+    { name: 'Projects', icon: Code, href: '#projects' },
+    { name: 'Skills', icon: FileText, href: '#skills' },
     { name: 'Contact', icon: Mail, href: '#contact' }
-  ];
-
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' }
   ];
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
@@ -57,11 +50,13 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <a href="#" className="flex items-center space-x-3">
           <div className="cyber-logo flex items-center justify-center w-10 h-10 rounded relative">
+            {/* Enhanced logo design */}
             <div className="absolute inset-0 rounded bg-gradient-to-br from-anime-blue to-anime-purple opacity-70"></div>
-            <div className="relative z-10 text-white font-bold text-xl tracking-wider">SN</div>
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-anime-blue via-anime-purple to-anime-magenta rounded opacity-30 blur animate-pulse"></div>
+            <div className="relative z-10 text-white font-orbitron font-bold text-xl tracking-wider">SN</div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-anime-blue via-anime-purple to-anime-magenta rounded opacity-40 blur-sm animate-pulse"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-anime-blue via-anime-purple to-anime-magenta rounded opacity-20 blur-md animate-spin-slow"></div>
           </div>
-          <span className="text-xl font-bold text-white hidden sm:inline-block">
+          <span className="text-xl font-bold text-white hidden sm:inline-block font-orbitron">
             <span className="text-anime-blue">Saikoushik</span> 
             <span className="text-gray-400">Nalubola</span>
           </span>
@@ -74,38 +69,37 @@ const Navbar = () => {
               key={link.name} 
               href={link.href} 
               className={cn(
-                "cyber-nav-link flex items-center gap-1.5 px-3 py-2 rounded transition-all duration-300",
-                activeSection === link.href.substring(1) ? "text-anime-blue bg-white/5" : "text-gray-300 hover:text-anime-blue"
+                "cyber-nav-link flex items-center gap-1.5 px-3 py-2 rounded transition-all duration-300 relative",
+                activeSection === link.href.substring(1) 
+                  ? "text-anime-blue bg-white/5" 
+                  : "text-gray-300 hover:text-anime-blue"
               )}
             >
               <link.icon className={cn(
                 "w-4 h-4",
-                activeSection === link.href.substring(1) ? "text-anime-blue" : "text-anime-purple group-hover:text-anime-blue"
+                activeSection === link.href.substring(1) 
+                  ? "text-anime-blue" 
+                  : "text-anime-purple group-hover:text-anime-blue"
               )} />
               <span>{link.name}</span>
+              
+              {/* Enhanced active indicator */}
               {activeSection === link.href.substring(1) && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-anime-blue"></span>
+                <>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-anime-blue"></span>
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-anime-blue/50 blur-sm"></span>
+                </>
               )}
             </a>
           ))}
           
-          <div className="w-px h-6 bg-gray-700 mx-2"></div>
-          
-          {/* Social Media Icons */}
-          <div className="flex items-center space-x-3">
-            {socialLinks.map((link) => (
-              <a 
-                key={link.label}
-                href={link.href} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-gray-400 hover:text-anime-blue transition-colors"
-                aria-label={link.label}
-              >
-                <link.icon className="w-5 h-5" />
-              </a>
-            ))}
-          </div>
+          {/* Connect button that links to social media page */}
+          <a 
+            href="/connect" 
+            className="ml-2 px-4 py-1.5 bg-anime-blue/20 text-anime-blue border border-anime-blue/30 rounded hover:bg-anime-blue/30 transition-colors"
+          >
+            Connect
+          </a>
         </div>
 
         {/* Mobile menu button */}
@@ -132,33 +126,31 @@ const Navbar = () => {
                 href={link.href}
                 className={cn(
                   "flex items-center space-x-2 p-2 rounded-md",
-                  activeSection === link.href.substring(1) ? "bg-anime-blue/10 text-anime-blue" : "hover:bg-gray-800 text-gray-300"
+                  activeSection === link.href.substring(1) 
+                    ? "bg-anime-blue/10 text-anime-blue" 
+                    : "hover:bg-gray-800 text-gray-300"
                 )}
                 onClick={toggleMobileMenu}
               >
                 <link.icon className={cn(
                   "w-5 h-5", 
-                  activeSection === link.href.substring(1) ? "text-anime-blue" : "text-anime-purple"
+                  activeSection === link.href.substring(1) 
+                    ? "text-anime-blue" 
+                    : "text-anime-purple"
                 )} />
                 <span>{link.name}</span>
               </a>
             ))}
             
+            {/* Connect link in mobile menu */}
             <div className="border-t border-gray-800 pt-3">
-              <p className="text-xs text-gray-500 mb-2">Connect with me</p>
-              <div className="flex space-x-4">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 p-2 text-gray-400 hover:text-anime-blue transition-colors"
-                  >
-                    <link.icon className="w-5 h-5" />
-                  </a>
-                ))}
-              </div>
+              <a
+                href="/connect"
+                className="flex items-center justify-center space-x-2 p-2 bg-anime-blue/20 text-anime-blue rounded-md border border-anime-blue/30"
+                onClick={toggleMobileMenu}
+              >
+                <span>Connect With Me</span>
+              </a>
             </div>
           </div>
         </div>

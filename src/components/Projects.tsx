@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Scale, Scroll, Eye, Shield, Leaf, Cloud, Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -22,7 +23,7 @@ const Projects = () => {
       description: "Developed an AI-driven legal advisory assistant to provide affordable and accessible legal guidance.",
       icon: Scale,
       technologies: ["Python", "NLP", "Machine Learning", "Legal Text Analysis"],
-      link: "https://github.com/link",
+      link: "https://github.com/saikoushiknalubola/nyaayasaathi",
       accentColor: "#0f9b8e"
     },
     {
@@ -31,7 +32,7 @@ const Projects = () => {
       description: "Developed an AI-powered movie recommender using collaborative and content-based filtering, achieving 85% accuracy.",
       icon: Scroll,
       technologies: ["Python", "Collaborative Filtering", "Content Analysis", "Recommendation Systems"],
-      link: "https://github.com/link",
+      link: "https://github.com/saikoushiknalubola/movie-recommender",
       accentColor: "#e6af2e"
     },
     {
@@ -40,7 +41,7 @@ const Projects = () => {
       description: "Built a high-precision security system leveraging deep learning-based facial feature extraction.",
       icon: Eye,
       technologies: ["Python", "FaceNet", "Deep Learning", "Computer Vision", "Security"],
-      link: "https://github.com/link",
+      link: "https://github.com/saikoushiknalubola/face-recognition",
       accentColor: "#c4161c"
     },
     {
@@ -49,7 +50,7 @@ const Projects = () => {
       description: "Implemented an anomaly detection model that identified fraudulent transactions with 92% precision.",
       icon: Shield,
       technologies: ["Python", "Autoencoders", "Anomaly Detection", "Fraud Prevention"],
-      link: "https://github.com/link",
+      link: "https://github.com/saikoushiknalubola/anomaly-detection",
       accentColor: "#4a5568"
     },
     {
@@ -58,7 +59,7 @@ const Projects = () => {
       description: "Implemented deep learning models to assess crop diseases via drone imagery.",
       icon: Leaf,
       technologies: ["Python", "Computer Vision", "CNN", "Agriculture Tech", "Drone Imagery"],
-      link: "https://github.com/link",
+      link: "https://github.com/saikoushiknalubola/crop-health",
       accentColor: "#48bb78"
     },
     {
@@ -67,7 +68,7 @@ const Projects = () => {
       description: "Designed a data-driven framework for reducing carbon emissions in coal mining operations.",
       icon: Cloud,
       technologies: ["Python", "Data Analysis", "Sustainability", "Carbon Reduction"],
-      link: "https://github.com/link",
+      link: "https://github.com/saikoushiknalubola/carbon-neutral",
       accentColor: "#2b6cb0"
     },
     {
@@ -76,7 +77,7 @@ const Projects = () => {
       description: "A web-based health tracker using ReactJS & Bolt AI, enabling users to monitor water intake, steps, sleep, and mood with personalized feedback.",
       icon: Heart,
       technologies: ["ReactJS", "Bolt AI", "Health Tracking", "Personalization"],
-      link: "https://github.com/link",
+      link: "https://github.com/saikoushiknalubola/vitalia",
       accentColor: "#ed64a6"
     }
   ];
@@ -88,7 +89,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="section-heading">Projects Showcase</h2>
+        <h2 className="section-heading font-orbitron">Projects Showcase</h2>
         
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => {
@@ -117,7 +118,7 @@ const Projects = () => {
                         style={{color: project.accentColor}}
                       />
                     </div>
-                    <h3 className="text-xl font-bold text-anime-text">{project.title}</h3>
+                    <h3 className="text-xl font-bold text-anime-text font-rajdhani">{project.title}</h3>
                   </div>
                   
                   <p className="text-gray-400 mb-4 line-clamp-3">{project.description}</p>
