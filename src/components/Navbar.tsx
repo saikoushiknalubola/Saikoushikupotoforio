@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, User, Briefcase, Code, FileText, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -44,22 +45,21 @@ const Navbar = () => {
   
   return (
     <nav className={cn(
-      'fixed w-full z-50 transition-all duration-300 py-3 px-4 md:px-8',
-      scrolled ? 'bg-[#1a1a2e]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      'fixed w-full z-50 transition-all duration-300 backdrop-blur-md py-4 px-6 md:px-8',
+      scrolled ? 'bg-[#121212]/90 shadow-lg shadow-pink-500/5' : 'bg-transparent'
     )}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="#" className="flex items-center space-x-3 group">
-          <div className="anime-logo flex items-center justify-center w-10 h-10 rounded relative overflow-hidden">
-            {/* Anime-inspired logo */}
-            <div className="absolute inset-0 bg-gradient-to-br from-pink-300 to-indigo-400 opacity-70"></div>
-            <div className="relative z-10 text-white font-jp font-bold text-xl tracking-wider">SN</div>
-            <div className="absolute -inset-1 bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 rounded opacity-40 blur-sm animate-pulse"></div>
+        <Link to="/" className="flex items-center space-x-3 group relative z-10">
+          <div className="flex items-center justify-center w-10 h-10 rounded-md relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-700"></div>
+            <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.5),transparent_70%)]"></div>
+            <div className="relative z-10 text-white font-bold text-xl tracking-wider font-jp">SN</div>
           </div>
-          <span className="text-xl font-bold text-white hidden sm:inline-block font-jp group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-pink-300 group-hover:to-indigo-400 transition-all duration-300">
-            <span className="text-pink-200">Saikoushik</span> 
-            <span className="text-gray-400">Nalubola</span>
+          <span className="text-xl font-bold hidden sm:inline-block font-jp">
+            <span className="text-pink-500">Saikoushik</span> 
+            <span className="text-purple-400">Nalubola</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-1">
@@ -68,88 +68,85 @@ const Navbar = () => {
               key={link.name} 
               href={link.href} 
               className={cn(
-                "anime-nav-link flex items-center gap-1.5 px-3 py-2 rounded transition-all duration-300 relative",
+                "relative px-4 py-2 rounded-md transition-all duration-300",
                 activeSection === link.href.substring(1) 
-                  ? "text-pink-300" 
-                  : "text-gray-300 hover:text-pink-200"
+                  ? "text-white" 
+                  : "text-gray-400 hover:text-gray-200"
               )}
             >
-              <link.icon className={cn(
-                "w-4 h-4",
-                activeSection === link.href.substring(1) 
-                  ? "text-pink-300" 
-                  : "text-purple-300 group-hover:text-pink-300"
-              )} />
-              <span className="font-jp">{link.name}</span>
+              <span className="relative z-10 font-jp flex items-center">
+                <link.icon className="w-4 h-4 mr-1 opacity-70" />
+                {link.name}
+              </span>
               
-              {/* Anime-style active indicator */}
+              {/* Active background */}
               {activeSection === link.href.substring(1) && (
                 <>
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-300"></span>
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-pink-300/50 blur-sm"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-pink-600/20 to-purple-600/20 rounded-md"></span>
+                  <span className="absolute bottom-0 left-0 h-0.5 w-full bg-gradient-to-r from-pink-500 to-purple-500"></span>
                 </>
               )}
             </a>
           ))}
           
-          {/* Connect button that links to social media page */}
-          <a 
-            href="/connect" 
-            className="ml-2 px-4 py-1.5 bg-pink-300/20 text-pink-300 border border-pink-300/30 rounded hover:bg-pink-300/30 transition-colors font-jp"
+          {/* Connect button */}
+          <Link 
+            to="/connect" 
+            className="ml-2 px-5 py-2 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-md hover:from-pink-500 hover:to-purple-500 transition-all duration-300 font-jp shadow-lg shadow-pink-500/20"
           >
             Connect
-          </a>
+          </Link>
         </div>
 
         {/* Mobile menu button */}
         <button 
-          className="md:hidden text-white hover:text-pink-300" 
+          className="md:hidden relative z-20 p-2 rounded-md bg-gray-900/50 backdrop-blur-md" 
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? (
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 text-pink-500" />
           ) : (
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5 text-pink-500" />
           )}
         </button>
       </div>
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#1a1a2e]/95 backdrop-blur-md shadow-lg animate-fade-in border-t border-gray-800">
-          <div className="flex flex-col p-4 space-y-3">
+        <div className="md:hidden fixed inset-0 bg-[#121212]/95 backdrop-blur-xl z-10 animate-fade-in flex flex-col">
+          <div className="flex-grow flex flex-col justify-center items-center p-8 pt-20 space-y-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "flex items-center space-x-2 p-2 rounded-md font-jp",
+                  "flex items-center space-x-3 px-6 py-3 w-full max-w-xs rounded-xl font-jp text-lg",
                   activeSection === link.href.substring(1) 
-                    ? "bg-pink-300/10 text-pink-300" 
-                    : "hover:bg-gray-800 text-gray-300"
+                    ? "bg-gradient-to-r from-pink-600/20 to-purple-600/20 text-white border-l-2 border-pink-500" 
+                    : "hover:bg-white/5 text-gray-300"
                 )}
                 onClick={toggleMobileMenu}
               >
                 <link.icon className={cn(
                   "w-5 h-5", 
                   activeSection === link.href.substring(1) 
-                    ? "text-pink-300" 
-                    : "text-purple-300"
+                    ? "text-pink-500" 
+                    : "text-gray-400"
                 )} />
                 <span>{link.name}</span>
               </a>
             ))}
             
-            {/* Connect link in mobile menu */}
-            <div className="border-t border-gray-800 pt-3">
-              <a
-                href="/connect"
-                className="flex items-center justify-center space-x-2 p-2 bg-pink-300/20 text-pink-300 rounded-md border border-pink-300/30 font-jp"
+            {/* Connect button */}
+            <div className="pt-4 w-full max-w-xs">
+              <Link
+                to="/connect"
+                className="flex justify-center items-center py-3 w-full bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl font-jp shadow-lg shadow-pink-500/20"
                 onClick={toggleMobileMenu}
               >
-                <span>Connect With Me</span>
-              </a>
+                Connect With Me
+              </Link>
             </div>
           </div>
         </div>

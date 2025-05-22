@@ -19,19 +19,20 @@ const Layout = ({ children }: LayoutProps) => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-anime-midnight">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-anime-amber animate-pulse mb-4">
+      <div className="min-h-screen flex items-center justify-center bg-[#121212]">
+        <div className="text-center relative">
+          <div className="absolute -inset-32 rounded-full bg-pink-600/10 blur-3xl animate-pulse"></div>
+          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 mb-6 relative z-10 font-jp">
             Saikoushik Nalubola
           </h1>
-          <div className="w-16 h-16 border-4 border-anime-teal border-t-transparent rounded-full animate-spin mx-auto"></div>
+          <div className="w-16 h-16 border-4 border-t-transparent border-pink-500 rounded-full animate-spin mx-auto"></div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#121212]">
       <Navbar />
       <main className="flex-grow">{children}</main>
       <Footer />
@@ -39,7 +40,7 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Back to top button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-6 right-6 p-3 bg-anime-crimson/80 text-white rounded-full shadow-lg hover:bg-anime-crimson transition-colors"
+        className="fixed bottom-6 right-6 p-3 bg-pink-600/80 text-white rounded-full shadow-lg shadow-pink-500/30 hover:bg-pink-500 transition-colors z-40"
         aria-label="Back to top"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

@@ -23,32 +23,30 @@ const Footer = () => {
   ];
   
   return (
-    <footer className="relative bg-[#1a1a2e] text-gray-300 pt-16 pb-8 px-4 overflow-hidden">
-      {/* Sakura petals decoration */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
-        <div className="sakura-petal absolute h-4 w-4 top-[10%] left-[15%] bg-pink-300/50 rounded-full"></div>
-        <div className="sakura-petal absolute h-3 w-3 top-[30%] right-[20%] bg-pink-300/50 rounded-full"></div>
-        <div className="sakura-petal absolute h-5 w-5 bottom-[40%] left-[25%] bg-pink-300/50 rounded-full"></div>
-        <div className="sakura-petal absolute h-4 w-4 bottom-[20%] right-[15%] bg-pink-300/50 rounded-full"></div>
+    <footer className="relative bg-[#121212] text-gray-300 pt-16 pb-8 px-4 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+        <div className="absolute h-64 w-64 rounded-full blur-3xl bg-pink-500/20 -top-10 -left-20"></div>
+        <div className="absolute h-64 w-64 rounded-full blur-3xl bg-purple-500/20 bottom-10 right-10"></div>
       </div>
       
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Logo and description */}
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div className="flex items-center space-x-3">
-              <div className="anime-logo flex items-center justify-center w-10 h-10 rounded relative">
-                <div className="absolute inset-0 rounded bg-gradient-to-br from-pink-300 to-indigo-400 opacity-70"></div>
-                <div className="relative z-10 text-white font-bold text-xl tracking-wider font-jp">SN</div>
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 rounded opacity-30 blur animate-pulse"></div>
+              <div className="anime-logo flex items-center justify-center w-12 h-12 rounded-lg relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-700"></div>
+                <span className="relative z-10 text-white font-bold text-2xl font-jp">SN</span>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.4)_0%,_transparent_70%)] opacity-50"></div>
               </div>
-              <h3 className="text-xl font-bold font-jp">
-                <span className="text-pink-300">Saikoushik</span> 
-                <span className="text-gray-400">Nalubola</span>
+              <h3 className="text-2xl font-bold font-jp">
+                <span className="text-pink-500">Saikoushik</span> 
+                <span className="text-purple-400">Nalubola</span>
               </h3>
             </div>
-            <p className="text-sm text-gray-400 max-w-md font-jp">
-              Transforming ideas into impactful AI-driven solutions with a passion for innovation and sustainability. Building the future through technology.
+            <p className="text-sm text-gray-400 max-w-md font-jp leading-relaxed">
+              Building the future through AI innovation and creative solutions. Turning imagination into reality with cutting-edge technology and passion for excellence.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((link) => (
@@ -57,10 +55,11 @@ const Footer = () => {
                   href={link.href} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-pink-300 transition-colors group"
+                  className="hover:text-pink-500 transition-colors duration-300 group relative"
                   aria-label={link.label}
                 >
-                  <link.icon className="w-5 h-5 group-hover:animate-pulse" />
+                  <span className="absolute -inset-2 rounded-full bg-white/5 scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+                  <link.icon className="w-5 h-5 relative z-10" />
                 </a>
               ))}
             </div>
@@ -68,18 +67,17 @@ const Footer = () => {
           
           {/* Quick links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4 relative inline-block font-jp">
-              Quick Links
-              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-pink-300"></span>
+            <h4 className="text-lg font-semibold text-white mb-5 font-jp relative inline-block after:content-[''] after:absolute after:h-0.5 after:w-full after:bg-gradient-to-r after:from-pink-500 after:to-purple-500 after:-bottom-1 after:left-0">
+              Explore
             </h4>
-            <ul className="space-y-2 font-jp">
+            <ul className="grid grid-cols-2 gap-3 font-jp">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a 
                     href={link.href} 
-                    className="text-gray-400 hover:text-pink-300 transition-colors inline-flex items-center group"
+                    className="text-gray-400 hover:text-pink-400 transition-colors inline-flex items-center group"
                   >
-                    <span className="w-1.5 h-1.5 bg-pink-300 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 mr-2 transform scale-0 group-hover:scale-100 transition-transform"></span>
                     {link.name}
                   </a>
                 </li>
@@ -89,25 +87,29 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4 relative inline-block font-jp">
-              Get In Touch
-              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-pink-300"></span>
+            <h4 className="text-lg font-semibold text-white mb-5 font-jp relative inline-block after:content-[''] after:absolute after:h-0.5 after:w-full after:bg-gradient-to-r after:from-pink-500 after:to-purple-500 after:-bottom-1 after:left-0">
+              Get Connected
             </h4>
-            <p className="text-sm text-gray-400 mb-4 font-jp">
-              Ready to collaborate on your next project? Let's discuss how we can work together.
+            <p className="text-sm text-gray-400 mb-5 font-jp leading-relaxed">
+              Looking to start a project or just want to connect? Reach out and let's create something amazing together.
             </p>
             <a 
-              href="#contact" 
-              className="inline-flex items-center space-x-2 text-pink-300 hover:text-white transition-colors"
+              href="mailto:saikoushik42@gmail.com" 
+              className="inline-flex items-center px-4 py-2 rounded-md bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-500 hover:to-purple-500 transition-all duration-300 font-jp"
             >
-              <span>Contact me</span>
-              <ExternalLink className="w-4 h-4" />
+              <Mail className="w-4 h-4 mr-2" />
+              <span>Contact Me</span>
             </a>
           </div>
         </div>
         
-        <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-500 font-jp">
-          <p>© {currentYear} Saikoushik Nalubola. All rights reserved.</p>
+        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+          <p className="font-jp mb-4 md:mb-0">© {currentYear} Saikoushik Nalubola. All rights reserved.</p>
+          <div className="flex space-x-6">
+            <a href="#" className="hover:text-pink-400 transition-colors font-jp">Privacy Policy</a>
+            <a href="#" className="hover:text-pink-400 transition-colors font-jp">Terms of Service</a>
+            <a href="#" className="hover:text-pink-400 transition-colors font-jp">Cookie Policy</a>
+          </div>
         </div>
       </div>
     </footer>

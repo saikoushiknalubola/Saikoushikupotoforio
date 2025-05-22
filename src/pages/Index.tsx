@@ -14,25 +14,28 @@ const Index = () => {
     document.title = "Saikoushik Nalubola | AI Engineer & Entrepreneur";
     
     // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.currentTarget as HTMLAnchorElement;
+      const href = target.getAttribute('href');
+      if (href?.startsWith('#')) {
         e.preventDefault();
-        const href = this.getAttribute('href');
-        if (href) {
-          const target = document.querySelector(href);
-          if (target) {
-            window.scrollTo({
-              top: target.getBoundingClientRect().top + window.pageYOffset,
-              behavior: 'smooth'
-            });
-          }
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.getBoundingClientRect().top + window.pageYOffset,
+            behavior: 'smooth'
+          });
         }
-      });
+      }
+    };
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', handleAnchorClick as EventListener);
     });
     
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', () => {});
+        anchor.removeEventListener('click', handleAnchorClick as EventListener);
       });
     };
   }, []);

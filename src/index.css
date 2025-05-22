@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
 @layer base {
   :root {
@@ -39,13 +39,13 @@
   }
 
   body {
-    @apply bg-gradient-to-b from-[#1a1a2e] to-[#16213e] text-gray-100;
-    font-family: 'Rajdhani', 'Noto Sans JP', sans-serif;
+    @apply bg-[#121212] text-gray-100;
+    font-family: 'Outfit', 'Noto Sans JP', sans-serif;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Noto Sans JP', 'Rajdhani', sans-serif;
+    font-family: 'Outfit', 'Noto Sans JP', sans-serif;
   }
   
   /* Japanese text elements */
@@ -58,12 +58,12 @@
   /* Section headings */
   .section-heading {
     @apply text-3xl md:text-4xl font-bold mb-6 relative inline-block;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Outfit', sans-serif;
   }
   
   .section-heading::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-1 bg-pink-300;
+    @apply absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-purple-500;
     transform: scaleX(0.3);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -75,36 +75,36 @@
   
   .section-heading::before {
     content: attr(data-jp);
-    @apply absolute -top-5 left-0 text-xs text-pink-300 opacity-80 font-normal;
+    @apply absolute -top-5 left-0 text-xs text-pink-500 opacity-80 font-normal;
     font-family: 'Noto Sans JP', sans-serif;
     letter-spacing: 2px;
   }
   
   /* Cards with anime style */
   .anime-card {
-    @apply relative bg-gradient-to-br from-gray-900 to-[#1a1a2e] border border-pink-300/30 rounded-md p-5 shadow-lg overflow-hidden transition-all duration-500;
+    @apply relative bg-[#1a1a1a] border border-purple-500/20 rounded-xl p-5 shadow-lg overflow-hidden transition-all duration-500;
   }
   
   .anime-card::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-pink-300/10 to-indigo-400/10 opacity-50;
+    @apply absolute inset-0 bg-gradient-to-r from-pink-500/5 to-purple-500/5 opacity-50;
     filter: blur(20px);
     z-index: -1;
   }
   
   .anime-card:hover {
-    @apply border-pink-300/60;
-    box-shadow: 0 0 25px rgba(255, 182, 193, 0.2);
+    @apply border-pink-500/40;
+    box-shadow: 0 0 25px rgba(236, 72, 153, 0.2);
   }
   
   /* Navigation links */
   .anime-nav-link {
-    @apply relative px-4 py-2 text-gray-100 hover:text-pink-300 transition-colors duration-300;
+    @apply relative px-4 py-2 text-gray-300 hover:text-pink-500 transition-colors duration-300;
   }
   
   .anime-nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-0.5 bg-pink-300;
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-pink-500 to-purple-500;
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.3s ease;
@@ -117,31 +117,23 @@
   
   /* Anime-inspired buttons */
   .anime-button-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-pink-400 to-pink-500 text-white font-medium relative overflow-hidden transition-all duration-300 rounded-md shadow-md;
-  }
-  
-  .anime-button-primary::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-pink-400 to-indigo-400 opacity-0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .anime-button-primary:hover::before {
-    @apply opacity-100;
+    @apply px-6 py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-medium relative overflow-hidden transition-all duration-300 rounded-md shadow-md shadow-pink-500/20;
   }
   
   .anime-button-primary:hover {
-    @apply shadow-lg transform -translate-y-1;
+    @apply shadow-lg shadow-pink-500/40 transform -translate-y-1;
+    background-size: 200% 100%;
+    background-position: right center;
   }
   
   /* Anime secondary button */
   .anime-button-secondary {
-    @apply px-6 py-3 bg-transparent border-2 border-indigo-400 text-indigo-400 font-medium relative overflow-hidden transition-all duration-300 rounded-md;
+    @apply px-6 py-3 bg-transparent border-2 border-purple-500 text-purple-400 font-medium relative overflow-hidden transition-all duration-300 rounded-md;
   }
   
   .anime-button-secondary::before {
     content: '';
-    @apply absolute inset-0 bg-indigo-400/20 transform scale-x-0 origin-left;
+    @apply absolute inset-0 bg-purple-500/20 transform scale-x-0 origin-left;
     transition: transform 0.3s ease;
   }
   
@@ -150,7 +142,7 @@
   }
   
   .anime-button-secondary:hover {
-    @apply text-white border-purple-400 transform -translate-y-1;
+    @apply text-white border-pink-400 transform -translate-y-1;
   }
   
   /* Skill bar styling */
@@ -160,157 +152,69 @@
   
   .skill-progress {
     @apply h-full absolute top-0 left-0 rounded-full;
-    background: linear-gradient(90deg, #F9A8D4, #818CF8);
-    box-shadow: 0 0 10px rgba(249, 168, 212, 0.5);
+    background: linear-gradient(90deg, #EC4899, #8B5CF6);
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
     transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   }
   
   /* Project card with anime style */
   .project-card {
-    @apply relative bg-gray-900/70 rounded-lg overflow-hidden border border-pink-300/30 transition-all duration-500;
+    @apply relative bg-[#1a1a1a] rounded-xl overflow-hidden border border-purple-500/20 transition-all duration-500;
   }
   
   .project-card:hover {
-    @apply border-indigo-400 shadow-[0_0_15px_rgba(129,140,248,0.3)];
+    @apply border-pink-500/40 shadow-[0_0_15px_rgba(236,72,153,0.3)];
     transform: translateY(-5px);
   }
   
   .project-card::after {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-pink-300/5 to-indigo-400/5 opacity-0;
+    @apply absolute inset-0 bg-gradient-to-br from-pink-500/5 to-purple-500/5 opacity-0;
     transition: opacity 0.5s ease;
   }
   
   .project-card:hover::after {
     @apply opacity-100;
   }
-  
-  /* Particles container */
-  .particles-container {
-    @apply absolute inset-0 pointer-events-none overflow-hidden z-0;
-  }
-  
-  .particle {
-    @apply absolute rounded-full;
-    background: radial-gradient(circle, rgba(249, 168, 212, 0.6) 0%, rgba(249, 168, 212, 0) 70%);
-    animation: particles 25s linear infinite;
-  }
-  
-  /* Sakura petals */
-  .sakura-petals {
-    @apply absolute inset-0 pointer-events-none overflow-hidden;
-    z-index: 0;
-  }
-  
-  .sakura-petal {
-    @apply absolute;
-    width: 15px;
-    height: 15px;
-    background-color: rgba(249, 168, 212, 0.7);
-    border-radius: 15px 0px;
-    animation: sakura-fall 15s linear infinite;
-  }
-  
-  /* Text styling */
-  .anime-text {
-    font-family: 'Noto Sans JP', sans-serif;
-    letter-spacing: 0.5px;
-  }
-  
-  /* Logo styling */
-  .anime-logo {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .anime-logo::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-pink-300 to-indigo-400 opacity-0;
-    animation: border-flow 8s linear infinite;
-  }
-  
-  /* Social icon links */
-  .social-icon-link {
-    @apply relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300;
-  }
-  
-  .social-icon-link::before {
-    content: '';
-    @apply absolute inset-0 rounded-full bg-white/5 opacity-0 scale-90 transition-all duration-300;
-  }
-  
-  .social-icon-link:hover::before {
-    @apply opacity-100 scale-100;
-  }
-  
-  .social-icon-link:hover {
-    @apply transform -translate-y-1;
-  }
-  
-  /* Japanese aesthetic elements */
-  .kanji-background {
-    @apply absolute inset-0 overflow-hidden;
-    z-index: 0;
-  }
-  
-  .kanji-element {
-    @apply absolute text-pink-300/10 font-bold;
-    font-family: 'Noto Sans JP', sans-serif;
-    animation: float 15s ease-in-out infinite;
-  }
 
   /* Font utility classes */
   .font-jp {
-    font-family: 'Noto Sans JP', 'Rajdhani', sans-serif;
+    font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+  }
+
+  /* Glass effect */
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500;
+  }
+
+  /* Gradient border */
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to right, #EC4899, #8B5CF6);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
   }
 }
 
-/* Experience Section Enhancements */
-.experience-section {
-  position: relative;
-}
-
-.experience-particle {
-  position: absolute;
-  background-color: rgba(249, 168, 212, 0.15);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  animation: float 15s ease-in-out infinite;
-}
-
-/* Japanese style border pattern for cards */
-.anime-card::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, transparent 30%, rgba(249, 168, 212, 0.2) 40%, rgba(129, 140, 248, 0.2) 60%, transparent 70%);
-  background-size: 300% 300%;
-  background-position: 0 0;
-  border-radius: 0.5rem;
-  z-index: -2;
-  animation: border-flow 8s linear infinite;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.anime-card:hover::after {
-  opacity: 1;
-}
-
-@keyframes border-flow {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 300% 0%;
-  }
-}
-
-/* Ensure all animations persist */
+/* Enhanced animations */
 .animate-title-reveal, 
 .animate-fade-in,
 .animate-pulse-glow,
@@ -319,45 +223,60 @@
   opacity: 1 !important;
 }
 
-/* Enhanced progress bars for experience section */
-.experience-section .skill-bar {
-  @apply h-3 bg-gray-800/70 rounded-full overflow-hidden relative border border-gray-700/50 backdrop-blur-sm;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
-}
-
-.experience-section .skill-progress {
-  @apply h-full absolute top-0 left-0;
-  background: linear-gradient(90deg, #F9A8D4, #818CF8);
-  box-shadow: 0 0 10px rgba(249, 168, 212, 0.5);
-  transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-}
-
 /* Keyframe animations */
-@keyframes sakura-fall {
-  0% { 
-    transform: translateY(-5%) translateX(10%) rotate(0deg); 
-    opacity: 0;
-  }
-  10% { 
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% { 
-    transform: translateY(100vh) translateX(-20%) rotate(720deg);
-    opacity: 0;
-  }
+@keyframes title-reveal {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes power-up {
-  0% { transform: scale(0.95); opacity: 0; box-shadow: 0 0 0 rgba(249,168,212,0); }
-  50% { transform: scale(1.05); opacity: 0.7; box-shadow: 0 0 20px rgba(249,168,212,0.5); }
-  100% { transform: scale(1); opacity: 1; box-shadow: 0 0 10px rgba(249,168,212,0.3); }
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-.animate-power-up {
-  animation: power-up 0.7s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(236, 72, 153, 0.5)); }
+  50% { filter: drop-shadow(0 0 20px rgba(236, 72, 153, 0.8)); }
+}
+
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(5px); opacity: 1; }
+}
+
+/* Animation utility classes */
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+.animate-delay-700 { animation-delay: 0.7s; }
+.animate-delay-1000 { animation-delay: 1s; }
+.animate-delay-1200 { animation-delay: 1.2s; }
+
+.animate-title-reveal {
+  animation: title-reveal 1s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s infinite;
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 1.5s ease-in-out infinite;
 }
 
 /* Custom scrollbar */
@@ -367,124 +286,42 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-900;
+  @apply bg-[#1a1a1a];
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-pink-300/50 rounded-full;
+  @apply bg-pink-500/50 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-pink-300;
+  @apply bg-pink-500;
 }
 
-/* Animation utility classes */
-.animate-delay-100 {
-  animation-delay: 0.1s;
+/* Glass card */
+.glass-card {
+  @apply backdrop-blur-sm bg-white/5 border border-white/10 rounded-xl;
 }
 
-.animate-delay-200 {
-  animation-delay: 0.2s;
+/* Newest AniHive-style components */
+
+/* Spotlight effect */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x) var(--y), transparent 0%, transparent 20%, rgba(0, 0, 0, 0.95) 80%);
+  opacity: 0.7;
+  pointer-events: none;
 }
 
-.animate-delay-300 {
-  animation-delay: 0.3s;
+/* Badge */
+.badge {
+  @apply px-2.5 py-0.5 text-xs font-medium rounded-full;
 }
 
-.animate-delay-400 {
-  animation-delay: 0.4s;
+.badge-pink {
+  @apply bg-pink-500/20 text-pink-400 border border-pink-500/20;
 }
 
-.animate-delay-500 {
-  animation-delay: 0.5s;
-}
-
-.animate-delay-700 {
-  animation-delay: 0.7s;
-}
-
-.animate-delay-1000 {
-  animation-delay: 1s;
-}
-
-.animate-delay-1200 {
-  animation-delay: 1.2s;
-}
-
-/* Updated keyframes for longer-lasting animations */
-@keyframes particles {
-  0% { transform: translateY(0) rotate(0); opacity: 0; }
-  10% { opacity: 0.7; }
-  50% { transform: translateY(-50vh) rotate(180deg); opacity: 0.7; }
-  90% { opacity: 0.7; }
-  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-}
-
-@keyframes title-reveal {
-  0% { transform: scale(0.95); opacity: 0; }
-  70% { transform: scale(1.03); opacity: 0.9; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes fade-in {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Add new animation for pulsing glow effect */
-@keyframes pulse-glow {
-  0% { opacity: 0.5; box-shadow: 0 0 10px currentColor; }
-  50% { opacity: 0.9; box-shadow: 0 0 25px currentColor; }
-  100% { opacity: 0.5; box-shadow: 0 0 10px currentColor; }
-}
-
-/* New floating animation */
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(-10px, -15px) rotate(2deg); }
-  50% { transform: translate(10px, -25px) rotate(-1deg); }
-  75% { transform: translate(-5px, -10px) rotate(1deg); }
-}
-
-/* New slow spin animation */
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* New scroll hint animation */
-@keyframes scroll-hint {
-  0% { transform: translateY(0); opacity: 0.5; }
-  50% { transform: translateY(5px); opacity: 1; }
-  100% { transform: translateY(0); opacity: 0.5; }
-}
-
-/* Add CSS for animations to stay visible */
-.animate-title-reveal {
-  animation: title-reveal 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
-}
-
-.animate-fade-in {
-  animation: fade-in 1.2s ease-out forwards;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 4s infinite;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-spin-slow {
-  animation: spin-slow 10s linear infinite;
-}
-
-.animate-scroll-hint {
-  animation: scroll-hint 1.5s ease-in-out infinite;
-}
-
-/* Make sure all animations persist */
-.animate-title-reveal, .animate-fade-in {
-  opacity: 1 !important;
+.badge-purple {
+  @apply bg-purple-500/20 text-purple-400 border border-purple-500/20;
 }
