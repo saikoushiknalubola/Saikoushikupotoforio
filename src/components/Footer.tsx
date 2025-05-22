@@ -37,15 +37,15 @@ const Footer = () => {
             <div className="flex items-center space-x-3">
               <div className="anime-logo flex items-center justify-center w-12 h-12 rounded-lg relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-700"></div>
-                <span className="relative z-10 text-white font-bold text-2xl font-jp">SN</span>
+                <span className="relative z-10 text-white font-bold text-2xl font-heading tracking-wider">SN</span>
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.4)_0%,_transparent_70%)] opacity-50"></div>
               </div>
-              <h3 className="text-2xl font-bold font-jp">
+              <h3 className="text-2xl font-bold font-heading tracking-wide">
                 <span className="text-pink-500">Saikoushik</span> 
                 <span className="text-purple-400">Nalubola</span>
               </h3>
             </div>
-            <p className="text-sm text-gray-400 max-w-md font-jp leading-relaxed">
+            <p className="text-sm text-gray-400 max-w-md font-jp leading-relaxed tracking-wide">
               Building the future through AI innovation and creative solutions. Turning imagination into reality with cutting-edge technology and passion for excellence.
             </p>
             <div className="flex space-x-4">
@@ -67,10 +67,10 @@ const Footer = () => {
           
           {/* Quick links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-5 font-jp relative inline-block after:content-[''] after:absolute after:h-0.5 after:w-full after:bg-gradient-to-r after:from-pink-500 after:to-purple-500 after:-bottom-1 after:left-0">
+            <h4 className="text-lg font-semibold text-white mb-5 font-heading tracking-wide relative inline-block after:content-[''] after:absolute after:h-0.5 after:w-full after:bg-gradient-to-r after:from-pink-500 after:to-purple-500 after:-bottom-1 after:left-0">
               Explore
             </h4>
-            <ul className="grid grid-cols-2 gap-3 font-jp">
+            <ul className="grid grid-cols-2 gap-3 font-jp tracking-wide">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a 
@@ -87,15 +87,15 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-5 font-jp relative inline-block after:content-[''] after:absolute after:h-0.5 after:w-full after:bg-gradient-to-r after:from-pink-500 after:to-purple-500 after:-bottom-1 after:left-0">
+            <h4 className="text-lg font-semibold text-white mb-5 font-heading tracking-wide relative inline-block after:content-[''] after:absolute after:h-0.5 after:w-full after:bg-gradient-to-r after:from-pink-500 after:to-purple-500 after:-bottom-1 after:left-0">
               Get Connected
             </h4>
-            <p className="text-sm text-gray-400 mb-5 font-jp leading-relaxed">
+            <p className="text-sm text-gray-400 mb-5 font-jp leading-relaxed tracking-wide">
               Looking to start a project or just want to connect? Reach out and let's create something amazing together.
             </p>
             <a 
               href="mailto:saikoushik42@gmail.com" 
-              className="inline-flex items-center px-4 py-2 rounded-md bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-500 hover:to-purple-500 transition-all duration-300 font-jp"
+              className="inline-flex items-center px-4 py-2 rounded-md bg-gradient-to-r from-pink-600 to-purple-600 text-white hover:from-pink-500 hover:to-purple-500 transition-all duration-300 font-jp tracking-wide"
             >
               <Mail className="w-4 h-4 mr-2" />
               <span>Contact Me</span>
@@ -104,11 +104,11 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p className="font-jp mb-4 md:mb-0">© {currentYear} Saikoushik Nalubola. All rights reserved.</p>
+          <p className="font-jp tracking-wide mb-4 md:mb-0">© {currentYear} Saikoushik Nalubola. All rights reserved.</p>
           <div className="flex space-x-6">
-            <a href="#" className="hover:text-pink-400 transition-colors font-jp">Privacy Policy</a>
-            <a href="#" className="hover:text-pink-400 transition-colors font-jp">Terms of Service</a>
-            <a href="#" className="hover:text-pink-400 transition-colors font-jp">Cookie Policy</a>
+            <a href="#" className="hover:text-pink-400 transition-colors font-jp tracking-wide">Privacy Policy</a>
+            <a href="#" className="hover:text-pink-400 transition-colors font-jp tracking-wide">Terms of Service</a>
+            <a href="#" className="hover:text-pink-400 transition-colors font-jp tracking-wide">Cookie Policy</a>
           </div>
         </div>
       </div>

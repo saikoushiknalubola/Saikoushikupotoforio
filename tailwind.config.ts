@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -23,7 +22,9 @@ export default {
         'outfit': ['Outfit', 'sans-serif'],
         'rajdhani': ['Rajdhani', 'sans-serif'],
         'exo': ['Exo', 'sans-serif'],
-        'jp': ['Noto Sans JP', 'sans-serif']
+        'jp': ['Kodchasan', 'sans-serif'],
+        'heading': ['Quicksand', 'sans-serif'],
+        'mono': ['DM Mono', 'monospace']
       },
       colors: {
         border: 'hsl(var(--border))',

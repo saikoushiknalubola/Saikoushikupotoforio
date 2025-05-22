@@ -22,7 +22,7 @@ const Index = () => {
         const targetElement = document.querySelector(href);
         if (targetElement) {
           window.scrollTo({
-            top: targetElement.getBoundingClientRect().top + window.pageYOffset,
+            top: targetElement.getBoundingClientRect().top + window.pageYOffset - 80, // Added offset for better UI
             behavior: 'smooth'
           });
         }

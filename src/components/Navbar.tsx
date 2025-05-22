@@ -53,9 +53,9 @@ const Navbar = () => {
           <div className="flex items-center justify-center w-10 h-10 rounded-md relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-700"></div>
             <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.5),transparent_70%)]"></div>
-            <div className="relative z-10 text-white font-bold text-xl tracking-wider font-jp">SN</div>
+            <div className="relative z-10 text-white font-bold text-xl tracking-wider font-heading">SN</div>
           </div>
-          <span className="text-xl font-bold hidden sm:inline-block font-jp">
+          <span className="text-xl font-bold hidden sm:inline-block font-heading tracking-wide">
             <span className="text-pink-500">Saikoushik</span> 
             <span className="text-purple-400">Nalubola</span>
           </span>
@@ -68,13 +68,13 @@ const Navbar = () => {
               key={link.name} 
               href={link.href} 
               className={cn(
-                "relative px-4 py-2 rounded-md transition-all duration-300",
+                "relative px-4 py-2 rounded-md transition-all duration-300 font-jp tracking-wide",
                 activeSection === link.href.substring(1) 
                   ? "text-white" 
                   : "text-gray-400 hover:text-gray-200"
               )}
             >
-              <span className="relative z-10 font-jp flex items-center">
+              <span className="relative z-10 flex items-center">
                 <link.icon className="w-4 h-4 mr-1 opacity-70" />
                 {link.name}
               </span>
@@ -92,7 +92,7 @@ const Navbar = () => {
           {/* Connect button */}
           <Link 
             to="/connect" 
-            className="ml-2 px-5 py-2 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-md hover:from-pink-500 hover:to-purple-500 transition-all duration-300 font-jp shadow-lg shadow-pink-500/20"
+            className="ml-2 px-5 py-2 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-md hover:from-pink-500 hover:to-purple-500 transition-all duration-300 font-jp tracking-wide shadow-lg shadow-pink-500/20"
           >
             Connect
           </Link>
@@ -121,7 +121,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "flex items-center space-x-3 px-6 py-3 w-full max-w-xs rounded-xl font-jp text-lg",
+                  "flex items-center space-x-3 px-6 py-3 w-full max-w-xs rounded-xl font-jp text-lg tracking-wide",
                   activeSection === link.href.substring(1) 
                     ? "bg-gradient-to-r from-pink-600/20 to-purple-600/20 text-white border-l-2 border-pink-500" 
                     : "hover:bg-white/5 text-gray-300"
@@ -142,7 +142,7 @@ const Navbar = () => {
             <div className="pt-4 w-full max-w-xs">
               <Link
                 to="/connect"
-                className="flex justify-center items-center py-3 w-full bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl font-jp shadow-lg shadow-pink-500/20"
+                className="flex justify-center items-center py-3 w-full bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl font-jp tracking-wide shadow-lg shadow-pink-500/20"
                 onClick={toggleMobileMenu}
               >
                 Connect With Me
