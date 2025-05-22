@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
 @layer base {
   :root {
@@ -39,13 +39,13 @@
   }
 
   body {
-    @apply bg-anime-midnight text-anime-text;
+    @apply bg-gradient-to-b from-[#1a1a2e] to-[#16213e] text-gray-100;
     font-family: 'Rajdhani', 'Noto Sans JP', sans-serif;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Orbitron', 'Exo', sans-serif;
+    font-family: 'Noto Sans JP', 'Rajdhani', sans-serif;
   }
   
   /* Japanese text elements */
@@ -58,12 +58,12 @@
   /* Section headings */
   .section-heading {
     @apply text-3xl md:text-4xl font-bold mb-6 relative inline-block;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
   }
   
   .section-heading::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-1 bg-anime-blue;
+    @apply absolute bottom-0 left-0 w-full h-1 bg-pink-300;
     transform: scaleX(0.3);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -75,123 +75,82 @@
   
   .section-heading::before {
     content: attr(data-jp);
-    @apply absolute -top-5 left-0 text-xs text-anime-blue opacity-80 font-normal;
+    @apply absolute -top-5 left-0 text-xs text-pink-300 opacity-80 font-normal;
     font-family: 'Noto Sans JP', sans-serif;
     letter-spacing: 2px;
   }
   
-  /* Cards with cyberpunk style */
+  /* Cards with anime style */
   .anime-card {
-    @apply relative bg-gradient-to-br from-gray-900 to-anime-midnight border border-anime-blue/30 rounded-md p-5 shadow-lg overflow-hidden transition-all duration-500;
+    @apply relative bg-gradient-to-br from-gray-900 to-[#1a1a2e] border border-pink-300/30 rounded-md p-5 shadow-lg overflow-hidden transition-all duration-500;
   }
   
   .anime-card::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-anime-blue/10 to-anime-magenta/10 opacity-50;
+    @apply absolute inset-0 bg-gradient-to-r from-pink-300/10 to-indigo-400/10 opacity-50;
     filter: blur(20px);
     z-index: -1;
   }
   
   .anime-card:hover {
-    @apply border-anime-blue/60;
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+    @apply border-pink-300/60;
+    box-shadow: 0 0 25px rgba(255, 182, 193, 0.2);
   }
   
   /* Navigation links */
-  .nav-link {
-    @apply relative px-4 py-2 text-anime-text hover:text-anime-blue transition-colors duration-300;
+  .anime-nav-link {
+    @apply relative px-4 py-2 text-gray-100 hover:text-pink-300 transition-colors duration-300;
   }
   
-  .nav-link::after {
+  .anime-nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-0.5 bg-anime-blue;
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-pink-300;
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.3s ease;
   }
   
-  .nav-link:hover::after {
+  .anime-nav-link:hover::after {
     transform: scaleX(1);
     transform-origin: left;
   }
   
-  /* Cyberpunk nav link */
-  .cyber-nav-link {
-    @apply relative overflow-hidden;
+  /* Anime-inspired buttons */
+  .anime-button-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-pink-400 to-pink-500 text-white font-medium relative overflow-hidden transition-all duration-300 rounded-md shadow-md;
   }
   
-  .cyber-nav-link::before {
+  .anime-button-primary::before {
     content: '';
-    @apply absolute -inset-1 bg-gradient-to-r from-anime-blue to-anime-purple opacity-0;
+    @apply absolute inset-0 bg-gradient-to-r from-pink-400 to-indigo-400 opacity-0;
     transition: opacity 0.3s ease;
   }
   
-  .cyber-nav-link:hover::before {
-    @apply opacity-20;
-  }
-  
-  /* Traditional anime button */
-  .anime-button {
-    @apply px-6 py-2 bg-anime-crimson text-anime-text font-bold rounded relative overflow-hidden transition-all duration-300 hover:bg-anime-crimson/90;
-  }
-  
-  .anime-button::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-anime-amber/20 to-anime-crimson/50;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-  
-  .anime-button:hover::before {
-    transform: translateX(0);
-  }
-  
-  /* Cyberpunk primary button */
-  .cyber-button-primary {
-    @apply px-6 py-3 bg-anime-blue text-white font-bold relative overflow-hidden transition-all duration-500;
-    clip-path: polygon(0% 0%, 92% 0, 100% 30%, 100% 100%, 8% 100%, 0% 70%);
-  }
-  
-  .cyber-button-primary::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-anime-blue to-anime-purple opacity-0;
-    transition: opacity 0.5s ease;
-  }
-  
-  .cyber-button-primary::after {
-    content: '';
-    @apply absolute inset-0 border-2 border-anime-blue rounded opacity-0;
-    clip-path: polygon(0% 0%, 92% 0, 100% 30%, 100% 100%, 8% 100%, 0% 70%);
-    transition: all 0.5s ease;
-  }
-  
-  .cyber-button-primary:hover::before {
+  .anime-button-primary:hover::before {
     @apply opacity-100;
   }
   
-  .cyber-button-primary:hover {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  .anime-button-primary:hover {
+    @apply shadow-lg transform -translate-y-1;
   }
   
-  /* Cyberpunk secondary button */
-  .cyber-button-secondary {
-    @apply px-6 py-3 bg-transparent border-2 border-anime-purple text-white font-bold relative overflow-hidden transition-all duration-500;
-    clip-path: polygon(0% 0%, 92% 0, 100% 30%, 100% 100%, 8% 100%, 0% 70%);
+  /* Anime secondary button */
+  .anime-button-secondary {
+    @apply px-6 py-3 bg-transparent border-2 border-indigo-400 text-indigo-400 font-medium relative overflow-hidden transition-all duration-300 rounded-md;
   }
   
-  .cyber-button-secondary::before {
+  .anime-button-secondary::before {
     content: '';
-    @apply absolute inset-0 bg-anime-purple/20 transform scale-x-0 origin-left;
-    transition: transform 0.5s ease;
+    @apply absolute inset-0 bg-indigo-400/20 transform scale-x-0 origin-left;
+    transition: transform 0.3s ease;
   }
   
-  .cyber-button-secondary:hover::before {
+  .anime-button-secondary:hover::before {
     @apply transform scale-x-100;
   }
   
-  .cyber-button-secondary:hover {
-    @apply border-anime-magenta text-anime-magenta;
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+  .anime-button-secondary:hover {
+    @apply text-white border-purple-400 transform -translate-y-1;
   }
   
   /* Skill bar styling */
@@ -201,24 +160,24 @@
   
   .skill-progress {
     @apply h-full absolute top-0 left-0 rounded-full;
-    background: linear-gradient(90deg, #00FFFF, #9b87f5);
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    background: linear-gradient(90deg, #F9A8D4, #818CF8);
+    box-shadow: 0 0 10px rgba(249, 168, 212, 0.5);
     transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   }
   
-  /* Project card with cyberpunk style */
+  /* Project card with anime style */
   .project-card {
-    @apply relative bg-gray-900/70 rounded-lg overflow-hidden border border-anime-blue/30 transition-all duration-500;
+    @apply relative bg-gray-900/70 rounded-lg overflow-hidden border border-pink-300/30 transition-all duration-500;
   }
   
   .project-card:hover {
-    @apply border-anime-magenta shadow-[0_0_15px_rgba(255,0,255,0.3)];
+    @apply border-indigo-400 shadow-[0_0_15px_rgba(129,140,248,0.3)];
     transform: translateY(-5px);
   }
   
   .project-card::after {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-anime-blue/5 to-anime-magenta/5 opacity-0;
+    @apply absolute inset-0 bg-gradient-to-br from-pink-300/5 to-indigo-400/5 opacity-0;
     transition: opacity 0.5s ease;
   }
   
@@ -233,47 +192,40 @@
   
   .particle {
     @apply absolute rounded-full;
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 255, 255, 0) 70%);
+    background: radial-gradient(circle, rgba(249, 168, 212, 0.6) 0%, rgba(249, 168, 212, 0) 70%);
     animation: particles 25s linear infinite;
   }
   
-  /* Circuit lines for cyberpunk aesthetics */
-  .circuit-lines {
+  /* Sakura petals */
+  .sakura-petals {
     @apply absolute inset-0 pointer-events-none overflow-hidden;
     z-index: 0;
   }
   
-  .circuit-line {
+  .sakura-petal {
     @apply absolute;
-    animation: pulse-glow 4s infinite;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(249, 168, 212, 0.7);
+    border-radius: 15px 0px;
+    animation: sakura-fall 15s linear infinite;
   }
   
-  /* Text glow effects */
-  .cyber-text-glow {
-    text-shadow: 0 0 10px currentColor;
-  }
-  
-  .cyber-text {
-    font-family: 'Rajdhani', sans-serif;
+  /* Text styling */
+  .anime-text {
+    font-family: 'Noto Sans JP', sans-serif;
     letter-spacing: 0.5px;
   }
   
-  /* Cyberpunk heading */
-  .cyberpunk-heading {
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  
   /* Logo styling */
-  .cyber-logo {
+  .anime-logo {
     position: relative;
     overflow: hidden;
   }
   
-  .cyber-logo::before {
+  .anime-logo::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-anime-blue to-anime-magenta opacity-0;
+    @apply absolute inset-0 bg-gradient-to-r from-pink-300 to-indigo-400 opacity-0;
     animation: border-flow 8s linear infinite;
   }
   
@@ -302,9 +254,14 @@
   }
   
   .kanji-element {
-    @apply absolute text-anime-blue/10 font-bold;
+    @apply absolute text-pink-300/10 font-bold;
     font-family: 'Noto Sans JP', sans-serif;
     animation: float 15s ease-in-out infinite;
+  }
+
+  /* Font utility classes */
+  .font-jp {
+    font-family: 'Noto Sans JP', 'Rajdhani', sans-serif;
   }
 }
 
@@ -315,7 +272,7 @@
 
 .experience-particle {
   position: absolute;
-  background-color: rgba(0, 255, 255, 0.15);
+  background-color: rgba(249, 168, 212, 0.15);
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
@@ -330,7 +287,7 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.2) 40%, rgba(255, 0, 255, 0.2) 60%, transparent 70%);
+  background: linear-gradient(45deg, transparent 30%, rgba(249, 168, 212, 0.2) 40%, rgba(129, 140, 248, 0.2) 60%, transparent 70%);
   background-size: 300% 300%;
   background-position: 0 0;
   border-radius: 0.5rem;
@@ -370,56 +327,37 @@
 
 .experience-section .skill-progress {
   @apply h-full absolute top-0 left-0;
-  background: linear-gradient(90deg, #00FFFF, #FF00FF);
-  box-shadow: 0 0 10px rgba(0,255,255,0.5);
+  background: linear-gradient(90deg, #F9A8D4, #818CF8);
+  box-shadow: 0 0 10px rgba(249, 168, 212, 0.5);
   transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }
 
 /* Keyframe animations */
+@keyframes sakura-fall {
+  0% { 
+    transform: translateY(-5%) translateX(10%) rotate(0deg); 
+    opacity: 0;
+  }
+  10% { 
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(100vh) translateX(-20%) rotate(720deg);
+    opacity: 0;
+  }
+}
+
 @keyframes power-up {
-  0% { transform: scale(0.95); opacity: 0; box-shadow: 0 0 0 rgba(0,255,255,0); }
-  50% { transform: scale(1.05); opacity: 0.7; box-shadow: 0 0 20px rgba(0,255,255,0.5); }
-  100% { transform: scale(1); opacity: 1; box-shadow: 0 0 10px rgba(0,255,255,0.3); }
+  0% { transform: scale(0.95); opacity: 0; box-shadow: 0 0 0 rgba(249,168,212,0); }
+  50% { transform: scale(1.05); opacity: 0.7; box-shadow: 0 0 20px rgba(249,168,212,0.5); }
+  100% { transform: scale(1); opacity: 1; box-shadow: 0 0 10px rgba(249,168,212,0.3); }
 }
 
 .animate-power-up {
   animation: power-up 0.7s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
-}
-
-/* Cyberpunk colors with text shadow */
-.text-anime-blue {
-  color: #00FFFF;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-}
-
-.text-anime-purple {
-  color: #9b87f5;
-  text-shadow: 0 0 5px rgba(155, 135, 245, 0.5);
-}
-
-.text-anime-magenta {
-  color: #FF00FF;
-  text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
-}
-
-.text-anime-amber {
-  color: hsl(var(--anime-amber, 42deg 80% 54%));
-  text-shadow: 0 0 5px rgba(230, 175, 46, 0.5);
-}
-
-.text-anime-teal {
-  color: hsl(var(--anime-teal, 174deg 82% 33%));
-  text-shadow: 0 0 5px rgba(15, 155, 142, 0.5);
-}
-
-.text-anime-crimson {
-  color: hsl(var(--anime-crimson, 358deg 79% 42%));
-  text-shadow: 0 0 5px rgba(196, 22, 28, 0.5);
-}
-
-.text-anime-orange {
-  color: #F97316;
-  text-shadow: 0 0 5px rgba(249, 115, 22, 0.5);
 }
 
 /* Custom scrollbar */
@@ -429,15 +367,15 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-anime-midnight;
+  @apply bg-gray-900;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-anime-blue/50 rounded-full;
+  @apply bg-pink-300/50 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-anime-blue;
+  @apply bg-pink-300;
 }
 
 /* Animation utility classes */
