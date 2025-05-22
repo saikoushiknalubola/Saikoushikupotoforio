@@ -44,6 +44,7 @@ const Index = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-fade-in');
+          entry.target.style.opacity = '1';
         }
       });
     }, observerOptions);
@@ -66,20 +67,22 @@ const Index = () => {
 
   return (
     <Layout>
-      <Hero />
-      <div className="scroll-animate opacity-0">
+      <div id="hero" className="min-h-screen">
+        <Hero />
+      </div>
+      <div id="about" className="min-h-screen scroll-animate opacity-0">
         <About />
       </div>
-      <div className="scroll-animate opacity-0">
+      <div id="experience" className="min-h-screen scroll-animate opacity-0">
         <Experience />
       </div>
-      <div className="scroll-animate opacity-0">
+      <div id="projects" className="min-h-screen scroll-animate opacity-0">
         <Projects />
       </div>
-      <div className="scroll-animate opacity-0">
+      <div id="skills" className="min-h-screen scroll-animate opacity-0">
         <Skills />
       </div>
-      <div className="scroll-animate opacity-0">
+      <div id="contact" className="min-h-screen scroll-animate opacity-0">
         <Contact />
       </div>
     </Layout>

@@ -35,9 +35,9 @@ const Layout = ({ children }: LayoutProps) => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#121212]">
+    <div className="min-h-screen flex flex-col bg-[#121212] text-gray-100">
       <Navbar />
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow w-full overflow-x-hidden">{children}</main>
       <Footer />
       
       {/* Back to top button */}

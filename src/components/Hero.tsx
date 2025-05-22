@@ -6,6 +6,11 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isNameVisible, setIsNameVisible] = useState(false);
+  const [isDescVisible, setIsDescVisible] = useState(false);
+  const [isSocialsVisible, setIsSocialsVisible] = useState(false);
+  const [isButtonsVisible, setIsButtonsVisible] = useState(false);
+  const [isProfileVisible, setIsProfileVisible] = useState(false);
   
   // Spotlight effect
   useEffect(() => {
@@ -21,12 +26,12 @@ const Hero = () => {
   
   // Animated elements
   useEffect(() => {
-    // Reveal animations for elements
-    const titles = document.querySelectorAll('.animate-on-load');
-    titles.forEach((title, index) => {
-      title.classList.add('animate-title-reveal');
-      (title as HTMLElement).style.animationDelay = `${index * 0.2}s`;
-    });
+    // Staggered animations
+    setTimeout(() => setIsNameVisible(true), 300);
+    setTimeout(() => setIsDescVisible(true), 800);
+    setTimeout(() => setIsSocialsVisible(true), 1200);
+    setTimeout(() => setIsButtonsVisible(true), 1500);
+    setTimeout(() => setIsProfileVisible(true), 1000);
     
     // Create animated glow elements
     const container = document.querySelector('.glow-container');
@@ -62,7 +67,6 @@ const Hero = () => {
 
   return (
     <section 
-      id="hero" 
       className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden"
       style={{
         '--x': `${position.x}%`,
@@ -120,34 +124,51 @@ const Hero = () => {
         {/* Content */}
         <div className="w-full lg:w-2/3 space-y-6 text-center lg:text-left">
           {/* Tags */}
-          <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-8 animate-on-load">
+          <div className={`flex flex-wrap justify-center lg:justify-start gap-2 mb-8 transform transition-all duration-700 ${isSocialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <span className="badge badge-pink">AI Engineer</span>
             <span className="badge badge-purple">Entrepreneur</span>
             <span className="badge badge-pink">Innovator</span>
           </div>
           
-          {/* Name */}
+          {/* Name with letter-by-letter animation */}
           <div className="overflow-hidden">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight animate-on-load leading-tight">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
               <span className="text-white block mb-2">Hi, I'm </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-size-200 animate-bg-pos">
-                Saikoushik
-              </span>
+              <div className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-size-200 animate-bg-pos">
+                {isNameVisible && (
+                  <>
+                    {"Saikoushik".split('').map((letter, index) => (
+                      <span 
+                        key={index}
+                        className="inline-block transition-all duration-500 transform"
+                        style={{ 
+                          animationDelay: `${index * 0.1}s`,
+                          animation: `title-reveal 0.5s forwards ${index * 0.1}s`,
+                          opacity: 0,
+                          transform: 'translateY(20px)'
+                        }}
+                      >
+                        {letter}
+                      </span>
+                    ))}
+                  </>
+                )}
+              </div>
             </h1>
           </div>
           
           {/* Description */}
           <div className="overflow-hidden">
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 animate-on-load font-light">
+            <p className={`text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 font-light transform transition-all duration-700 ${isDescVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               Transforming ideas into impactful AI-driven solutions with a passion for innovation and sustainability
             </p>
           </div>
           
           {/* Decorative element */}
-          <div className="hidden lg:block h-1 w-24 bg-gradient-to-r from-pink-500 to-purple-500 my-6"></div>
+          <div className={`hidden lg:block h-1 w-24 bg-gradient-to-r from-pink-500 to-purple-500 my-6 transform transition-all duration-700 ${isDescVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
           
           {/* Social Media */}
-          <div className="flex justify-center lg:justify-start gap-6 animate-on-load mt-8">
+          <div className={`flex justify-center lg:justify-start gap-6 mt-8 transform transition-all duration-700 ${isSocialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <a href="https://github.com/saikoushiknalubola" target="_blank" rel="noopener noreferrer" 
                className="social-button group">
               <Github className="w-5 h-5 text-white group-hover:text-pink-400" />
@@ -171,7 +192,7 @@ const Hero = () => {
           </div>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-6 animate-on-load">
+          <div className={`flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-6 transform transition-all duration-700 ${isButtonsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <a href="#projects" className="anime-button-primary group px-8 py-4 text-base font-semibold">
               <span>
                 View Projects
@@ -187,7 +208,7 @@ const Hero = () => {
         </div>
         
         {/* Profile Image */}
-        <div className="mt-12 lg:mt-0 relative">
+        <div className={`mt-12 lg:mt-0 relative transform transition-all duration-1000 ${isProfileVisible ? 'opacity-100 translate-y-0 rotate-0' : 'opacity-0 translate-y-8 rotate-6'}`}>
           <div className="relative animate-float">
             {/* Glow effects */}
             <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 opacity-30 blur-2xl animate-pulse"></div>
