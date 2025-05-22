@@ -33,9 +33,33 @@ const Index = () => {
       anchor.addEventListener('click', handleAnchorClick as EventListener);
     });
     
+    // Add scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.scroll-animate').forEach(el => {
+      observer.observe(el);
+    });
+    
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', handleAnchorClick as EventListener);
+      });
+      
+      // Clean up observer
+      document.querySelectorAll('.scroll-animate').forEach(el => {
+        observer.unobserve(el);
       });
     };
   }, []);
@@ -43,11 +67,21 @@ const Index = () => {
   return (
     <Layout>
       <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Contact />
+      <div className="scroll-animate opacity-0">
+        <About />
+      </div>
+      <div className="scroll-animate opacity-0">
+        <Experience />
+      </div>
+      <div className="scroll-animate opacity-0">
+        <Projects />
+      </div>
+      <div className="scroll-animate opacity-0">
+        <Skills />
+      </div>
+      <div className="scroll-animate opacity-0">
+        <Contact />
+      </div>
     </Layout>
   );
 };

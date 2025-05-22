@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Kodchasan:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Kodchasan:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@300;400;500&display=swap');
 
 @layer base {
   :root {
@@ -39,13 +39,14 @@
 
   body {
     @apply bg-[#121212] text-gray-100;
-    font-family: 'Quicksand', 'Kodchasan', sans-serif;
+    font-family: 'Montserrat', 'Kodchasan', sans-serif;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Kodchasan', 'Outfit', sans-serif;
+    font-family: 'Montserrat', 'Outfit', sans-serif;
     letter-spacing: -0.025em;
+    font-weight: 700;
   }
   
   /* Japanese text elements */
@@ -59,8 +60,8 @@
   /* Section headings */
   .section-heading {
     @apply text-3xl md:text-4xl font-bold mb-6 relative inline-block;
-    font-family: 'Kodchasan', sans-serif;
-    letter-spacing: 0.025em;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.01em;
   }
   
   .section-heading::after {
@@ -78,7 +79,7 @@
   .section-heading::before {
     content: attr(data-jp);
     @apply absolute -top-5 left-0 text-xs text-pink-500 opacity-80 font-normal;
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Kodchasan', sans-serif;
     letter-spacing: 2px;
   }
   
@@ -225,6 +226,38 @@
     -webkit-mask-composite: destination-out;
     mask-composite: exclude;
   }
+  
+  /* Enhanced badge styling */
+  .badge {
+    @apply px-3 py-1 text-xs font-semibold rounded-full inline-flex items-center;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-pink {
+    @apply bg-pink-500/20 text-pink-400 border border-pink-500/30;
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.2);
+  }
+
+  .badge-purple {
+    @apply bg-purple-500/20 text-purple-400 border border-purple-500/30;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+  }
+  
+  /* Social button */
+  .social-button {
+    @apply p-2 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 relative;
+  }
+  
+  .social-button::after {
+    content: '';
+    @apply absolute inset-0 rounded-full opacity-0;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+    transition: opacity 0.3s ease;
+  }
+  
+  .social-button:hover::after {
+    @apply opacity-100;
+  }
 }
 
 /* Enhanced animations */
@@ -326,15 +359,24 @@
   pointer-events: none;
 }
 
-/* Badge */
-.badge {
-  @apply px-2.5 py-0.5 text-xs font-medium rounded-full;
+/* Modern card effects */
+.modern-card {
+  @apply relative bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/5 transition-all duration-500;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.badge-pink {
-  @apply bg-pink-500/20 text-pink-400 border border-pink-500/20;
+.modern-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-br from-pink-500/5 to-purple-500/5 opacity-0;
+  transition: opacity 0.5s ease;
 }
 
-.badge-purple {
-  @apply bg-purple-500/20 text-purple-400 border border-purple-500/20;
+.modern-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(236, 72, 153, 0.2);
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.modern-card:hover::before {
+  @apply opacity-100;
 }

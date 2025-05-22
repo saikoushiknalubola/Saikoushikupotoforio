@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -23,7 +24,7 @@ export default {
         'rajdhani': ['Rajdhani', 'sans-serif'],
         'exo': ['Exo', 'sans-serif'],
         'jp': ['Kodchasan', 'sans-serif'],
-        'heading': ['Quicksand', 'sans-serif'],
+        'heading': ['Montserrat', 'sans-serif'],
         'mono': ['DM Mono', 'monospace']
       },
       colors: {
