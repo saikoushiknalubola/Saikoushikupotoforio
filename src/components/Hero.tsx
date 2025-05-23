@@ -26,8 +26,12 @@ const Hero = () => {
   
   // Animated elements with improved visibility and animations
   useEffect(() => {
+    // Reset animated name array
+    setAnimatedName([]);
+    
     // Name animation - letter by letter
-    const nameLetters = "Saikoushik".split('');
+    const fullName = "Saikoushik Nalubola";
+    const nameLetters = fullName.split('');
     let timer: NodeJS.Timeout;
     
     const animateName = () => {
@@ -154,7 +158,7 @@ const Hero = () => {
           <div className="overflow-hidden">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
               <span className="text-white block mb-2">Hi, I'm </span>
-              <div className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-size-200 animate-bg-pos">
+              <div className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-size-200 animate-bg-pos min-h-[80px]">
                 {animatedName.map((letter, index) => (
                   <span 
                     key={index}

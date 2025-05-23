@@ -33,7 +33,7 @@ const Index = () => {
       anchor.addEventListener('click', handleAnchorClick as EventListener);
     });
     
-    // Fix: Enhanced scroll animations with better visibility
+    // Enhanced scroll animations with better visibility
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -74,24 +74,25 @@ const Index = () => {
         <Hero />
       </div>
       
-      {/* Fixed: Removed min-h-screen to prevent sections being pushed out of view */}
-      <div id="about" className="py-16 scroll-animate opacity-0 bg-[#121212]">
+      {/* Removed min-h-screen to prevent sections being pushed out of view 
+          Increased opacity for better visibility */}
+      <div id="about" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
         <About />
       </div>
       
-      <div id="experience" className="py-16 scroll-animate opacity-0 bg-[#121212]">
+      <div id="experience" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
         <Experience />
       </div>
       
-      <div id="projects" className="py-16 scroll-animate opacity-0 bg-[#121212]">
+      <div id="projects" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
         <Projects />
       </div>
       
-      <div id="skills" className="py-16 scroll-animate opacity-0 bg-[#121212]">
+      <div id="skills" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
         <Skills />
       </div>
       
-      <div id="contact" className="py-16 scroll-animate opacity-0 bg-[#121212]">
+      <div id="contact" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
         <Contact />
       </div>
     </Layout>
