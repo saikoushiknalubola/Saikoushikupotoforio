@@ -74,8 +74,6 @@ const Index = () => {
         <Hero />
       </div>
       
-      {/* Removed min-h-screen to prevent sections being pushed out of view 
-          Increased opacity for better visibility */}
       <div id="about" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
         <About />
       </div>
