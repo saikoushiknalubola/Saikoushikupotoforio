@@ -22,7 +22,7 @@ const Index = () => {
         const targetElement = document.querySelector(href);
         if (targetElement) {
           window.scrollTo({
-            top: targetElement.getBoundingClientRect().top + window.pageYOffset - 80, // Added offset for better UI
+            top: targetElement.getBoundingClientRect().top + window.pageYOffset - 80, 
             behavior: 'smooth'
           });
         }
@@ -33,7 +33,7 @@ const Index = () => {
       anchor.addEventListener('click', handleAnchorClick as EventListener);
     });
     
-    // Enhanced scroll animations with better visibility
+    // Intersection Observer for scroll animations - simplified for reliability
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -43,25 +43,26 @@ const Index = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          // Ensure immediate visibility when in view
           entry.target.classList.add('animate-fade-in');
-          // Access style property safely by casting to HTMLElement
           const htmlElement = entry.target as HTMLElement;
           htmlElement.style.opacity = '1';
         }
       });
     }, observerOptions);
     
-    // Ensure all sections are properly observed
-    document.querySelectorAll('.scroll-animate').forEach(el => {
-      observer.observe(el);
-    });
+    // Observe all sections with slight delay to ensure proper loading
+    setTimeout(() => {
+      document.querySelectorAll('.scroll-animate').forEach(el => {
+        observer.observe(el);
+      });
+    }, 100);
     
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', handleAnchorClick as EventListener);
       });
       
-      // Clean up observer
       document.querySelectorAll('.scroll-animate').forEach(el => {
         observer.unobserve(el);
       });
@@ -74,6 +75,7 @@ const Index = () => {
         <Hero />
       </div>
       
+      {/* Initial opacity-0 but making sure z-index and positioning is correct */}
       <div id="about" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
         <About />
       </div>

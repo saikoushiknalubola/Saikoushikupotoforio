@@ -24,34 +24,32 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   
-  // Animated elements with improved visibility and animations
+  // Ensure name animation works properly
   useEffect(() => {
     // Reset animated name array
     setAnimatedName([]);
     
-    // Name animation - letter by letter
+    // Full name with correct spelling
     const fullName = "Saikoushik Nalubola";
     const nameLetters = fullName.split('');
-    let timer: NodeJS.Timeout;
     
-    const animateName = () => {
-      let i = 0;
-      timer = setInterval(() => {
-        if (i < nameLetters.length) {
-          setAnimatedName(prev => [...prev, nameLetters[i]]);
-          i++;
-        } else {
-          clearInterval(timer);
-        }
-      }, 120);
-    };
+    // Animate name immediately and ensure it's visible
+    let i = 0;
+    const timer = setInterval(() => {
+      if (i < nameLetters.length) {
+        setAnimatedName(prev => [...prev, nameLetters[i]]);
+        i++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 90); // Faster animation for better UX
     
-    // Start animations in sequence
-    animateName();
-    setTimeout(() => setIsDescVisible(true), 1200);
-    setTimeout(() => setIsSocialsVisible(true), 1500);
-    setTimeout(() => setIsButtonsVisible(true), 1800);
-    setTimeout(() => setIsProfileVisible(true), 1000);
+    // Ensure name is visible and other elements appear in sequence
+    setIsNameVisible(true);
+    setTimeout(() => setIsDescVisible(true), 800);
+    setTimeout(() => setIsSocialsVisible(true), 1100);
+    setTimeout(() => setIsButtonsVisible(true), 1400);
+    setTimeout(() => setIsProfileVisible(true), 700);
     
     // Create animated glow elements
     const container = document.querySelector('.glow-container');
@@ -85,9 +83,15 @@ const Hero = () => {
     }
     
     return () => {
-      if (timer) clearInterval(timer);
+      clearInterval(timer);
     };
   }, []);
+
+  console.log("Name animation state:", {
+    animatedNameLength: animatedName.length,
+    isNameVisible,
+    animatedName: animatedName.join('')
+  });
 
   return (
     <section 
@@ -154,23 +158,29 @@ const Hero = () => {
             <span className="badge badge-pink">Innovator</span>
           </div>
           
-          {/* Name with letter-by-letter animation */}
+          {/* Name with letter-by-letter animation - ensure it's always visible */}
           <div className="overflow-hidden">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
               <span className="text-white block mb-2">Hi, I'm </span>
               <div className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-size-200 animate-bg-pos min-h-[80px]">
-                {animatedName.map((letter, index) => (
-                  <span 
-                    key={index}
-                    className="inline-block animate-fade-in"
-                    style={{
-                      animationDelay: `${index * 0.08}s`,
-                      animationDuration: '0.5s'
-                    }}
-                  >
-                    {letter}
-                  </span>
-                ))}
+                {/* Fixed animation for name */}
+                {animatedName.length > 0 ? 
+                  animatedName.map((letter, index) => (
+                    <span 
+                      key={index}
+                      className="inline-block animate-fade-in"
+                      style={{
+                        animationDelay: `${index * 0.08}s`,
+                        animationDuration: '0.5s'
+                      }}
+                    >
+                      {letter}
+                    </span>
+                  ))
+                : 
+                  // Fallback if animation doesn't work
+                  <span className="inline-block">Saikoushik Nalubola</span>
+                }
                 <span className="inline-block animate-pulse ml-1 -mb-2">|</span>
               </div>
             </h1>
