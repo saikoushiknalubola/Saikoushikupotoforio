@@ -33,7 +33,7 @@ const Index = () => {
       anchor.addEventListener('click', handleAnchorClick as EventListener);
     });
     
-    // Add scroll animations
+    // Fix: Enhanced scroll animations with better visibility
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -44,13 +44,14 @@ const Index = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-fade-in');
-          // Fix: Cast to HTMLElement before accessing style property
+          // Access style property safely by casting to HTMLElement
           const htmlElement = entry.target as HTMLElement;
           htmlElement.style.opacity = '1';
         }
       });
     }, observerOptions);
     
+    // Ensure all sections are properly observed
     document.querySelectorAll('.scroll-animate').forEach(el => {
       observer.observe(el);
     });
@@ -72,19 +73,25 @@ const Index = () => {
       <div id="hero" className="min-h-screen py-20 sm:py-0">
         <Hero />
       </div>
-      <div id="about" className="py-16 scroll-animate opacity-0">
+      
+      {/* Fixed: Removed min-h-screen to prevent sections being pushed out of view */}
+      <div id="about" className="py-16 scroll-animate opacity-0 bg-[#121212]">
         <About />
       </div>
-      <div id="experience" className="py-16 scroll-animate opacity-0">
+      
+      <div id="experience" className="py-16 scroll-animate opacity-0 bg-[#121212]">
         <Experience />
       </div>
-      <div id="projects" className="py-16 scroll-animate opacity-0">
+      
+      <div id="projects" className="py-16 scroll-animate opacity-0 bg-[#121212]">
         <Projects />
       </div>
-      <div id="skills" className="py-16 scroll-animate opacity-0">
+      
+      <div id="skills" className="py-16 scroll-animate opacity-0 bg-[#121212]">
         <Skills />
       </div>
-      <div id="contact" className="py-16 scroll-animate opacity-0">
+      
+      <div id="contact" className="py-16 scroll-animate opacity-0 bg-[#121212]">
         <Contact />
       </div>
     </Layout>

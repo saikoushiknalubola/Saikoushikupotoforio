@@ -5,11 +5,12 @@ import { Github, Linkedin, Twitter, Instagram, Mail } from 'lucide-react';
 
 const Hero = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isNameVisible, setIsNameVisible] = useState(true); // Set to true by default
+  const [isNameVisible, setIsNameVisible] = useState(true);
   const [isDescVisible, setIsDescVisible] = useState(false);
   const [isSocialsVisible, setIsSocialsVisible] = useState(false);
   const [isButtonsVisible, setIsButtonsVisible] = useState(false);
   const [isProfileVisible, setIsProfileVisible] = useState(false);
+  const [animatedName, setAnimatedName] = useState<string[]>([]);
   
   // Spotlight effect
   useEffect(() => {
@@ -23,16 +24,30 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   
-  // Animated elements with fixed visibility
+  // Animated elements with improved visibility and animations
   useEffect(() => {
-    // Make sure elements are visible by default
-    setIsNameVisible(true);
+    // Name animation - letter by letter
+    const nameLetters = "Saikoushik".split('');
+    let timer: NodeJS.Timeout;
     
-    // Staggered animations with shorter timeouts
-    setTimeout(() => setIsDescVisible(true), 400);
-    setTimeout(() => setIsSocialsVisible(true), 600);
-    setTimeout(() => setIsButtonsVisible(true), 800);
-    setTimeout(() => setIsProfileVisible(true), 500);
+    const animateName = () => {
+      let i = 0;
+      timer = setInterval(() => {
+        if (i < nameLetters.length) {
+          setAnimatedName(prev => [...prev, nameLetters[i]]);
+          i++;
+        } else {
+          clearInterval(timer);
+        }
+      }, 120);
+    };
+    
+    // Start animations in sequence
+    animateName();
+    setTimeout(() => setIsDescVisible(true), 1200);
+    setTimeout(() => setIsSocialsVisible(true), 1500);
+    setTimeout(() => setIsButtonsVisible(true), 1800);
+    setTimeout(() => setIsProfileVisible(true), 1000);
     
     // Create animated glow elements
     const container = document.querySelector('.glow-container');
@@ -64,6 +79,10 @@ const Hero = () => {
         container.appendChild(glow);
       }
     }
+    
+    return () => {
+      if (timer) clearInterval(timer);
+    };
   }, []);
 
   return (
@@ -131,12 +150,24 @@ const Hero = () => {
             <span className="badge badge-pink">Innovator</span>
           </div>
           
-          {/* Name with enhanced visibility */}
+          {/* Name with letter-by-letter animation */}
           <div className="overflow-hidden">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
               <span className="text-white block mb-2">Hi, I'm </span>
               <div className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-size-200 animate-bg-pos">
-                <span className="inline-block">Saikoushik</span>
+                {animatedName.map((letter, index) => (
+                  <span 
+                    key={index}
+                    className="inline-block animate-fade-in"
+                    style={{
+                      animationDelay: `${index * 0.08}s`,
+                      animationDuration: '0.5s'
+                    }}
+                  >
+                    {letter}
+                  </span>
+                ))}
+                <span className="inline-block animate-pulse ml-1 -mb-2">|</span>
               </div>
             </h1>
           </div>

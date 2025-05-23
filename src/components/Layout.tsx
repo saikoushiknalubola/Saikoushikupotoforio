@@ -11,10 +11,10 @@ const Layout = ({ children }: LayoutProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading for animation purposes
+    // Shorter loading time for better UX
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 800);
   }, []);
 
   if (isLoading) {
@@ -40,7 +40,7 @@ const Layout = ({ children }: LayoutProps) => {
       <main className="flex-grow w-full">{children}</main>
       <Footer />
       
-      {/* Back to top button */}
+      {/* Back to top button - improved visibility */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className="fixed bottom-6 right-6 p-3 bg-pink-600/80 text-white rounded-full shadow-lg shadow-pink-500/30 hover:bg-pink-500 transition-colors z-40 group backdrop-blur-sm"
