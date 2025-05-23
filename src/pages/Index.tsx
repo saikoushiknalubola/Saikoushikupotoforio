@@ -44,7 +44,9 @@ const Index = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-fade-in');
-          entry.target.style.opacity = '1';
+          // Fix: Cast to HTMLElement before accessing style property
+          const htmlElement = entry.target as HTMLElement;
+          htmlElement.style.opacity = '1';
         }
       });
     }, observerOptions);
