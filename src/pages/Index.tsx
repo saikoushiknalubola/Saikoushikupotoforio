@@ -69,22 +69,22 @@ const Index = () => {
 
   return (
     <Layout>
-      <div id="hero" className="min-h-screen">
+      <div id="hero" className="min-h-screen py-20 sm:py-0">
         <Hero />
       </div>
-      <div id="about" className="min-h-screen scroll-animate opacity-0">
+      <div id="about" className="py-16 scroll-animate opacity-0">
         <About />
       </div>
-      <div id="experience" className="min-h-screen scroll-animate opacity-0">
+      <div id="experience" className="py-16 scroll-animate opacity-0">
         <Experience />
       </div>
-      <div id="projects" className="min-h-screen scroll-animate opacity-0">
+      <div id="projects" className="py-16 scroll-animate opacity-0">
         <Projects />
       </div>
-      <div id="skills" className="min-h-screen scroll-animate opacity-0">
+      <div id="skills" className="py-16 scroll-animate opacity-0">
         <Skills />
       </div>
-      <div id="contact" className="min-h-screen scroll-animate opacity-0">
+      <div id="contact" className="py-16 scroll-animate opacity-0">
         <Contact />
       </div>
     </Layout>
