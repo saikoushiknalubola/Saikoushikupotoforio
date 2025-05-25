@@ -33,37 +33,36 @@ const Index = () => {
       anchor.addEventListener('click', handleAnchorClick as EventListener);
     });
     
-    // Intersection Observer for scroll animations - simplified for reliability
+    // Simpler intersection observer for scroll animations
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
+      rootMargin: '0px 0px -20px 0px',
       threshold: 0.1
     };
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Ensure immediate visibility when in view
-          entry.target.classList.add('animate-fade-in');
-          const htmlElement = entry.target as HTMLElement;
-          htmlElement.style.opacity = '1';
+          const element = entry.target as HTMLElement;
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+          element.classList.add('animate-fade-in');
         }
       });
     }, observerOptions);
     
-    // Observe all sections with slight delay to ensure proper loading
-    setTimeout(() => {
-      document.querySelectorAll('.scroll-animate').forEach(el => {
-        observer.observe(el);
-      });
-    }, 100);
+    // Observe all sections immediately
+    const sections = document.querySelectorAll('.scroll-animate');
+    sections.forEach(el => {
+      observer.observe(el);
+    });
     
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', handleAnchorClick as EventListener);
       });
       
-      document.querySelectorAll('.scroll-animate').forEach(el => {
+      sections.forEach(el => {
         observer.unobserve(el);
       });
     };
@@ -71,28 +70,28 @@ const Index = () => {
 
   return (
     <Layout>
-      <div id="hero" className="min-h-screen py-20 sm:py-0">
+      <div id="hero" className="min-h-screen">
         <Hero />
       </div>
       
-      {/* Initial opacity-0 but making sure z-index and positioning is correct */}
-      <div id="about" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
+      {/* Make sections visible by default with smooth transitions */}
+      <div id="about" className="py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <About />
       </div>
       
-      <div id="experience" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
+      <div id="experience" className="py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Experience />
       </div>
       
-      <div id="projects" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
+      <div id="projects" className="py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Projects />
       </div>
       
-      <div id="skills" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
+      <div id="skills" className="py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Skills />
       </div>
       
-      <div id="contact" className="py-16 scroll-animate opacity-0 bg-[#121212] z-10 relative">
+      <div id="contact" className="py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Contact />
       </div>
     </Layout>
