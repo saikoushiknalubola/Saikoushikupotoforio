@@ -1,240 +1,415 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Rajdhani:wght@300;400;500;600;700&family=Kodchasan:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@300;400;500&display=swap');
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
+    --background: 240 35% 11%;
+    --foreground: 0 0% 97%;
+
+    --card: 240 30% 15%;
+    --card-foreground: 0 0% 97%;
+
+    --popover: 240 30% 15%;
+    --popover-foreground: 0 0% 97%;
+
+    --primary: 240 50% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 79% 42%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 20% 20%;
+    --muted-foreground: 240 10% 80%;
+
+    --accent: 172 80% 33%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+
+    --border: 240 20% 30%;
+    --input: 240 20% 30%;
+    --ring: 172 80% 33%;
+
     --radius: 0.5rem;
   }
 
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+  body {
+    @apply bg-[#121212] text-gray-100;
+    font-family: 'Montserrat', 'Kodchasan', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', 'Outfit', sans-serif;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
+  
+  /* Japanese text elements */
+  .jp-text {
+    font-family: 'Kodchasan', sans-serif;
+    letter-spacing: 0.025em;
   }
 }
 
-/* Custom animations and styles */
-@keyframes scroll {
-  0%, 100% {
-    transform: translateX(-50px);
+@layer components {
+  /* Section headings */
+  .section-heading {
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 relative inline-block;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.01em;
   }
-  50% {
-    transform: translateX(50px);
+  
+  .section-heading::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-purple-500;
+    transform: scaleX(0.3);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .section-heading:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .section-heading::before {
+    content: attr(data-jp);
+    @apply absolute -top-4 sm:-top-5 left-0 text-xs text-pink-500 opacity-80 font-normal;
+    font-family: 'Kodchasan', sans-serif;
+    letter-spacing: 2px;
+  }
+  
+  /* Cards with anime style */
+  .anime-card {
+    @apply relative bg-[#1a1a1a] border border-purple-500/20 rounded-xl p-4 sm:p-5 shadow-lg overflow-hidden transition-all duration-500;
+  }
+  
+  .anime-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-pink-500/5 to-purple-500/5 opacity-50;
+    filter: blur(20px);
+    z-index: -1;
+  }
+  
+  .anime-card:hover {
+    @apply border-pink-500/40;
+    box-shadow: 0 0 25px rgba(236, 72, 153, 0.2);
+  }
+  
+  /* Navigation links */
+  .anime-nav-link {
+    @apply relative px-3 sm:px-4 py-2 text-gray-300 hover:text-pink-500 transition-colors duration-300 text-sm sm:text-base;
+    font-family: 'Kodchasan', sans-serif;
+  }
+  
+  .anime-nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-pink-500 to-purple-500;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  .anime-nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  /* Anime-inspired buttons */
+  .anime-button-primary {
+    @apply px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-medium relative overflow-hidden transition-all duration-300 rounded-md shadow-md shadow-pink-500/20 text-sm sm:text-base;
+  }
+  
+  .anime-button-primary:hover {
+    @apply shadow-lg shadow-pink-500/40 transform -translate-y-1;
+    background-size: 200% 100%;
+    background-position: right center;
+  }
+  
+  /* Anime secondary button */
+  .anime-button-secondary {
+    @apply px-4 sm:px-6 py-2 sm:py-3 bg-transparent border-2 border-purple-500 text-purple-400 font-medium relative overflow-hidden transition-all duration-300 rounded-md text-sm sm:text-base;
+  }
+  
+  .anime-button-secondary::before {
+    content: '';
+    @apply absolute inset-0 bg-purple-500/20 transform scale-x-0 origin-left;
+    transition: transform 0.3s ease;
+  }
+  
+  .anime-button-secondary:hover::before {
+    @apply transform scale-x-100;
+  }
+  
+  .anime-button-secondary:hover {
+    @apply text-white border-pink-400 transform -translate-y-1;
+  }
+  
+  /* Skill bar styling */
+  .skill-bar {
+    @apply h-2 sm:h-3 bg-gray-800 rounded-full overflow-hidden relative border border-gray-700;
+  }
+  
+  .skill-progress {
+    @apply h-full absolute top-0 left-0 rounded-full;
+    background: linear-gradient(90deg, #EC4899, #8B5CF6);
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+    transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  }
+  
+  /* Project card with anime style */
+  .project-card {
+    @apply relative bg-[#1a1a1a] rounded-xl overflow-hidden border border-purple-500/20 transition-all duration-500;
+  }
+  
+  .project-card:hover {
+    @apply border-pink-500/40 shadow-[0_0_15px_rgba(236,72,153,0.3)];
+    transform: translateY(-5px);
+  }
+  
+  .project-card::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-pink-500/5 to-purple-500/5 opacity-0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .project-card:hover::after {
+    @apply opacity-100;
+  }
+
+  /* Font utility classes */
+  .font-jp {
+    font-family: 'Kodchasan', 'Quicksand', sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  .font-heading {
+    font-family: 'Kodchasan', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .font-mono {
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* Glass effect */
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500;
+  }
+
+  /* Gradient border */
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(to right, #EC4899, #8B5CF6);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+  
+  /* Enhanced badge styling */
+  .badge {
+    @apply px-2 sm:px-3 py-1 text-xs font-semibold rounded-full inline-flex items-center;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-pink {
+    @apply bg-pink-500/20 text-pink-400 border border-pink-500/30;
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.2);
+  }
+
+  .badge-purple {
+    @apply bg-purple-500/20 text-purple-400 border border-purple-500/30;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+  }
+  
+  /* Social button */
+  .social-button {
+    @apply p-2 sm:p-2 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 relative;
+  }
+  
+  .social-button::after {
+    content: '';
+    @apply absolute inset-0 rounded-full opacity-0;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+    transition: opacity 0.3s ease;
+  }
+  
+  .social-button:hover::after {
+    @apply opacity-100;
   }
 }
 
-@keyframes scroll-hint {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(8px);
-  }
+/* Enhanced animations */
+.animate-title-reveal, 
+.animate-fade-in,
+.animate-pulse-glow,
+.animate-float {
+  animation-fill-mode: forwards !important;
+  opacity: 1 !important;
+}
+
+/* Keyframe animations */
+@keyframes title-reveal {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(236, 72, 153, 0.5)); }
+  50% { filter: drop-shadow(0 0 20px rgba(236, 72, 153, 0.8)); }
+}
+
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(5px); opacity: 1; }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
-    filter: brightness(1) drop-shadow(0 0 5px currentColor);
+  0% { 
+    filter: drop-shadow(0 0 5px rgba(236, 72, 153, 0.7)) drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
   }
-  50% {
-    filter: brightness(1.2) drop-shadow(0 0 20px currentColor);
+  50% { 
+    filter: drop-shadow(0 0 15px rgba(236, 72, 153, 1)) drop-shadow(0 0 25px rgba(139, 92, 246, 0.8));
+  }
+  100% { 
+    filter: drop-shadow(0 0 5px rgba(236, 72, 153, 0.7)) drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
   }
 }
 
-.spotlight {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    800px circle at var(--x, 50%) var(--y, 50%),
-    rgba(255, 105, 180, 0.1),
-    transparent 40%
-  );
-  opacity: 0.6;
-  pointer-events: none;
+/* Animation utility classes */
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+.animate-delay-700 { animation-delay: 0.7s; }
+.animate-delay-1000 { animation-delay: 1s; }
+.animate-delay-1200 { animation-delay: 1.2s; }
+
+.animate-title-reveal {
+  animation: title-reveal 1s ease-out forwards;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.social-button {
-  @apply p-3 rounded-full border border-gray-700 hover:border-pink-500 transition-all duration-300 hover:bg-pink-500/10 hover:scale-110;
-}
-
-.badge {
-  @apply px-3 py-1 rounded-full text-sm font-medium border;
-}
-
-.badge-pink {
-  @apply bg-pink-500/10 text-pink-400 border-pink-500/30;
-}
-
-.badge-purple {
-  @apply bg-purple-500/10 text-purple-400 border-purple-500/30;
-}
-
-.anime-button-primary {
-  @apply inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 text-white font-semibold transition-all duration-300 hover:from-pink-500 hover:to-purple-500 hover:scale-105 shadow-lg hover:shadow-pink-500/25;
-}
-
-.anime-button-secondary {
-  @apply inline-flex items-center justify-center rounded-lg border-2 border-pink-500/50 text-pink-400 font-semibold transition-all duration-300 hover:bg-pink-500/10 hover:border-pink-400 hover:scale-105;
-}
-
-.section-heading {
-  @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 mb-6 lg:mb-8;
-}
-
-.project-card {
-  @apply bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm rounded-xl border border-gray-700/50 hover:border-pink-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-pink-500/10;
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 3s infinite;
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 1.5s ease-in-out infinite;
 }
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.animate-scroll-hint {
-  animation: scroll-hint 2s ease-in-out infinite;
-}
-
-.text-anime-text {
-  @apply text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300;
-}
-
-.text-anime-amber {
-  @apply text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500;
-}
-
-.font-heading {
-  font-family: 'Orbitron', sans-serif;
-}
-
-.font-orbitron {
-  font-family: 'Orbitron', sans-serif;
-}
-
-.font-rajdhani {
-  font-family: 'Rajdhani', sans-serif;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-}
-
-.anime-logo {
-  background: linear-gradient(135deg, #ec4899, #8b5cf6);
-  position: relative;
-  overflow: hidden;
-}
-
-.anime-logo::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  transition: left 0.5s;
-}
-
-.anime-logo:hover::before {
-  left: 100%;
-}
-
-/* Scrollbar styles */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  @apply bg-[#1a1a1a];
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #ec4899, #8b5cf6);
-  border-radius: 4px;
+  @apply bg-pink-500/50 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #db2777, #7c3aed);
+  @apply bg-pink-500;
 }
 
-/* Mobile optimizations */
+/* Glass card */
+.glass-card {
+  @apply backdrop-blur-sm bg-white/5 border border-white/10 rounded-xl;
+}
+
+/* Newest AniHive-style components */
+
+/* Spotlight effect */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x) var(--y), transparent 0%, transparent 20%, rgba(0, 0, 0, 0.95) 80%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Modern card effects */
+.modern-card {
+  @apply relative bg-[#1a1a1a] rounded-xl overflow-hidden border border-white/5 transition-all duration-500;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modern-card::before {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-br from-pink-500/5 to-purple-500/5 opacity-0;
+  transition: opacity 0.5s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(236, 72, 153, 0.2);
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.modern-card:hover::before {
+  @apply opacity-100;
+}
+
+/* Mobile responsive improvements */
 @media (max-width: 640px) {
-  .spotlight {
-    background: radial-gradient(
-      400px circle at var(--x, 50%) var(--y, 50%),
-      rgba(255, 105, 180, 0.05),
-      transparent 40%
-    );
+  .section-heading {
+    @apply text-xl mb-4;
+  }
+  
+  .anime-button-primary,
+  .anime-button-secondary {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  .social-button {
+    @apply p-1.5;
   }
 }
