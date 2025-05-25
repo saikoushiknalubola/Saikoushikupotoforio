@@ -74,24 +74,24 @@ const Index = () => {
         <Hero />
       </div>
       
-      {/* Make sections visible by default with smooth transitions */}
-      <div id="about" className="py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      {/* Reduced gaps between sections for better mobile experience */}
+      <div id="about" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <About />
       </div>
       
-      <div id="experience" className="py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="experience" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Experience />
       </div>
       
-      <div id="projects" className="py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="projects" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Projects />
       </div>
       
-      <div id="skills" className="py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="skills" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Skills />
       </div>
       
-      <div id="contact" className="py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="contact" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Contact />
       </div>
     </Layout>

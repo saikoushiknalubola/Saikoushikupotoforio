@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -59,7 +60,7 @@
 @layer components {
   /* Section headings */
   .section-heading {
-    @apply text-3xl md:text-4xl font-bold mb-6 relative inline-block;
+    @apply text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 relative inline-block;
     font-family: 'Montserrat', sans-serif;
     letter-spacing: -0.01em;
   }
@@ -78,14 +79,14 @@
   
   .section-heading::before {
     content: attr(data-jp);
-    @apply absolute -top-5 left-0 text-xs text-pink-500 opacity-80 font-normal;
+    @apply absolute -top-4 sm:-top-5 left-0 text-xs text-pink-500 opacity-80 font-normal;
     font-family: 'Kodchasan', sans-serif;
     letter-spacing: 2px;
   }
   
   /* Cards with anime style */
   .anime-card {
-    @apply relative bg-[#1a1a1a] border border-purple-500/20 rounded-xl p-5 shadow-lg overflow-hidden transition-all duration-500;
+    @apply relative bg-[#1a1a1a] border border-purple-500/20 rounded-xl p-4 sm:p-5 shadow-lg overflow-hidden transition-all duration-500;
   }
   
   .anime-card::before {
@@ -102,7 +103,7 @@
   
   /* Navigation links */
   .anime-nav-link {
-    @apply relative px-4 py-2 text-gray-300 hover:text-pink-500 transition-colors duration-300;
+    @apply relative px-3 sm:px-4 py-2 text-gray-300 hover:text-pink-500 transition-colors duration-300 text-sm sm:text-base;
     font-family: 'Kodchasan', sans-serif;
   }
   
@@ -121,7 +122,7 @@
   
   /* Anime-inspired buttons */
   .anime-button-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-medium relative overflow-hidden transition-all duration-300 rounded-md shadow-md shadow-pink-500/20;
+    @apply px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-medium relative overflow-hidden transition-all duration-300 rounded-md shadow-md shadow-pink-500/20 text-sm sm:text-base;
   }
   
   .anime-button-primary:hover {
@@ -132,7 +133,7 @@
   
   /* Anime secondary button */
   .anime-button-secondary {
-    @apply px-6 py-3 bg-transparent border-2 border-purple-500 text-purple-400 font-medium relative overflow-hidden transition-all duration-300 rounded-md;
+    @apply px-4 sm:px-6 py-2 sm:py-3 bg-transparent border-2 border-purple-500 text-purple-400 font-medium relative overflow-hidden transition-all duration-300 rounded-md text-sm sm:text-base;
   }
   
   .anime-button-secondary::before {
@@ -151,7 +152,7 @@
   
   /* Skill bar styling */
   .skill-bar {
-    @apply h-3 bg-gray-800 rounded-full overflow-hidden relative border border-gray-700;
+    @apply h-2 sm:h-3 bg-gray-800 rounded-full overflow-hidden relative border border-gray-700;
   }
   
   .skill-progress {
@@ -229,7 +230,7 @@
   
   /* Enhanced badge styling */
   .badge {
-    @apply px-3 py-1 text-xs font-semibold rounded-full inline-flex items-center;
+    @apply px-2 sm:px-3 py-1 text-xs font-semibold rounded-full inline-flex items-center;
     letter-spacing: 0.05em;
   }
 
@@ -245,7 +246,7 @@
   
   /* Social button */
   .social-button {
-    @apply p-2 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 relative;
+    @apply p-2 sm:p-2 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300 relative;
   }
   
   .social-button::after {
@@ -295,6 +296,18 @@
   50% { transform: translateY(5px); opacity: 1; }
 }
 
+@keyframes pulse-glow {
+  0% { 
+    filter: drop-shadow(0 0 5px rgba(236, 72, 153, 0.7)) drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+  }
+  50% { 
+    filter: drop-shadow(0 0 15px rgba(236, 72, 153, 1)) drop-shadow(0 0 25px rgba(139, 92, 246, 0.8));
+  }
+  100% { 
+    filter: drop-shadow(0 0 5px rgba(236, 72, 153, 0.7)) drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+  }
+}
+
 /* Animation utility classes */
 .animate-delay-100 { animation-delay: 0.1s; }
 .animate-delay-200 { animation-delay: 0.2s; }
@@ -325,10 +338,14 @@
   animation: scroll-hint 1.5s ease-in-out infinite;
 }
 
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -379,4 +396,20 @@
 
 .modern-card:hover::before {
   @apply opacity-100;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 640px) {
+  .section-heading {
+    @apply text-xl mb-4;
+  }
+  
+  .anime-button-primary,
+  .anime-button-secondary {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  .social-button {
+    @apply p-1.5;
+  }
 }
