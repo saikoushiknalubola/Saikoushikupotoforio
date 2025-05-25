@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Linkedin, Github, Twitter, Instagram, Mail } from 'lucide-react';
+import { Linkedin, Github, Twitter, Instagram, Mail, Quote } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -31,6 +31,45 @@ const Footer = () => {
       </div>
       
       <div className="max-w-6xl mx-auto relative z-10">
+        {/* Dylan Thomas Quote Card */}
+        <div className="mb-16 flex justify-center">
+          <div className="relative group max-w-4xl w-full">
+            {/* Background glow */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+            
+            {/* Quote Card */}
+            <div className="relative px-8 py-10 bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-sm rounded-2xl border border-white/10 shadow-2xl">
+              {/* Quote Icon */}
+              <div className="flex justify-center mb-6">
+                <div className="p-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 shadow-lg">
+                  <Quote className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              
+              {/* Quote Text */}
+              <blockquote className="text-center mb-6">
+                <p className="text-xl md:text-2xl lg:text-3xl font-light text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 leading-relaxed tracking-wide font-serif italic">
+                  "Do not go gentle into that good night. Rage, rage against the dying of the light."
+                </p>
+              </blockquote>
+              
+              {/* Author */}
+              <div className="text-center">
+                <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 animate-pulse"></div>
+                  <span className="text-gray-300 font-medium tracking-wide">Dylan Thomas</span>
+                </div>
+              </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute top-4 left-4 w-1 h-1 bg-pink-500 rounded-full animate-pulse"></div>
+              <div className="absolute top-4 right-4 w-1 h-1 bg-purple-500 rounded-full animate-pulse delay-300"></div>
+              <div className="absolute bottom-4 left-4 w-1 h-1 bg-indigo-500 rounded-full animate-pulse delay-500"></div>
+              <div className="absolute bottom-4 right-4 w-1 h-1 bg-pink-500 rounded-full animate-pulse delay-700"></div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Logo and description */}
           <div className="space-y-5">
@@ -65,7 +104,6 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Quick links */}
           <div>
             <h4 className="text-lg font-semibold text-white mb-5 tracking-tight relative inline-block after:content-[''] after:absolute after:h-0.5 after:w-full after:bg-gradient-to-r after:from-pink-500 after:to-purple-500 after:-bottom-1 after:left-0">
               Explore
@@ -85,7 +123,6 @@ const Footer = () => {
             </ul>
           </div>
           
-          {/* Contact */}
           <div>
             <h4 className="text-lg font-semibold text-white mb-5 tracking-tight relative inline-block after:content-[''] after:absolute after:h-0.5 after:w-full after:bg-gradient-to-r after:from-pink-500 after:to-purple-500 after:-bottom-1 after:left-0">
               Get Connected

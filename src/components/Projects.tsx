@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Scale, Scroll, Eye, Shield, Leaf, Cloud, Heart, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -86,18 +85,17 @@ const Projects = () => {
     setActiveProject(activeProject === id ? null : id);
   };
 
-  const handleGitHubClick = (e: React.MouseEvent, projectLink?: string) => {
+  const handleGitHubClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    // Always redirect to main GitHub profile as requested
     window.open('https://github.com/saikoushiknalubola', '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="projects" className="py-12 sm:py-16 lg:py-20 px-4">
+    <section id="projects" className="py-8 sm:py-12 lg:py-16 px-4">
       <div className="max-w-6xl mx-auto">
         <h2 className="section-heading font-orbitron text-center lg:text-left">Projects Showcase</h2>
         
-        <div className="mt-8 lg:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="mt-6 lg:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
           {projects.map((project) => {
             const isActive = activeProject === project.id;
             
@@ -113,33 +111,33 @@ const Projects = () => {
                   borderColor: isActive ? project.accentColor : 'rgba(15, 155, 142, 0.3)'
                 }}
               >
-                <div className="p-4 sm:p-6">
-                  <div className="flex items-center space-x-3 sm:space-x-4 mb-3 sm:mb-4">
+                <div className="p-3 sm:p-4 lg:p-6">
+                  <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 mb-2 sm:mb-3 lg:mb-4">
                     <div 
-                      className="p-2 sm:p-3 rounded-full transition-all duration-300 group-hover:scale-110" 
+                      className="p-1.5 sm:p-2 lg:p-3 rounded-full transition-all duration-300 group-hover:scale-110" 
                       style={{backgroundColor: `${project.accentColor}20`}}
                     >
                       <project.icon 
-                        className="w-5 h-5 sm:w-6 sm:h-6 transition-all duration-300"
+                        className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 transition-all duration-300"
                         style={{color: project.accentColor}}
                       />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-anime-text font-rajdhani">{project.title}</h3>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-anime-text font-rajdhani">{project.title}</h3>
                   </div>
                   
-                  <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base line-clamp-3">{project.description}</p>
+                  <p className="text-gray-400 mb-2 sm:mb-3 lg:mb-4 text-xs sm:text-sm lg:text-base line-clamp-3">{project.description}</p>
                   
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+                  <div className="flex flex-wrap gap-1 sm:gap-1.5 lg:gap-2 mb-2 sm:mb-3 lg:mb-4">
                     {project.technologies.slice(0, isActive ? project.technologies.length : 3).map((tech, index) => (
                       <span 
                         key={index} 
-                        className="px-2 py-1 text-xs rounded-full bg-gray-800 text-gray-300 border border-gray-700 transition-colors hover:bg-gray-700"
+                        className="px-1.5 py-0.5 sm:px-2 sm:py-1 text-xs rounded-full bg-gray-800 text-gray-300 border border-gray-700 transition-colors hover:bg-gray-700"
                       >
                         {tech}
                       </span>
                     ))}
                     {!isActive && project.technologies.length > 3 && (
-                      <span className="px-2 py-1 text-xs rounded-full bg-gray-800 text-gray-300 border border-gray-700">
+                      <span className="px-1.5 py-0.5 sm:px-2 sm:py-1 text-xs rounded-full bg-gray-800 text-gray-300 border border-gray-700">
                         +{project.technologies.length - 3}
                       </span>
                     )}
@@ -147,20 +145,20 @@ const Projects = () => {
                   
                   {isActive && (
                     <>
-                      <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4">
-                        <h4 className="font-medium text-anime-amber text-sm sm:text-base">Project Details</h4>
-                        <p className="text-gray-300 text-sm sm:text-base">
+                      <div className="mt-3 sm:mt-4 lg:mt-6 space-y-2 sm:space-y-3 lg:space-y-4">
+                        <h4 className="font-medium text-anime-amber text-xs sm:text-sm lg:text-base">Project Details</h4>
+                        <p className="text-gray-300 text-xs sm:text-sm lg:text-base">
                           {project.description} This project showcases the application of advanced technical skills
                           and demonstrates practical problem-solving in real-world scenarios.
                         </p>
                       </div>
                       
-                      <div className="mt-4 sm:mt-6">
+                      <div className="mt-3 sm:mt-4 lg:mt-6">
                         <button 
-                          onClick={(e) => handleGitHubClick(e, project.link)}
-                          className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-500/25 text-sm sm:text-base"
+                          onClick={handleGitHubClick}
+                          className="inline-flex items-center space-x-1.5 sm:space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-500/25 text-xs sm:text-sm lg:text-base"
                         >
-                          <ExternalLink className="w-4 h-4" />
+                          <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
                           <span>View on GitHub</span>
                         </button>
                       </div>
