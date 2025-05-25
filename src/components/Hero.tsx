@@ -10,7 +10,6 @@ const Hero = () => {
   const [isSocialsVisible, setIsSocialsVisible] = useState(false);
   const [isButtonsVisible, setIsButtonsVisible] = useState(false);
   const [isProfileVisible, setIsProfileVisible] = useState(false);
-  const [animatedName, setAnimatedName] = useState<string[]>([]);
   
   // Spotlight effect
   useEffect(() => {
@@ -24,45 +23,23 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   
-  // Ensure name animation works properly
+  // Staggered animations
   useEffect(() => {
-    // Reset animated name array
-    setAnimatedName([]);
-    
-    // Full name with correct spelling
-    const fullName = "Saikoushik Nalubola";
-    const nameLetters = fullName.split('');
-    
-    // Animate name immediately and ensure it's visible
-    let i = 0;
-    const timer = setInterval(() => {
-      if (i < nameLetters.length) {
-        setAnimatedName(prev => [...prev, nameLetters[i]]);
-        i++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 90); // Faster animation for better UX
-    
-    // Ensure name is visible and other elements appear in sequence
     setIsNameVisible(true);
-    setTimeout(() => setIsDescVisible(true), 800);
-    setTimeout(() => setIsSocialsVisible(true), 1100);
-    setTimeout(() => setIsButtonsVisible(true), 1400);
-    setTimeout(() => setIsProfileVisible(true), 700);
+    setTimeout(() => setIsDescVisible(true), 300);
+    setTimeout(() => setIsSocialsVisible(true), 600);
+    setTimeout(() => setIsButtonsVisible(true), 900);
+    setTimeout(() => setIsProfileVisible(true), 400);
     
     // Create animated glow elements
     const container = document.querySelector('.glow-container');
     if (container) {
-      // Clear existing elements
       container.innerHTML = '';
       
-      // Add new elements
       for (let i = 0; i < 3; i++) {
         const glow = document.createElement('div');
         glow.classList.add('absolute', 'rounded-full', 'animate-pulse');
         
-        // Randomize size, position and color
         const size = Math.random() * 300 + 100;
         const top = Math.random() * 100 - 25;
         const left = Math.random() * 100 - 25;
@@ -81,17 +58,7 @@ const Hero = () => {
         container.appendChild(glow);
       }
     }
-    
-    return () => {
-      clearInterval(timer);
-    };
   }, []);
-
-  console.log("Name animation state:", {
-    animatedNameLength: animatedName.length,
-    isNameVisible,
-    animatedName: animatedName.join('')
-  });
 
   return (
     <section 
@@ -158,30 +125,13 @@ const Hero = () => {
             <span className="badge badge-pink">Innovator</span>
           </div>
           
-          {/* Name with letter-by-letter animation - ensure it's always visible */}
+          {/* Name - Fixed with proper visibility */}
           <div className="overflow-hidden">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
               <span className="text-white block mb-2">Hi, I'm </span>
-              <div className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-size-200 animate-bg-pos min-h-[80px]">
-                {/* Fixed animation for name */}
-                {animatedName.length > 0 ? 
-                  animatedName.map((letter, index) => (
-                    <span 
-                      key={index}
-                      className="inline-block animate-fade-in"
-                      style={{
-                        animationDelay: `${index * 0.08}s`,
-                        animationDuration: '0.5s'
-                      }}
-                    >
-                      {letter}
-                    </span>
-                  ))
-                : 
-                  // Fallback if animation doesn't work
-                  <span className="inline-block">Saikoushik Nalubola</span>
-                }
-                <span className="inline-block animate-pulse ml-1 -mb-2">|</span>
+              <div className={`text-purple-500 font-bold min-h-[80px] transform transition-all duration-700 ${isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                Saikoushik Nalubola
+                <span className="inline-block animate-pulse ml-1 -mb-2 text-purple-400">|</span>
               </div>
             </h1>
           </div>
