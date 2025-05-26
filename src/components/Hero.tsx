@@ -1,170 +1,164 @@
 
 import React, { useEffect, useState } from 'react';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Github, Linkedin, Twitter, Instagram, Mail, Globe } from 'lucide-react';
+import { Github, Linkedin, Twitter, Instagram, Mail, Globe, ArrowRight, ChevronDown } from 'lucide-react';
 
 const Hero = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isNameVisible, setIsNameVisible] = useState(false);
-  const [isDescVisible, setIsDescVisible] = useState(false);
-  const [isSocialsVisible, setIsSocialsVisible] = useState(false);
-  const [isButtonsVisible, setIsButtonsVisible] = useState(false);
-  const [isProfileVisible, setIsProfileVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [nameTyped, setNameTyped] = useState('');
+  const fullName = 'Saikoushik Nalubola';
   
-  // Spotlight effect - disabled on mobile for performance
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (window.innerWidth > 768) {
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-        setPosition({ x, y });
-      }
-    };
+    setIsVisible(true);
     
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-  
-  // Staggered animations
-  useEffect(() => {
-    setIsNameVisible(true);
-    setTimeout(() => setIsDescVisible(true), 300);
-    setTimeout(() => setIsSocialsVisible(true), 500);
-    setTimeout(() => setIsButtonsVisible(true), 700);
-    setTimeout(() => setIsProfileVisible(true), 200);
+    // Typing animation for name
+    let index = 0;
+    const typeTimer = setInterval(() => {
+      if (index <= fullName.length) {
+        setNameTyped(fullName.slice(0, index));
+        index++;
+      } else {
+        clearInterval(typeTimer);
+      }
+    }, 80);
+    
+    return () => clearInterval(typeTimer);
   }, []);
 
+  const socialLinks = [
+    { href: "https://github.com/saikoushiknalubola", icon: Github, label: "GitHub" },
+    { href: "https://www.linkedin.com/in/saikoushiknalubola", icon: Linkedin, label: "LinkedIn" },
+    { href: "https://x.com/saikoushik_42", icon: Twitter, label: "Twitter" },
+    { href: "https://www.instagram.com/saikoushiknalubola/", icon: Instagram, label: "Instagram" },
+    { href: "mailto:saikoushik42@gmail.com", icon: Mail, label: "Email" },
+    { href: "https://saikoushiknalubola.netlify.app/", icon: Globe, label: "Portfolio" }
+  ];
+
   return (
-    <section 
-      className="relative min-h-screen flex items-center justify-center px-4 py-8 sm:py-12 overflow-hidden"
-      style={{
-        '--x': `${position.x}%`,
-        '--y': `${position.y}%`
-      } as React.CSSProperties}
-    >
-      {/* Background elements - simplified for mobile */}
-      <div className="absolute inset-0 bg-[#121212] z-[-2]">
-        <div className="hidden md:block absolute inset-0 opacity-30 bg-[url('/bg-pattern.png')] bg-repeat opacity-10"></div>
-        <div className="hidden md:block spotlight"></div>
+    <section className="relative min-h-screen flex items-center justify-center px-4 py-16 sm:py-20 overflow-hidden bg-[#121212]">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Gradient Orbs */}
+        <div className="absolute top-20 left-10 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-r from-pink-500/20 to-purple-500/20 blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-24 h-24 sm:w-40 sm:h-40 md:w-56 md:h-56 rounded-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-3xl animate-pulse delay-1000" />
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
       </div>
       
-      {/* Mobile-optimized animated background */}
-      <div className="absolute inset-0 z-[-1] pointer-events-none overflow-hidden opacity-20">
-        <div className="absolute h-32 w-32 sm:h-48 sm:w-48 rounded-full blur-3xl bg-pink-500/20 -top-5 -left-10 animate-pulse"></div>
-        <div className="absolute h-32 w-32 sm:h-48 sm:w-48 rounded-full blur-3xl bg-purple-500/20 bottom-10 right-5 animate-pulse delay-1000"></div>
-      </div>
-      
-      <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center gap-6 sm:gap-8 text-center">
-        {/* Mobile-first content layout */}
-        <div className="w-full space-y-3 sm:space-y-4">
-          {/* Profile Image - moved to top for mobile */}
-          <div className={`relative transform transition-all duration-1000 mx-auto ${isProfileVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <div className="relative">
-              {/* Mobile-optimized glow effects */}
-              <div className="absolute -inset-2 sm:-inset-4 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 opacity-20 sm:opacity-30 blur-xl animate-pulse"></div>
-              
-              {/* Card background */}
-              <div className="relative rounded-xl overflow-hidden glass-card p-1 border border-white/10">
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-purple-500/10"></div>
+      <div className="relative z-10 w-full max-w-4xl mx-auto">
+        <div className="text-center space-y-6 sm:space-y-8">
+          {/* Profile Image */}
+          <div className={`transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}>
+            <div className="relative inline-block">
+              <div className="relative">
+                <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto ring-4 ring-gradient-to-r from-pink-500 to-purple-500 ring-offset-4 ring-offset-[#121212]">
+                  <AvatarImage 
+                    src="/lovable-uploads/1466490d-7b5c-4b9c-9b5e-584004601ca5.png" 
+                    alt="Saikoushik Nalubola" 
+                    className="object-cover"
+                  />
+                  <AvatarFallback className="text-lg sm:text-2xl bg-gradient-to-br from-pink-600 to-purple-700 text-white font-bold">
+                    SN
+                  </AvatarFallback>
+                </Avatar>
                 
-                {/* Profile Image - mobile optimized sizes */}
-                <div className="relative overflow-hidden rounded-lg">
-                  <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-lg">
-                    <AvatarImage 
-                      src="/lovable-uploads/1466490d-7b5c-4b9c-9b5e-584004601ca5.png" 
-                      alt="Saikoushik Nalubola" 
-                      className="object-cover"
-                    />
-                    <AvatarFallback className="text-lg sm:text-2xl bg-gradient-to-br from-pink-600 to-purple-700 text-white font-bold">SN</AvatarFallback>
-                  </Avatar>
-                </div>
-                
-                {/* Status indicator */}
-                <div className="absolute -bottom-1 -right-1 p-1 rounded-full bg-green-500">
-                  <span className="block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-400 border border-[#121212]"></span>
+                {/* Status Indicator */}
+                <div className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-full border-4 border-[#121212] flex items-center justify-center">
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse" />
                 </div>
               </div>
             </div>
           </div>
           
-          {/* Tags */}
-          <div className={`flex flex-wrap justify-center gap-2 mb-4 sm:mb-6 transform transition-all duration-700 ${isSocialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <span className="badge badge-pink text-xs sm:text-sm">AI Engineer</span>
-            <span className="badge badge-purple text-xs sm:text-sm">Entrepreneur</span>
-            <span className="badge badge-pink text-xs sm:text-sm">Innovator</span>
+          {/* Role Tags */}
+          <div className={`flex flex-wrap justify-center gap-2 sm:gap-3 transform transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <span className="px-3 py-1.5 text-xs sm:text-sm font-semibold bg-pink-500/20 text-pink-400 rounded-full border border-pink-500/30">
+              AI Engineer
+            </span>
+            <span className="px-3 py-1.5 text-xs sm:text-sm font-semibold bg-purple-500/20 text-purple-400 rounded-full border border-purple-500/30">
+              Entrepreneur
+            </span>
+            <span className="px-3 py-1.5 text-xs sm:text-sm font-semibold bg-blue-500/20 text-blue-400 rounded-full border border-blue-500/30">
+              Innovator
+            </span>
           </div>
           
-          {/* Name with enhanced mobile animation */}
-          <div className="overflow-hidden">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
-              <span className="text-white block mb-1 sm:mb-2 text-lg sm:text-2xl md:text-3xl">Hi, I'm</span>
-              <div className={`relative transform transition-all duration-1000 ${isNameVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <span className="gradient-text font-bold animate-pulse-glow">
-                  Saikoushik Nalubola
-                </span>
-                <span className="inline-block animate-pulse ml-1 text-purple-400 text-2xl sm:text-4xl md:text-5xl">|</span>
-              </div>
+          {/* Greeting & Name */}
+          <div className={`space-y-2 sm:space-y-4 transform transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light">
+              Hi, I'm
+            </p>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight">
+              <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+                {nameTyped}
+              </span>
+              <span className="animate-pulse text-purple-400">|</span>
             </h1>
           </div>
           
           {/* Description */}
-          <div className="overflow-hidden">
-            <p className={`text-sm sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light px-4 transform transition-all duration-700 ${isDescVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              Transforming ideas into impactful AI-driven solutions with a passion for innovation and sustainability
+          <div className={`transform transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
+              Transforming ideas into impactful AI-driven solutions with a passion for 
+              <span className="text-pink-400 font-semibold"> innovation</span> and 
+              <span className="text-purple-400 font-semibold"> sustainability</span>
             </p>
           </div>
           
-          {/* Social Media - mobile optimized */}
-          <div className={`flex justify-center gap-3 sm:gap-4 mt-4 sm:mt-6 transform transition-all duration-700 ${isSocialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <a href="https://github.com/saikoushiknalubola" target="_blank" rel="noopener noreferrer" 
-               className="social-button group p-2 sm:p-3">
-              <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:text-pink-400" />
-            </a>
-            <a href="https://www.linkedin.com/in/saikoushiknalubola" target="_blank" rel="noopener noreferrer" 
-               className="social-button group p-2 sm:p-3">
-              <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:text-pink-400" />
-            </a>
-            <a href="https://x.com/saikoushik_42" target="_blank" rel="noopener noreferrer" 
-               className="social-button group p-2 sm:p-3">
-              <Twitter className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:text-pink-400" />
-            </a>
-            <a href="https://www.instagram.com/saikoushiknalubola/" target="_blank" rel="noopener noreferrer" 
-               className="social-button group p-2 sm:p-3">
-              <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:text-pink-400" />
-            </a>
-            <a href="mailto:saikoushik42@gmail.com" 
-               className="social-button group p-2 sm:p-3">
-              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:text-pink-400" />
-            </a>
-            <a href="https://saikoushiknalubola.netlify.app/" target="_blank" rel="noopener noreferrer" 
-               className="social-button group p-2 sm:p-3">
-              <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:text-pink-400" />
-            </a>
+          {/* Social Links */}
+          <div className={`flex justify-center gap-3 sm:gap-4 py-4 transform transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target={social.href.startsWith('mailto:') ? undefined : '_blank'}
+                rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                className="group relative p-3 sm:p-4 bg-white/5 hover:bg-white/10 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
+                aria-label={social.label}
+              >
+                <social.icon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-400 group-hover:text-pink-400 transition-colors duration-300" />
+                
+                {/* Tooltip */}
+                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                  {social.label}
+                </div>
+              </a>
+            ))}
           </div>
           
-          {/* CTA Buttons - mobile optimized */}
-          <div className={`flex flex-col sm:flex-row justify-center gap-3 pt-4 sm:pt-6 px-4 transform transition-all duration-700 ${isButtonsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <a href="#projects" className="anime-button-primary group px-4 py-3 sm:px-6 sm:py-3 text-sm font-semibold w-full sm:w-auto">
-              <span>
-                View Projects
-                <svg className="w-4 h-4 ml-2 inline-block transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </span>
+          {/* CTA Buttons */}
+          <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-6 sm:pt-8 px-4 transform transition-all duration-1000 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <a
+              href="#projects"
+              className="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-semibold rounded-lg hover:from-pink-500 hover:to-purple-500 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-pink-500/25 min-h-[48px]"
+            >
+              View Projects
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
-            <a href="#contact" className="anime-button-secondary group px-4 py-3 sm:px-6 sm:py-3 text-sm font-semibold w-full sm:w-auto">
-              <span>Contact Me</span>
+            
+            <a
+              href="#contact"
+              className="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-purple-500 text-purple-400 font-semibold rounded-lg hover:bg-purple-500/10 hover:border-pink-400 hover:text-pink-400 transition-all duration-300 hover:scale-105 min-h-[48px]"
+            >
+              Get In Touch
             </a>
           </div>
         </div>
       </div>
       
-      {/* Scroll indicator - mobile optimized */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
-        <div className="w-4 h-6 sm:w-5 sm:h-8 rounded-full border-2 border-pink-500/70 flex justify-center p-1">
-          <div className="w-0.5 h-1.5 bg-pink-500 rounded-full animate-scroll-hint"></div>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="flex flex-col items-center space-y-2">
+          <div className="w-1 h-8 bg-gradient-to-b from-pink-500 to-transparent rounded-full" />
+          <ChevronDown className="w-5 h-5 text-pink-500" />
+          <span className="text-xs text-pink-500/70 font-medium tracking-wider">SCROLL</span>
         </div>
-        <p className="text-xs text-pink-500/70 mt-1 font-medium tracking-wider">SCROLL</p>
       </div>
     </section>
   );
