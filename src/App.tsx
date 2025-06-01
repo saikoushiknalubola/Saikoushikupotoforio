@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Connect from "./pages/Connect";
+import Anime from "./pages/Anime";
 import NotFound from "./pages/NotFound";
 import { useState } from "react";
 
@@ -22,6 +23,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/connect" element={<Connect />} />
+            <Route path="/anime" element={<Anime />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

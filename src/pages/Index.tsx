@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Experience from '../components/Experience';
 import Projects from '../components/Projects';
+import OnePieceSection from '../components/OnePieceSection';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 
@@ -21,7 +22,7 @@ const Index = () => {
         e.preventDefault();
         const targetElement = document.querySelector(href);
         if (targetElement) {
-          const navbarHeight = 80; // Account for navbar height
+          const navbarHeight = 100; // Increased for better spacing
           window.scrollTo({
             top: targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight, 
             behavior: 'smooth'
@@ -71,28 +72,33 @@ const Index = () => {
 
   return (
     <Layout>
-      <div id="hero">
+      <div id="hero" className="relative">
         <Hero />
       </div>
       
-      {/* Optimized section spacing for mobile */}
-      <div id="about" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      {/* Optimized section spacing with better mobile padding */}
+      <div id="about" className="py-12 lg:py-20 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <About />
       </div>
       
-      <div id="experience" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="experience" className="py-12 lg:py-20 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Experience />
       </div>
       
-      <div id="projects" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="projects" className="scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Projects />
       </div>
       
-      <div id="skills" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      {/* One Piece themed section */}
+      <div className="scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+        <OnePieceSection />
+      </div>
+      
+      <div id="skills" className="py-12 lg:py-20 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Skills />
       </div>
       
-      <div id="contact" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="contact" className="py-12 lg:py-20 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Contact />
       </div>
     </Layout>
