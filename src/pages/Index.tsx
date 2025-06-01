@@ -21,8 +21,9 @@ const Index = () => {
         e.preventDefault();
         const targetElement = document.querySelector(href);
         if (targetElement) {
+          const navbarHeight = 80; // Account for navbar height
           window.scrollTo({
-            top: targetElement.getBoundingClientRect().top + window.pageYOffset - 60, 
+            top: targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight, 
             behavior: 'smooth'
           });
         }
@@ -33,7 +34,7 @@ const Index = () => {
       anchor.addEventListener('click', handleAnchorClick as EventListener);
     });
     
-    // Simpler intersection observer for scroll animations
+    // Intersection observer for scroll animations
     const observerOptions = {
       root: null,
       rootMargin: '0px 0px -10px 0px',
@@ -51,7 +52,7 @@ const Index = () => {
       });
     }, observerOptions);
     
-    // Observe all sections immediately
+    // Observe all sections
     const sections = document.querySelectorAll('.scroll-animate');
     sections.forEach(el => {
       observer.observe(el);
@@ -70,28 +71,28 @@ const Index = () => {
 
   return (
     <Layout>
-      <div id="hero" className="min-h-screen">
+      <div id="hero">
         <Hero />
       </div>
       
-      {/* Optimized mobile spacing */}
-      <div id="about" className="py-4 sm:py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      {/* Optimized section spacing for mobile */}
+      <div id="about" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <About />
       </div>
       
-      <div id="experience" className="py-4 sm:py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="experience" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Experience />
       </div>
       
-      <div id="projects" className="py-4 sm:py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="projects" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Projects />
       </div>
       
-      <div id="skills" className="py-4 sm:py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="skills" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Skills />
       </div>
       
-      <div id="contact" className="py-4 sm:py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="contact" className="py-8 sm:py-12 lg:py-16 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Contact />
       </div>
     </Layout>

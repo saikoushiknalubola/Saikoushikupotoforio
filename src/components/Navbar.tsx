@@ -45,14 +45,13 @@ const Navbar = () => {
   
   return (
     <nav className={cn(
-      'fixed w-full z-50 transition-all duration-300 backdrop-blur-md py-3 sm:py-5 px-4 sm:px-6 md:px-8',
-      scrolled ? 'bg-[#121212]/95 shadow-lg shadow-pink-500/5' : 'bg-transparent'
+      'fixed w-full z-50 transition-all duration-300 backdrop-blur-md py-3 sm:py-4 px-4 sm:px-6 md:px-8',
+      scrolled ? 'bg-[#121212]/95 shadow-lg shadow-pink-500/5' : 'bg-[#121212]/80'
     )}>
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="max-w-7xl mx-auto flex justify-between items-center h-12">
         <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group relative z-10">
           <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-md relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-700"></div>
-            <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.5),transparent_70%)]"></div>
             <div className="relative z-10 text-white font-bold text-sm sm:text-xl tracking-wider font-heading">SN</div>
           </div>
           <span className="text-lg sm:text-xl font-bold hidden sm:inline-block tracking-tight">
@@ -100,7 +99,7 @@ const Navbar = () => {
 
         {/* Mobile menu button */}
         <button 
-          className="md:hidden relative z-20 p-2 rounded-md bg-gray-900/50 backdrop-blur-md border border-white/10" 
+          className="md:hidden relative z-20 p-2 rounded-md bg-gray-900/50 backdrop-blur-md border border-white/10 min-w-[44px] min-h-[44px] flex items-center justify-center" 
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >
@@ -121,7 +120,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "flex items-center space-x-3 px-4 py-3 w-full max-w-xs rounded-lg font-medium text-base tracking-wide transition-all duration-300",
+                  "flex items-center space-x-3 px-4 py-3 w-full max-w-xs rounded-lg font-medium text-base tracking-wide transition-all duration-300 min-h-[48px]",
                   activeSection === link.href.substring(1) 
                     ? "bg-gradient-to-r from-pink-600/20 to-purple-600/20 text-white border-l-2 border-pink-500" 
                     : "hover:bg-white/5 text-gray-300"
@@ -142,7 +141,7 @@ const Navbar = () => {
             <div className="pt-4 w-full max-w-xs">
               <Link
                 to="/connect"
-                className="flex justify-center items-center py-3 w-full bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-lg font-medium tracking-wide shadow-lg shadow-pink-500/20 transition-all duration-300"
+                className="flex justify-center items-center py-3 w-full bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-lg font-medium tracking-wide shadow-lg shadow-pink-500/20 transition-all duration-300 min-h-[48px]"
                 onClick={toggleMobileMenu}
               >
                 Connect With Me
