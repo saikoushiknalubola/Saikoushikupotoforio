@@ -6,7 +6,7 @@ import { Github, Linkedin, Twitter, Instagram, Mail, ArrowRight, Home, Globe, Ed
 const Connect = () => {
   useEffect(() => {
     // Update page title
-    document.title = "Connect with Saikoushik Nalubola | AI Engineer & Entrepreneur";
+    document.title = "Let's Connect | Saikoushik Nalubola - AI Engineer & Entrepreneur";
   }, []);
 
   const socialLinks = [
@@ -103,7 +103,7 @@ const Connect = () => {
             <div className="relative z-10">
               <h1 className="text-5xl md:text-7xl font-black mb-6 font-heading tracking-tight">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 animate-pulse">
-                  Let's Connect
+                  Let's Connect & Create
                 </span>
               </h1>
               

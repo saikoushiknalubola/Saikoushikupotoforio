@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Github, Linkedin, Twitter, Instagram, Mail, Globe, ArrowRight, ChevronDown } from 'lucide-react';
@@ -51,8 +52,18 @@ const Hero = () => {
     { href: "https://saikoushiknalubola.netlify.app/", icon: Globe, label: "Portfolio" }
   ];
 
+  const scrollToJoinCrew = () => {
+    const onePieceSection = document.querySelector('#onepiece-section');
+    if (onePieceSection) {
+      const formElement = onePieceSection.querySelector('#join-crew-form');
+      if (formElement) {
+        formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-24 pb-32 overflow-hidden bg-[#121212]">
+    <section className="relative min-h-screen flex items-center justify-center px-4 pt-24 pb-20 md:pb-32 overflow-hidden bg-[#121212]">
       {/* Enhanced Background with One Piece inspired elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Treasure map inspired grid */}
@@ -183,21 +194,21 @@ const Hero = () => {
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
             
-            <a
-              href="#contact"
+            <button
+              onClick={scrollToJoinCrew}
               className="group inline-flex items-center justify-center px-8 py-4 border-2 border-orange-500 text-orange-300 font-bold rounded-lg hover:bg-orange-500/10 hover:border-red-400 hover:text-red-300 transition-all duration-300 hover:scale-105 text-base"
             >
               Join My Crew
-            </a>
+            </button>
           </div>
         </div>
       </div>
       
-      {/* Fixed Scroll Indicator with better positioning */}
-      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+      {/* Fixed Scroll Indicator with better spacing */}
+      <div className="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
         <div className="flex flex-col items-center space-y-2">
-          <div className="w-0.5 h-8 bg-gradient-to-b from-orange-500 to-transparent rounded-full" />
-          <ChevronDown className="w-5 h-5 text-orange-500" />
+          <div className="w-0.5 h-6 md:h-8 bg-gradient-to-b from-orange-500 to-transparent rounded-full" />
+          <ChevronDown className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
           <span className="text-xs text-orange-400 font-bold tracking-wider">ADVENTURE</span>
         </div>
       </div>

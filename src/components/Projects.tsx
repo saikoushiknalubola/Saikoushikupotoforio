@@ -1,271 +1,220 @@
 
-import React, { useState } from 'react';
-import { Scale, Scroll, Eye, Shield, Leaf, Cloud, Heart, Brain, Zap, Database, ExternalLink, Github } from 'lucide-react';
-import { cn } from '@/lib/utils';
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  icon: React.ElementType;
-  technologies: string[];
-  githubLink?: string;
-  liveLink?: string;
-  accentColor: string;
-  category: string;
-}
+import React, { useState, useEffect } from 'react';
+import { Github, ExternalLink, Code, Database, Smartphone, Brain, Globe, Zap, Star, Users } from 'lucide-react';
 
 const Projects = () => {
-  const [activeProject, setActiveProject] = useState<number | null>(null);
-  
-  const projects: Project[] = [
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeProject, setActiveProject] = useState(0);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('projects');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const projects = [
     {
-      id: 1,
-      title: "Nyaayasaathi",
-      description: "Developed an AI-driven legal advisory assistant to provide affordable and accessible legal guidance using advanced NLP and legal text analysis.",
-      icon: Scale,
-      technologies: ["Python", "NLP", "Machine Learning", "Legal Text Analysis", "FastAPI"],
-      githubLink: "https://github.com/saikoushiknalubola/nyaayasaathi",
-      liveLink: "https://nyaayasaathi.netlify.app/",
-      accentColor: "#0f9b8e",
-      category: "AI/Legal Tech"
-    },
-    {
-      id: 2,
-      title: "Movie Recommendation System",
-      description: "Built an intelligent movie recommender using collaborative and content-based filtering algorithms, achieving 85% accuracy with personalized suggestions.",
-      icon: Scroll,
-      technologies: ["Python", "Collaborative Filtering", "Content Analysis", "Pandas", "Scikit-learn"],
-      githubLink: "https://github.com/saikoushiknalubola/movie-recommender",
-      liveLink: "https://movie-rec-system.netlify.app/",
-      accentColor: "#e6af2e",
-      category: "Recommendation System"
-    },
-    {
-      id: 3,
-      title: "Face Recognition Security System",
-      description: "Built a high-precision security system leveraging FaceNet deep learning architecture for real-time facial recognition and authentication.",
-      icon: Eye,
-      technologies: ["Python", "FaceNet", "Deep Learning", "Computer Vision", "OpenCV", "TensorFlow"],
-      githubLink: "https://github.com/saikoushiknalubola/face-recognition",
-      accentColor: "#c4161c",
-      category: "Computer Vision"
-    },
-    {
-      id: 4,
-      title: "Credit Card Fraud Detection",
-      description: "Implemented an advanced anomaly detection model using autoencoders that identified fraudulent transactions with 92% precision and real-time monitoring.",
-      icon: Shield,
-      technologies: ["Python", "Autoencoders", "Anomaly Detection", "Neural Networks", "Fraud Prevention"],
-      githubLink: "https://github.com/saikoushiknalubola/fraud-detection",
-      accentColor: "#4a5568",
-      category: "Cybersecurity"
-    },
-    {
-      id: 5,
-      title: "AI Crop Health Monitor",
-      description: "Developed deep learning models to assess crop diseases via drone imagery, helping farmers optimize yield and reduce crop loss by 30%.",
-      icon: Leaf,
-      technologies: ["Python", "Computer Vision", "CNN", "Agriculture Tech", "Drone Imagery", "IoT"],
-      githubLink: "https://github.com/saikoushiknalubola/crop-health",
-      accentColor: "#48bb78",
-      category: "AgriTech"
-    },
-    {
-      id: 6,
-      title: "Carbon Neutrality Analytics",
-      description: "Designed a comprehensive data-driven framework for reducing carbon emissions in coal mining operations using predictive analytics.",
-      icon: Cloud,
-      technologies: ["Python", "Data Analysis", "Sustainability", "Carbon Reduction", "Predictive Analytics"],
-      githubLink: "https://github.com/saikoushiknalubola/carbon-neutral",
-      accentColor: "#2b6cb0",
-      category: "Environmental Tech"
-    },
-    {
-      id: 7,
-      title: "Vitalia - Health Companion",
-      description: "A comprehensive web-based health tracker using ReactJS & AI, enabling users to monitor vitals, fitness, sleep patterns with personalized insights.",
-      icon: Heart,
-      technologies: ["ReactJS", "AI Integration", "Health Analytics", "Real-time Monitoring", "Progressive Web App"],
-      githubLink: "https://github.com/saikoushiknalubola/vitalia",
-      liveLink: "https://vitalia-health.netlify.app/",
-      accentColor: "#ed64a6",
-      category: "HealthTech"
-    },
-    {
-      id: 8,
-      title: "Neural Style Transfer",
-      description: "Created an artistic AI application that applies famous painting styles to photos using convolutional neural networks and style transfer algorithms.",
+      title: "AI-Powered Healthcare Assistant",
+      description: "Revolutionary healthcare platform using machine learning to assist medical professionals with accurate diagnosis and treatment recommendations.",
+      tech: ["Python", "TensorFlow", "React", "Node.js", "PostgreSQL"],
+      features: ["Medical Image Analysis", "Symptom Checker", "Drug Interaction Alerts", "Patient Management"],
+      githubUrl: "https://github.com/saikoushiknalubola",
+      gradient: "from-blue-600 to-cyan-600",
       icon: Brain,
-      technologies: ["Python", "Neural Networks", "Style Transfer", "Computer Vision", "TensorFlow", "Art Generation"],
-      githubLink: "https://github.com/saikoushiknalubola/neural-style-transfer",
-      accentColor: "#9f7aea",
-      category: "Creative AI"
+      category: "AI/ML"
     },
     {
-      id: 9,
-      title: "Real-time Chat Analytics",
-      description: "Built a scalable real-time chat application with sentiment analysis, user behavior tracking, and intelligent moderation using WebSocket technology.",
-      icon: Zap,
-      technologies: ["Node.js", "WebSocket", "Sentiment Analysis", "Real-time Processing", "MongoDB", "React"],
-      githubLink: "https://github.com/saikoushiknalubola/chat-analytics",
-      liveLink: "https://chat-analytics-demo.netlify.app/",
-      accentColor: "#f6ad55",
-      category: "Real-time Systems"
-    },
-    {
-      id: 10,
-      title: "Blockchain Voting System",
-      description: "Developed a secure, transparent voting system using blockchain technology to ensure election integrity and prevent tampering.",
-      icon: Database,
-      technologies: ["Solidity", "Blockchain", "Smart Contracts", "Web3", "Ethereum", "Security"],
-      githubLink: "https://github.com/saikoushiknalubola/blockchain-voting",
-      accentColor: "#4fd1c7",
+      title: "Blockchain Supply Chain Tracker",
+      description: "Transparent supply chain management system built on blockchain technology to track products from origin to consumer.",
+      tech: ["Solidity", "Web3.js", "React", "Node.js", "IPFS"],
+      features: ["Product Provenance", "Smart Contracts", "QR Code Tracking", "Fraud Prevention"],
+      githubUrl: "https://github.com/saikoushiknalubola",
+      gradient: "from-purple-600 to-pink-600",
+      icon: Globe,
       category: "Blockchain"
+    },
+    {
+      title: "Smart Finance Manager",
+      description: "Intelligent personal finance application with AI-driven insights, expense tracking, and investment recommendations.",
+      tech: ["React Native", "Firebase", "Python", "TensorFlow", "Plaid API"],
+      features: ["Expense Analytics", "Investment Insights", "Budget Planning", "Bill Reminders"],
+      githubUrl: "https://github.com/saikoushiknalubola",
+      gradient: "from-green-600 to-emerald-600",
+      icon: Zap,
+      category: "FinTech"
+    },
+    {
+      title: "Virtual Reality Learning Platform",
+      description: "Immersive VR education platform that transforms traditional learning into engaging virtual experiences for students worldwide.",
+      tech: ["Unity", "C#", "WebRTC", "Node.js", "MongoDB"],
+      features: ["3D Environments", "Multi-user Sessions", "Progress Tracking", "Interactive Lessons"],
+      githubUrl: "https://github.com/saikoushiknalubola",
+      gradient: "from-orange-600 to-red-600",
+      icon: Star,
+      category: "VR/AR"
+    },
+    {
+      title: "Social Impact Community Hub",
+      description: "Platform connecting volunteers with NGOs and social causes, facilitating meaningful community engagement and impact measurement.",
+      tech: ["React", "Express.js", "MongoDB", "Socket.io", "Stripe"],
+      features: ["Volunteer Matching", "Impact Analytics", "Event Management", "Donation Processing"],
+      githubUrl: "https://github.com/saikoushiknalubola",
+      gradient: "from-indigo-600 to-blue-600",
+      icon: Users,
+      category: "Social Impact"
     }
   ];
 
-  const handleProjectClick = (id: number) => {
-    setActiveProject(activeProject === id ? null : id);
-  };
-
-  const handleGitHubClick = (e: React.MouseEvent, projectLink?: string) => {
-    e.stopPropagation();
-    const url = projectLink || 'https://github.com/saikoushiknalubola';
-    window.open(url, '_blank', 'noopener,noreferrer');
-  };
-
-  const handleLiveClick = (e: React.MouseEvent, liveLink?: string) => {
-    e.stopPropagation();
-    if (liveLink) {
-      window.open(liveLink, '_blank', 'noopener,noreferrer');
-    }
-  };
-
   return (
-    <section id="projects" className="py-16 px-4 bg-[#121212]">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-            Treasure Map of Projects
-          </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Explore the digital treasures I've discovered on my coding adventures across the seven seas of technology
+    <section id="projects" className="py-20 px-4 bg-[#121212] relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-40 right-20 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-green-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex items-center justify-center space-x-3 mb-6">
+            <Code className="w-8 h-8 text-blue-500" />
+            <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
+              Epic Projects
+            </h2>
+            <Code className="w-8 h-8 text-cyan-500" />
+          </div>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Discover the legendary projects I've crafted on my journey to become the King of Developers!
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => {
-            const isActive = activeProject === project.id;
-            
-            return (
-              <div 
-                key={project.id}
-                className={cn(
-                  "relative cursor-pointer group transition-all duration-500 bg-[#1a1a1a] rounded-2xl overflow-hidden border-2 min-h-[280px]",
-                  isActive 
-                    ? "md:col-span-2 lg:col-span-3 border-orange-500/60 shadow-2xl shadow-orange-500/20" 
-                    : "border-gray-700/50 hover:border-orange-500/40 hover:shadow-xl hover:shadow-orange-500/10"
-                )}
-                onClick={() => handleProjectClick(project.id)}
-                style={{
-                  background: isActive 
-                    ? `linear-gradient(135deg, ${project.accentColor}10, #1a1a1a)` 
-                    : '#1a1a1a'
-                }}
-              >
-                {/* Project content */}
-                <div className="p-6 h-full flex flex-col">
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center space-x-3 flex-1">
-                      <div 
-                        className="p-3 rounded-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0" 
-                        style={{backgroundColor: `${project.accentColor}20`, border: `2px solid ${project.accentColor}40`}}
-                      >
-                        <project.icon 
-                          className="w-6 h-6 transition-all duration-300"
-                          style={{color: project.accentColor}}
-                        />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-white leading-tight">{project.title}</h3>
-                        <span 
-                          className="text-sm font-semibold px-2 py-1 rounded-full"
-                          style={{backgroundColor: `${project.accentColor}20`, color: project.accentColor}}
-                        >
-                          {project.category}
-                        </span>
-                      </div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mb-16">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className={`group relative bg-[#1a1a1a] rounded-2xl border-2 border-gray-700/50 hover:border-gray-600/50 transition-all duration-500 overflow-hidden transform ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              } hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20`}
+              style={{ transitionDelay: `${index * 0.1}s` }}
+              onMouseEnter={() => setActiveProject(index)}
+            >
+              {/* Background gradient */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500`} />
+              
+              {/* Content */}
+              <div className="relative p-8">
+                {/* Header */}
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex items-center space-x-3">
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${project.gradient} shadow-lg`}>
+                      <project.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <span className="px-3 py-1 text-xs font-bold rounded-full bg-gray-800/80 text-gray-300 border border-gray-600/50">
+                        {project.category}
+                      </span>
                     </div>
                   </div>
-                  
-                  {/* Description */}
-                  <p className="text-gray-400 mb-4 text-sm flex-grow leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.slice(0, isActive ? project.technologies.length : 4).map((tech, index) => (
+                </div>
+
+                {/* Title */}
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                  {project.description}
+                </p>
+
+                {/* Features */}
+                <div className="mb-6">
+                  <h4 className="text-sm font-semibold text-gray-300 mb-3">Key Features:</h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    {project.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400" />
+                        <span className="text-xs text-gray-400">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Tech Stack */}
+                <div className="mb-8">
+                  <h4 className="text-sm font-semibold text-gray-300 mb-3">Tech Stack:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, techIndex) => (
                       <span 
-                        key={index} 
-                        className="px-3 py-1 text-xs rounded-full bg-gray-800/80 text-gray-300 border border-gray-600/50 hover:border-gray-500/50 transition-colors"
+                        key={techIndex}
+                        className="px-3 py-1 text-xs rounded-full bg-gray-800/80 text-gray-300 border border-gray-600/50 hover:border-blue-500/50 transition-colors duration-300"
                       >
                         {tech}
                       </span>
                     ))}
-                    {!isActive && project.technologies.length > 4 && (
-                      <span className="px-3 py-1 text-xs rounded-full bg-gray-800/80 text-gray-300 border border-gray-600/50">
-                        +{project.technologies.length - 4}
-                      </span>
-                    )}
-                  </div>
-                  
-                  {/* Action buttons */}
-                  <div className="flex gap-3 mt-auto">
-                    <button 
-                      onClick={(e) => handleGitHubClick(e, project.githubLink)}
-                      className="flex items-center space-x-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-lg transition-all duration-300 text-sm flex-1 justify-center border border-gray-600/50 hover:border-gray-500/50"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span>Source</span>
-                    </button>
-                    
-                    {project.liveLink && (
-                      <button 
-                        onClick={(e) => handleLiveClick(e, project.liveLink)}
-                        className="flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 text-sm flex-1 justify-center border-2"
-                        style={{
-                          backgroundColor: `${project.accentColor}20`,
-                          color: project.accentColor,
-                          borderColor: `${project.accentColor}60`
-                        }}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        <span>Live Demo</span>
-                      </button>
-                    )}
                   </div>
                 </div>
-                
-                {/* Hover effect overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                {/* Action Buttons */}
+                <div className="flex space-x-3">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center space-x-2 py-3 px-4 bg-gray-800/80 hover:bg-gray-700/80 text-gray-300 hover:text-white rounded-lg transition-all duration-300 hover:scale-105 border border-gray-600/50 hover:border-gray-500/50"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span className="text-sm font-semibold">Source Code</span>
+                  </a>
+                </div>
               </div>
-            );
-          })}
+
+              {/* Hover effect */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            </div>
+          ))}
         </div>
-        
-        {/* View All Projects CTA */}
-        <div className="text-center mt-12">
-          <button 
-            onClick={(e) => handleGitHubClick(e)}
-            className="inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-105 shadow-xl shadow-orange-500/30 text-lg"
-          >
-            <Github className="w-6 h-6" />
-            <span>Explore All Treasures on GitHub</span>
-            <ExternalLink className="w-5 h-5" />
-          </button>
+
+        {/* Call to Action */}
+        <div className={`text-center transform transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm rounded-3xl p-8 border-2 border-blue-500/20">
+            <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Ready to Build Something Amazing?
+            </h3>
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+              These projects represent just the beginning of my journey. Let's collaborate and create the next groundbreaking solution together!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="#contact"
+                className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-lg hover:from-blue-500 hover:to-purple-500 transition-all duration-300 hover:scale-105 shadow-xl shadow-blue-500/30"
+              >
+                <ExternalLink className="w-5 h-5" />
+                <span>Start a Project</span>
+              </a>
+              <a
+                href="https://github.com/saikoushiknalubola"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-8 py-4 border-2 border-blue-500 text-blue-300 font-bold rounded-lg hover:bg-blue-500/10 transition-all duration-300 hover:scale-105"
+              >
+                <Github className="w-5 h-5" />
+                <span>View All Projects</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
