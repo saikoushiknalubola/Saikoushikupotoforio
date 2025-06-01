@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Github, Linkedin, Twitter, Instagram, Mail, Globe, ArrowRight, ChevronDown } from 'lucide-react';
@@ -53,7 +52,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-24 pb-16 overflow-hidden bg-[#121212]">
+    <section className="relative min-h-screen flex items-center justify-center px-4 pt-24 pb-32 overflow-hidden bg-[#121212]">
       {/* Enhanced Background with One Piece inspired elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Treasure map inspired grid */}
@@ -194,8 +193,8 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Enhanced Scroll Indicator with proper positioning */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+      {/* Fixed Scroll Indicator with better positioning */}
+      <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
         <div className="flex flex-col items-center space-y-2">
           <div className="w-0.5 h-8 bg-gradient-to-b from-orange-500 to-transparent rounded-full" />
           <ChevronDown className="w-5 h-5 text-orange-500" />

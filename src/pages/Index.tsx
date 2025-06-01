@@ -76,7 +76,7 @@ const Index = () => {
         <Hero />
       </div>
       
-      {/* Optimized section spacing with better mobile padding */}
+      {/* Fixed spacing to prevent overlap */}
       <div id="about" className="py-12 lg:py-20 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <About />
       </div>
@@ -85,11 +85,11 @@ const Index = () => {
         <Experience />
       </div>
       
-      <div id="projects" className="scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="projects" className="scroll-animate bg-[#121212] relative transition-all duration-700 pt-8" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Projects />
       </div>
       
-      {/* One Piece themed section */}
+      {/* One Piece themed section with form */}
       <div className="scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <OnePieceSection />
       </div>

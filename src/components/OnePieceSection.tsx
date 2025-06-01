@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { Anchor, Compass, Sword, Users, Target, Zap } from 'lucide-react';
+import JoinCrewForm from './JoinCrewForm';
 
 const OnePieceSection = () => {
   const [activeCrewMember, setActiveCrewMember] = useState(0);
@@ -196,30 +196,7 @@ const OnePieceSection = () => {
         </div>
 
         {/* Call to Action */}
-        <div className={`text-center mt-12 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-2xl p-8 border-2 border-orange-500/30">
-            <h3 className="text-2xl font-bold text-white mb-4">Ready to Join the Adventure?</h3>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              The Grand Line of technology awaits! Let's sail together towards the treasure of innovative solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#contact"
-                className="inline-flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-105 shadow-xl shadow-orange-500/30"
-              >
-                <Users className="w-5 h-5" />
-                <span>Join My Crew</span>
-              </a>
-              <a
-                href="#projects"
-                className="inline-flex items-center space-x-2 px-8 py-4 border-2 border-orange-500 text-orange-300 font-bold rounded-xl hover:bg-orange-500/10 transition-all duration-300 hover:scale-105"
-              >
-                <Compass className="w-5 h-5" />
-                <span>View Adventures</span>
-              </a>
-            </div>
-          </div>
-        </div>
+        <JoinCrewForm />
       </div>
     </section>
   );
