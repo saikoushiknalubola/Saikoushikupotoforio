@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
-import { Sword, Eye, Zap, Fire, Shield, Star, Users, Crown, Target, Heart } from 'lucide-react';
+import { Sword, Eye, Zap, Flame, Shield, Star, Users, Crown, Target, Heart } from 'lucide-react';
 
 const Anime = () => {
   const [activeAnime, setActiveAnime] = useState('onepiece');
