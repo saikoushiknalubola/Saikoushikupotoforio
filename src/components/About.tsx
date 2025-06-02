@@ -1,126 +1,214 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { User, Anchor, Star, Zap, Heart, Crown, Compass, Target } from 'lucide-react';
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeStory, setActiveStory] = useState(0);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('about');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const storyPanels = [
+    {
+      title: "The Dream Begins",
+      icon: Star,
+      content: "Just like Luffy left Windmill Village, I started my coding journey with a simple dream - to create something that would change the world! Every line of code is a step closer to my goal!",
+      bgColor: "from-orange-500/20 to-red-500/20",
+      borderColor: "border-orange-500/30"
+    },
+    {
+      title: "Gathering My Crew",
+      icon: Heart,
+      content: "A great pirate needs an amazing crew! I've learned to work with incredible teams, each bringing unique skills to our adventures. Together, we've conquered impossible projects!",
+      bgColor: "from-blue-500/20 to-purple-500/20",
+      borderColor: "border-blue-500/30"
+    },
+    {
+      title: "Devil Fruit Powers",
+      icon: Zap,
+      content: "I discovered my 'devil fruit' abilities in AI and Machine Learning! These powers help me solve problems that others think are impossible. My Gomu Gomu no Programming stretches beyond limits!",
+      bgColor: "from-purple-500/20 to-pink-500/20",
+      borderColor: "border-purple-500/30"
+    },
+    {
+      title: "The Grand Line Adventure",
+      icon: Compass,
+      content: "Entering the dangerous waters of enterprise development and AI innovation! Each project is like a new island with unique challenges, treasures to discover, and skills to master!",
+      bgColor: "from-green-500/20 to-teal-500/20",
+      borderColor: "border-green-500/30"
+    }
+  ];
+
+  const nakamaPrinciples = [
+    {
+      title: "Never Give Up",
+      description: "Like Luffy, I believe every problem has a solution. I keep coding until I find it!",
+      icon: Target
+    },
+    {
+      title: "Protect My Crew",
+      description: "Team success is my success. I always support my fellow developers and teammates.",
+      icon: Heart
+    },
+    {
+      title: "Adventure First",
+      description: "I love exploring new technologies and pushing boundaries. Every project is an adventure!",
+      icon: Compass
+    },
+    {
+      title: "Dream Big",
+      description: "My goal isn't just to be a good developer - it's to revolutionize how we think about tech!",
+      icon: Crown
+    }
+  ];
+
   return (
-    <section id="about" className="py-20 px-4 relative">
-      {/* Background pattern */}
-      <div className="absolute inset-0 overflow-hidden z-0 opacity-5">
-        <div className="absolute top-0 right-0 w-1/2 h-1/2">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full fill-anime-teal">
-            <path d="M39.5,-65.1C50.2,-55.9,57.3,-43.5,63.2,-30.8C69,-18.2,73.7,-5.2,72.1,7C70.6,19.2,62.7,30.6,53.4,40.7C44.2,50.8,33.5,59.5,21.3,64.3C9,69.1,-4.9,69.9,-19.1,67.3C-33.3,64.6,-47.7,58.5,-58.1,48.2C-68.5,37.8,-74.9,23.2,-76.8,7.9C-78.7,-7.5,-76,-23.6,-67.5,-35.7C-59,-47.8,-44.5,-56,-30.8,-64.5C-17.1,-73,-8.6,-81.7,2.7,-86C14,-90.3,28.8,-74.3,39.5,-65.1Z" transform="translate(100 100)" />
-          </svg>
-        </div>
-        <div className="absolute bottom-0 left-0 w-1/3 h-1/2">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full fill-anime-crimson">
-            <path d="M45.2,-77.1C59.2,-69.8,71.7,-58.3,79.1,-44.3C86.5,-30.3,88.9,-13.7,87.3,2.3C85.8,18.3,80.3,33.6,71.7,47.1C63.1,60.5,51.3,72,37.2,78.2C23.1,84.4,6.6,85.3,-10.8,84.5C-28.3,83.7,-46.7,81.2,-56.7,70.1C-66.7,59,-68.3,39.2,-75.2,21.2C-82.1,3.2,-94.3,-13.1,-93.7,-28.3C-93.2,-43.5,-80,-57.7,-64.5,-64.7C-48.9,-71.8,-31,-71.7,-15.1,-70.7C0.8,-69.7,31.1,-84.4,45.2,-77.1Z" transform="translate(100 100)" />
-          </svg>
-        </div>
+    <section id="about" className="py-20 px-4 bg-[#121212] relative overflow-hidden">
+      {/* Background One Piece Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-40 right-20 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-red-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
       </div>
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        <h2 className="section-heading" data-jp="私について">About Me</h2>
-        
-        <div className="mt-8 grid md:grid-cols-5 gap-8">
-          {/* Left column for profile info */}
-          <div className="md:col-span-2 anime-card group hover:transform hover:scale-[1.01] transition-all">
-            <div className="absolute inset-0 bg-gradient-to-br from-anime-teal/5 to-anime-amber/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-            
-            <div className="flex flex-col items-center md:items-start relative z-10">
-              <h3 className="text-xl font-bold mb-4 text-anime-amber jp-text">
-                <span className="text-sm block text-anime-teal mb-1">キャラクター プロフィール</span>
-                Character Profile
-              </h3>
-              
-              <div className="w-full space-y-4">
-                <div className="flex flex-col">
-                  <span className="text-gray-400 text-sm">Name</span>
-                  <span className="text-anime-text font-bold">Saikoushik Nalubola</span>
-                </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Manga-Style Header */}
+        <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex items-center justify-center space-x-3 mb-6">
+            <User className="w-8 h-8 text-orange-500" />
+            <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+              Origin Story
+            </h2>
+            <Anchor className="w-8 h-8 text-red-500" />
+          </div>
+          <div className="text-center mb-6">
+            <p className="text-2xl md:text-3xl text-orange-400 jp-text font-bold">
+              俺の物語
+            </p>
+            <p className="text-gray-400 italic">(My Story)</p>
+          </div>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Every great pirate has an epic origin story! Here's mine - from a small village dreamer to the future King of Code!
+          </p>
+        </div>
+
+        {/* Manga Panel Story */}
+        <div className="mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            {storyPanels.map((panel, index) => (
+              <div
+                key={index}
+                className={`group relative bg-gradient-to-br ${panel.bgColor} rounded-2xl border-2 ${panel.borderColor} p-8 transition-all duration-500 hover:scale-105 cursor-pointer ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${index * 0.2}s` }}
+                onClick={() => setActiveStory(index)}
+              >
+                {/* Manga panel border effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl"></div>
                 
-                <div className="flex flex-col">
-                  <span className="text-gray-400 text-sm">Origin</span>
-                  <span className="text-anime-text">Warangal, India</span>
-                </div>
-                
-                <div className="flex flex-col">
-                  <span className="text-gray-400 text-sm">Class</span>
-                  <span className="text-anime-teal font-medium">AI Engineer & Entrepreneur</span>
-                </div>
-                
-                <div className="flex flex-col">
-                  <span className="text-gray-400 text-sm">Education</span>
-                  <span className="text-anime-text">Bachelor of Technology in Computer Science & Engineering (AIML)</span>
-                  <span className="text-anime-text text-sm">SR University - Warangal, India</span>
-                </div>
-                
-                <div className="flex flex-col">
-                  <span className="text-gray-400 text-sm">Languages</span>
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    <span className="px-2 py-1 bg-anime-midnight/60 border border-anime-teal/30 rounded text-sm transform hover:scale-105 transition-transform">English (Fluent)</span>
-                    <span className="px-2 py-1 bg-anime-midnight/60 border border-anime-teal/30 rounded text-sm transform hover:scale-105 transition-transform">Hindi (Intermediate)</span>
-                    <span className="px-2 py-1 bg-anime-midnight/60 border border-anime-teal/30 rounded text-sm transform hover:scale-105 transition-transform">Telugu (Native)</span>
+                <div className="relative z-10">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 shadow-lg">
+                      <panel.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">{panel.title}</h3>
+                  </div>
+                  
+                  <p className="text-gray-300 leading-relaxed text-lg">
+                    {panel.content}
+                  </p>
+                  
+                  {/* Manga speech bubble effect */}
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center animate-pulse">
+                    <span className="text-black font-black text-sm">!</span>
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-          
-          {/* Right column for narrative */}
-          <div className="md:col-span-3 space-y-6">
-            <div className="anime-card relative group hover:transform hover:scale-[1.02] transition-all">
-              <div className="absolute inset-0 bg-gradient-to-br from-anime-teal/5 to-anime-amber/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              
-              <h3 className="text-xl font-bold mb-4 text-anime-amber jp-text relative z-10">
-                <span className="text-sm block text-anime-teal mb-1">起源ストーリー</span>
-                Origin Story
+        </div>
+
+        {/* Nakama Philosophy */}
+        <div className={`mb-16 transform transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              My Nakama Philosophy
+            </h3>
+            <p className="text-xl text-gray-300 mb-6">
+              仲間 - The bonds that make us stronger than any code!
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {nakamaPrinciples.map((principle, index) => (
+              <div
+                key={index}
+                className="group relative bg-[#1a1a1a] rounded-xl border-2 border-gray-700/50 hover:border-blue-500/50 p-6 transition-all duration-500 hover:scale-105"
+              >
+                <div className="text-center">
+                  <div className="mb-4 mx-auto w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                    <principle.icon className="w-8 h-8 text-white" />
+                  </div>
+                  
+                  <h4 className="text-xl font-bold text-white mb-3">{principle.title}</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed">{principle.description}</p>
+                </div>
+                
+                {/* Hover effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Adventure Stats */}
+        <div className={`transform transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 backdrop-blur-sm rounded-3xl p-8 border-2 border-orange-500/20">
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+                Adventure Statistics
               </h3>
-              <p className="text-gray-300 relative z-10">
-                A passionate technologist with a focus on artificial intelligence and entrepreneurship. My journey began with a deep fascination for how technology can solve real-world problems and improve lives.
-              </p>
+              <p className="text-gray-300">My journey in numbers - Luffy style!</p>
             </div>
             
-            <div className="anime-card relative group hover:transform hover:scale-[1.02] transition-all">
-              <div className="absolute inset-0 bg-gradient-to-br from-anime-teal/5 to-anime-amber/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-black text-orange-400 mb-2">500+</div>
+                <div className="text-gray-300 font-semibold">Battles Won</div>
+                <div className="text-xs text-gray-500">(Problems Solved)</div>
+              </div>
               
-              <h3 className="text-xl font-bold mb-4 text-anime-amber jp-text relative z-10">
-                <span className="text-sm block text-anime-teal mb-1">ミッション</span>
-                Mission
-              </h3>
-              <p className="text-gray-300 mb-4 relative z-10">
-                I build AI-driven solutions that make a meaningful impact. From legal advisory systems to health monitoring applications, my work focuses on creating accessible technology that addresses critical needs.
-              </p>
-              <p className="text-gray-300 relative z-10">
-                As an entrepreneur, I founded Revithalize at Mercedes-Benz Research & Development, developing modular EV retrofitting kits for sustainability. My leadership extends to entrepreneurship communities, where I organize events and hackathons to foster innovation.
-              </p>
-            </div>
-            
-            <div className="anime-card relative group hover:transform hover:scale-[1.02] transition-all">
-              <div className="absolute inset-0 bg-gradient-to-br from-anime-teal/5 to-anime-amber/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-black text-blue-400 mb-2">50+</div>
+                <div className="text-gray-300 font-semibold">Islands Explored</div>
+                <div className="text-xs text-gray-500">(Projects Completed)</div>
+              </div>
               
-              <h3 className="text-xl font-bold mb-4 text-anime-amber jp-text relative z-10">
-                <span className="text-sm block text-anime-teal mb-1">専門分野</span>
-                Specializations
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 relative z-10">
-                <div className="bg-anime-midnight/60 border border-anime-teal/20 rounded p-3 text-center hover:border-anime-amber/50 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-[0_0_15px_rgba(15,155,142,0.2)]">
-                  <span className="block text-anime-teal">AI Engineering</span>
-                </div>
-                <div className="bg-anime-midnight/60 border border-anime-teal/20 rounded p-3 text-center hover:border-anime-amber/50 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-[0_0_15px_rgba(15,155,142,0.2)]">
-                  <span className="block text-anime-teal">Entrepreneurship</span>
-                </div>
-                <div className="bg-anime-midnight/60 border border-anime-teal/20 rounded p-3 text-center hover:border-anime-amber/50 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-[0_0_15px_rgba(15,155,142,0.2)]">
-                  <span className="block text-anime-teal">Deep Learning</span>
-                </div>
-                <div className="bg-anime-midnight/60 border border-anime-teal/20 rounded p-3 text-center hover:border-anime-amber/50 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-[0_0_15px_rgba(15,155,142,0.2)]">
-                  <span className="block text-anime-teal">Cybersecurity</span>
-                </div>
-                <div className="bg-anime-midnight/60 border border-anime-teal/20 rounded p-3 text-center hover:border-anime-amber/50 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-[0_0_15px_rgba(15,155,142,0.2)]">
-                  <span className="block text-anime-teal">Cloud Computing</span>
-                </div>
-                <div className="bg-anime-midnight/60 border border-anime-teal/20 rounded p-3 text-center hover:border-anime-amber/50 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-[0_0_15px_rgba(15,155,142,0.2)]">
-                  <span className="block text-anime-teal">Product Development</span>
-                </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-black text-purple-400 mb-2">10+</div>
+                <div className="text-gray-300 font-semibold">Crew Members</div>
+                <div className="text-xs text-gray-500">(Technologies Mastered)</div>
+              </div>
+              
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-black text-green-400 mb-2">∞</div>
+                <div className="text-gray-300 font-semibold">Dreams</div>
+                <div className="text-xs text-gray-500">(Ambition Level)</div>
               </div>
             </div>
           </div>

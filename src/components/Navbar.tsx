@@ -108,7 +108,7 @@ const Navbar = () => {
               Anime World
             </Link>
             
-            {/* Connect button */}
+            {/* Let's Connect button */}
             <Link 
               to="/connect" 
               className="ml-3 px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg hover:from-orange-500 hover:to-red-500 transition-all duration-300 font-semibold tracking-wide text-sm shadow-xl shadow-orange-500/30"
@@ -132,12 +132,12 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Enhanced Mobile Navigation with Full Blur Background */}
+      {/* Enhanced Mobile Navigation with Perfect Blur Background */}
       {mobileMenuOpen && (
         <div className="md:hidden fixed inset-0 z-40">
-          {/* Blurred backdrop */}
+          {/* Perfect blurred backdrop that hides hero */}
           <div 
-            className="absolute inset-0 bg-[#121212]/95 backdrop-blur-xl"
+            className="absolute inset-0 bg-[#121212]/98 backdrop-blur-2xl"
             onClick={toggleMobileMenu}
           />
           

@@ -1,215 +1,235 @@
 
-import React, { useEffect, useState } from 'react';
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Github, Linkedin, Twitter, Instagram, Mail, Globe, ArrowRight, ChevronDown } from 'lucide-react';
+import React, { useEffect, useState, useRef } from 'react';
+import { ChevronDown, Anchor, Compass, Star, Zap } from 'lucide-react';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [nameTyped, setNameTyped] = useState('');
-  const [quoteTyped, setQuoteTyped] = useState('');
-  const [showEnglish, setShowEnglish] = useState(false);
-  const fullName = 'Saikoushik Nalubola';
-  const japaneseQuote = '海賊王に俺はなる！';
-  const englishQuote = '"I\'m gonna be King of the Pirates!"';
+  const [typedText, setTypedText] = useState('');
+  const [showKingQuote, setShowKingQuote] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   
+  const fullText = "海賊王になる男だ！";
+  const kingQuote = "I'm gonna be King of the Pirates!";
+
   useEffect(() => {
-    setIsVisible(true);
-    
-    // Name typing animation
-    let index = 0;
-    const nameTimer = setInterval(() => {
-      if (index <= fullName.length) {
-        setNameTyped(fullName.slice(0, index));
-        index++;
-      } else {
-        clearInterval(nameTimer);
-        // Start quote animation after name is complete
-        setTimeout(() => {
-          let quoteIndex = 0;
-          const quoteTimer = setInterval(() => {
-            if (quoteIndex <= japaneseQuote.length) {
-              setQuoteTyped(japaneseQuote.slice(0, quoteIndex));
-              quoteIndex++;
-            } else {
-              clearInterval(quoteTimer);
-              // Show English translation after 2 seconds
-              setTimeout(() => setShowEnglish(true), 2000);
-            }
-          }, 100);
-        }, 500);
-      }
-    }, 80);
-    
-    return () => clearInterval(nameTimer);
+    const timer = setTimeout(() => setIsVisible(true), 300);
+    return () => clearTimeout(timer);
   }, []);
 
-  const socialLinks = [
-    { href: "https://github.com/saikoushiknalubola", icon: Github, label: "GitHub" },
-    { href: "https://www.linkedin.com/in/saikoushiknalubola", icon: Linkedin, label: "LinkedIn" },
-    { href: "https://x.com/saikoushik_42", icon: Twitter, label: "Twitter" },
-    { href: "https://www.instagram.com/saikoushiknalubola/", icon: Instagram, label: "Instagram" },
-    { href: "mailto:saikoushik42@gmail.com", icon: Mail, label: "Email" },
-    { href: "https://saikoushiknalubola.netlify.app/", icon: Globe, label: "Portfolio" }
-  ];
+  useEffect(() => {
+    if (isVisible) {
+      let i = 0;
+      const typingTimer = setInterval(() => {
+        if (i < fullText.length) {
+          setTypedText(fullText.slice(0, i + 1));
+          i++;
+        } else {
+          clearInterval(typingTimer);
+          // Show English quote after Japanese typing is complete
+          setTimeout(() => {
+            setShowKingQuote(true);
+            // Trigger voice if audio element exists
+            if (audioRef.current) {
+              audioRef.current.play().catch(console.error);
+            }
+          }, 500);
+        }
+      }, 150);
 
-  const scrollToJoinCrew = () => {
-    const onePieceSection = document.querySelector('#onepiece-section');
-    if (onePieceSection) {
-      const formElement = onePieceSection.querySelector('#join-crew-form');
-      if (formElement) {
-        formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+      return () => clearInterval(typingTimer);
+    }
+  }, [isVisible, fullText]);
+
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 pt-24 pb-20 md:pb-32 overflow-hidden bg-[#121212]">
-      {/* Enhanced Background with One Piece inspired elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Treasure map inspired grid */}
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,215,0,0.4) 1px, transparent 0)`,
-            backgroundSize: '50px 50px'
-          }} />
+    <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
+      {/* Background Elements - One Piece Themed */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Floating Straw Hat symbols */}
+        <div className="absolute top-20 left-10 w-16 h-16 opacity-20 animate-float">
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+            <div className="w-8 h-1 bg-red-600 rounded-full"></div>
+          </div>
         </div>
         
-        {/* Floating elements inspired by One Piece */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-yellow-400/30 rounded-full animate-float" style={{ animationDelay: '0s' }} />
-        <div className="absolute top-3/4 right-1/4 w-3 h-3 bg-orange-400/20 rounded-full animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-red-400/40 rounded-full animate-float" style={{ animationDelay: '4s' }} />
+        {/* Treasure chest */}
+        <div className="absolute bottom-40 right-20 w-12 h-12 opacity-30 animate-float" style={{ animationDelay: '2s' }}>
+          <div className="w-full h-full bg-gradient-to-br from-amber-600 to-yellow-700 rounded-lg flex items-center justify-center">
+            <Star className="w-6 h-6 text-yellow-300" />
+          </div>
+        </div>
         
-        {/* Enhanced gradient orbs */}
-        <div className="absolute top-20 left-10 w-40 h-40 md:w-64 md:h-64 rounded-full bg-gradient-to-r from-orange-500/15 to-red-500/15 blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-32 h-32 md:w-56 md:h-56 rounded-full bg-gradient-to-r from-blue-500/15 to-cyan-500/15 blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        {/* Jolly Roger skull */}
+        <div className="absolute top-1/3 right-1/4 w-20 h-20 opacity-15 animate-float" style={{ animationDelay: '4s' }}>
+          <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
+            <div className="text-2xl">☠️</div>
+          </div>
+        </div>
+        
+        {/* Compass */}
+        <div className="absolute bottom-1/3 left-1/4 w-14 h-14 opacity-25 animate-float" style={{ animationDelay: '1s' }}>
+          <Compass className="w-full h-full text-blue-400" />
+        </div>
+        
+        {/* Anchor */}
+        <div className="absolute top-1/2 left-10 w-16 h-16 opacity-20 animate-float" style={{ animationDelay: '3s' }}>
+          <Anchor className="w-full h-full text-blue-500" />
+        </div>
+
+        {/* Adventure sparkles */}
+        <div className="absolute top-1/4 left-1/3 w-3 h-3 bg-yellow-400 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-3/4 left-1/2 w-4 h-4 bg-red-400 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
-      
-      <div className="relative z-10 w-full max-w-4xl mx-auto">
-        <div className="text-center space-y-6">
-          {/* Profile Image with Straw Hat inspired styling */}
-          <div className={`transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}>
-            <div className="relative inline-block">
-              <Avatar className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto ring-4 ring-orange-500/40 ring-offset-4 ring-offset-[#121212] shadow-2xl shadow-orange-500/20">
-                <AvatarImage 
-                  src="/lovable-uploads/1466490d-7b5c-4b9c-9b5e-584004601ca5.png" 
-                  alt="Saikoushik Nalubola" 
-                  className="object-cover"
-                />
-                <AvatarFallback className="text-xl bg-gradient-to-br from-orange-600 to-red-700 text-white font-bold">
-                  SN
-                </AvatarFallback>
-              </Avatar>
-              
-              {/* Luffy's hat inspired indicator */}
-              <div className="absolute -bottom-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-full border-3 border-[#121212] flex items-center justify-center shadow-lg">
-                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-400 rounded-full animate-pulse" />
-              </div>
-            </div>
+
+      {/* Hidden audio element for voice */}
+      <audio ref={audioRef} preload="none">
+        {/* This would work with ElevenLabs API - user needs to add API key */}
+        <source src="/api/voice/luffy-king-quote.mp3" type="audio/mpeg" />
+      </audio>
+
+      {/* Main Content */}
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        {/* Wanted Poster Style Header */}
+        <div className="mb-8 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-600/20 to-yellow-600/20 blur-3xl rounded-full"></div>
+          <div className="relative bg-gradient-to-br from-amber-100 to-yellow-200 text-black p-6 rounded-xl border-4 border-amber-800 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
+            <div className="text-xl font-black mb-2 font-mono">WANTED</div>
+            <div className="text-3xl md:text-4xl font-black">SAIKOUSHIK NALUBOLA</div>
+            <div className="text-lg font-bold mt-2">BOUNTY: ∞ BERRIES</div>
+            <div className="text-sm mt-1 font-semibold">DEAD OR ALIVE</div>
           </div>
-          
-          {/* Role Tags with One Piece crew inspired styling */}
-          <div className={`flex flex-wrap justify-center gap-2 sm:gap-3 transform transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <span className="px-4 py-2 text-sm font-bold bg-orange-500/20 text-orange-300 rounded-full border-2 border-orange-500/40 shadow-lg">
-              Captain
-            </span>
-            <span className="px-4 py-2 text-sm font-bold bg-red-500/20 text-red-300 rounded-full border-2 border-red-500/40 shadow-lg">
-              AI Pirate
-            </span>
-            <span className="px-4 py-2 text-sm font-bold bg-blue-500/20 text-blue-300 rounded-full border-2 border-blue-500/40 shadow-lg">
-              Code Navigator
-            </span>
-          </div>
-          
-          {/* Greeting & Name */}
-          <div className={`space-y-3 transform transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <p className="text-lg md:text-xl text-gray-300 font-light">
-              Ahoy! I'm
+        </div>
+
+        {/* Main Title with Luffy's Energy */}
+        <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-tight transform transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-pulse-glow">
+            Future
+          </span>
+          <br />
+          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            Pirate King
+          </span>
+          <br />
+          <span className="bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent">
+            of Code
+          </span>
+        </h1>
+
+        {/* Japanese Quote with Enhanced Animation */}
+        <div className={`mb-8 transform transition-all duration-1000 delay-500 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="relative inline-block">
+            <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-orange-400 jp-text mb-4 min-h-[3rem] flex items-center justify-center">
+              {typedText}
+              <span className="animate-pulse ml-1 text-red-500">|</span>
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight">
-              <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
-                {nameTyped}
-              </span>
-              <span className="animate-pulse text-orange-400">|</span>
-            </h1>
-          </div>
-          
-          {/* One Piece Quote Section */}
-          <div className={`space-y-4 transform transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            {/* Japanese Quote */}
-            <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 backdrop-blur-sm border border-orange-500/30 rounded-lg p-4 md:p-6 max-w-2xl mx-auto">
-              <div className="text-2xl md:text-3xl font-bold text-orange-300 mb-2 font-mono tracking-wider">
-                {quoteTyped}
-                {quoteTyped.length === japaneseQuote.length && <span className="animate-pulse">|</span>}
-              </div>
-              
-              {/* English Translation with fade-in effect */}
-              <div className={`transform transition-all duration-1000 ${showEnglish ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
-                <p className="text-gray-300 text-base md:text-lg italic">
-                  {englishQuote}
-                </p>
-                <p className="text-orange-400 text-sm mt-2 font-semibold">
-                  — Monkey D. Luffy
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Description with pirate theme */}
-          <div className={`transform transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed px-2">
-              Sailing the digital seas, discovering 
-              <span className="text-orange-400 font-bold"> AI treasures</span> and building 
-              <span className="text-red-400 font-bold"> legendary applications</span> that change the world
-            </p>
-          </div>
-          
-          {/* Social Links */}
-          <div className={`flex justify-center gap-3 sm:gap-4 py-4 transform transition-all duration-1000 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target={social.href.startsWith('mailto:') ? undefined : '_blank'}
-                rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
-                className="group relative p-3 bg-white/5 hover:bg-orange-500/20 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-orange-500/30 border border-white/10 hover:border-orange-500/50"
-                aria-label={social.label}
-              >
-                <social.icon className="w-5 h-5 text-gray-400 group-hover:text-orange-300 transition-colors duration-300" />
-                
-                {/* Enhanced tooltip */}
-                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gray-900/95 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-orange-500/30">
-                  {social.label}
-                </div>
-              </a>
-            ))}
-          </div>
-          
-          {/* CTA Buttons with pirate theme */}
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center pt-6 px-4 transform transition-all duration-1000 delay-1100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <a
-              href="#projects"
-              className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-lg hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/40 text-base"
-            >
-              Set Sail to Projects
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
             
-            <button
-              onClick={scrollToJoinCrew}
-              className="group inline-flex items-center justify-center px-8 py-4 border-2 border-orange-500 text-orange-300 font-bold rounded-lg hover:bg-orange-500/10 hover:border-red-400 hover:text-red-300 transition-all duration-300 hover:scale-105 text-base"
-            >
-              Join My Crew
-            </button>
+            {/* English translation with voice trigger */}
+            {showKingQuote && (
+              <div className="animate-fade-in">
+                <p className="text-lg md:text-xl text-gray-300 italic font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent animate-pulse-glow">
+                  "{kingQuote}"
+                </p>
+                <div className="mt-2 text-sm text-gray-500">
+                  - The Man Who Will Revolutionize Tech
+                </div>
+              </div>
+            )}
           </div>
         </div>
+
+        {/* Luffy-Style Description */}
+        <div className={`mb-12 transform transition-all duration-1000 delay-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
+              Ahoy! I'm <span className="text-orange-400 font-bold">Saikoushik</span>, and I'm gonna be the greatest developer who ever lived! 
+              Just like how Luffy believes in his dream to become Pirate King, I believe in creating 
+              <span className="text-blue-400 font-bold"> revolutionary tech solutions</span> that'll change the world!
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 p-4 rounded-xl border border-red-500/30">
+                <Zap className="w-8 h-8 text-red-400 mb-2 mx-auto" />
+                <h3 className="font-bold text-red-400 mb-2">Gear 2nd: AI Power</h3>
+                <p className="text-sm text-gray-300">Accelerating innovation with Machine Learning & AI</p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-4 rounded-xl border border-blue-500/30">
+                <Star className="w-8 h-8 text-blue-400 mb-2 mx-auto" />
+                <h3 className="font-bold text-blue-400 mb-2">Gear 3rd: Full-Stack</h3>
+                <p className="text-sm text-gray-300">Giant solutions from frontend to backend</p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-4 rounded-xl border border-purple-500/30">
+                <Compass className="w-8 h-8 text-purple-400 mb-2 mx-auto" />
+                <h3 className="font-bold text-purple-400 mb-2">Gear 4th: Innovation</h3>
+                <p className="text-sm text-gray-300">Bouncing between impossibilities to make them possible</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action Buttons */}
+        <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 transform transition-all duration-1000 delay-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <a
+            href="#about"
+            className="px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-lg hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-105 shadow-xl shadow-orange-500/30 inline-flex items-center space-x-2 min-w-[200px] justify-center"
+          >
+            <span>Join My Adventure!</span>
+            <Anchor className="w-5 h-5" />
+          </a>
+          
+          <a
+            href="#projects"
+            className="px-8 py-4 border-2 border-blue-500 text-blue-300 font-bold rounded-lg hover:bg-blue-500/10 transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2 min-w-[200px] justify-center"
+          >
+            <span>Legendary Projects</span>
+            <Star className="w-5 h-5" />
+          </a>
+        </div>
       </div>
-      
-      {/* Fixed Scroll Indicator with better spacing */}
-      <div className="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-        <div className="flex flex-col items-center space-y-2">
-          <div className="w-0.5 h-6 md:h-8 bg-gradient-to-b from-orange-500 to-transparent rounded-full" />
-          <ChevronDown className="w-4 h-4 md:w-5 md:h-5 text-orange-500" />
-          <span className="text-xs text-orange-400 font-bold tracking-wider">ADVENTURE</span>
+
+      {/* Fixed Adventures Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-3 z-10">
+        <div className="text-center mb-4">
+          <p className="text-orange-400 font-bold text-sm jp-text animate-pulse">
+            冒険が始まる
+          </p>
+          <p className="text-gray-400 text-xs italic">
+            (The Adventure Begins)
+          </p>
+        </div>
+        
+        <button
+          onClick={scrollToAbout}
+          className="group relative p-4 rounded-full bg-gradient-to-br from-orange-500/20 to-red-500/20 border-2 border-orange-500/40 hover:border-orange-400 transition-all duration-300 hover:scale-110 animate-float"
+          aria-label="Scroll to adventures"
+        >
+          {/* Treasure map styling */}
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-400/10 to-yellow-600/10 blur-lg group-hover:blur-xl transition-all duration-300"></div>
+          
+          <ChevronDown className="w-6 h-6 text-orange-400 relative z-10 animate-bounce" />
+          
+          {/* Sparkle effect */}
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
+        </button>
+        
+        <div className="text-xs text-gray-500 text-center animate-scroll-hint">
+          Scroll for Epic Adventures
         </div>
       </div>
     </section>

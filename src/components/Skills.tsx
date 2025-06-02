@@ -1,205 +1,312 @@
 
-import React, { useEffect } from 'react';
-
-interface Skill {
-  name: string;
-  level: number;
-  category: string;
-}
+import React, { useState, useEffect } from 'react';
+import { Code, Database, Smartphone, Brain, Globe, Zap, FileText, Crown, Star, Anchor } from 'lucide-react';
 
 const Skills = () => {
-  const skills: Skill[] = [
-    // Technical Skills
-    { name: "Python", level: 90, category: "technical" },
-    { name: "C++", level: 80, category: "technical" },
-    { name: "Java", level: 75, category: "technical" },
-    { name: "Machine Learning", level: 85, category: "technical" },
-    { name: "Deep Learning", level: 80, category: "technical" },
-    { name: "Generative AI", level: 85, category: "technical" },
-    { name: "Cybersecurity", level: 75, category: "technical" },
-    { name: "Cloud Computing", level: 70, category: "technical" },
-    { name: "Front-End Development", level: 65, category: "technical" },
-    
-    // Entrepreneurial Skills
-    { name: "Business Model Validation", level: 85, category: "entrepreneurial" },
-    { name: "Fundraising Strategies", level: 80, category: "entrepreneurial" },
-    { name: "Go-to-Market Strategy", level: 75, category: "entrepreneurial" },
-    { name: "Product Development", level: 85, category: "entrepreneurial" },
-    { name: "Pitching & Negotiation", level: 90, category: "entrepreneurial" },
-  ];
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeHaki, setActiveHaki] = useState(0);
 
-  // Function to animate skill bars
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
         if (entry.isIntersecting) {
-          const skillBars = entry.target.querySelectorAll('.skill-progress');
-          
-          skillBars.forEach((bar: Element) => {
-            const htmlBar = bar as HTMLElement;
-            const width = htmlBar.dataset.width;
-            htmlBar.style.width = width || '0%';
-          });
+          setIsVisible(true);
         }
-      });
-    }, { threshold: 0.1 });
+      },
+      { threshold: 0.1 }
+    );
 
-    const skillsSection = document.querySelector('#skills');
-    if (skillsSection) {
-      observer.observe(skillsSection);
-    }
+    const element = document.getElementById('skills');
+    if (element) observer.observe(element);
 
-    return () => {
-      if (skillsSection) {
-        observer.unobserve(skillsSection);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
-  // Group skills by category
-  const technicalSkills = skills.filter(skill => skill.category === "technical");
-  const entrepreneurialSkills = skills.filter(skill => skill.category === "entrepreneurial");
-  
-  // Certifications data
-  const certifications = [
-    "IBM AI Engineering Professional Certificate",
-    "Google AI Essentials",
-    "IBM Machine Learning Professional Certificate",
-    "Programming with Generative AI (IIT-Guwahati)",
-    "Machine Learning (Internshala & IITM Pravartak)",
-    "Google Cybersecurity Professional Certificate"
+  const hakiPowers = [
+    {
+      name: "Observation Haki",
+      japaneseName: "見聞色の覇気",
+      description: "The ability to sense and analyze data patterns, predict user behavior, and foresee potential bugs before they manifest!",
+      realSkills: ["Data Analysis", "User Research", "Bug Prevention", "Performance Monitoring"],
+      mastery: 95,
+      color: "from-blue-500 to-cyan-500",
+      icon: Brain
+    },
+    {
+      name: "Armament Haki",
+      japaneseName: "武装色の覇気",
+      description: "Hardened coding skills that can break through any technical barrier and solve the most impossible problems!",
+      realSkills: ["Problem Solving", "Debugging", "System Architecture", "Code Optimization"],
+      mastery: 90,
+      color: "from-gray-600 to-gray-800",
+      icon: Zap
+    },
+    {
+      name: "Conqueror's Haki",
+      japaneseName: "覇王色の覇気",
+      description: "The rare ability to lead teams, inspire innovation, and dominate technical challenges that make others give up!",
+      realSkills: ["Team Leadership", "Project Management", "Innovation", "Technical Strategy"],
+      mastery: 85,
+      color: "from-purple-500 to-pink-500",
+      icon: Crown
+    }
+  ];
+
+  const devilFruitPowers = [
+    {
+      name: "Gomu Gomu no Programming",
+      type: "Frontend Mastery",
+      description: "My code stretches across all devices and platforms, adapting to any screen size or user need!",
+      abilities: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "Angular"],
+      mastery: 92,
+      gradient: "from-orange-500 to-red-500"
+    },
+    {
+      name: "Mera Mera no Backend",
+      type: "Server-Side Fire",
+      description: "Burning through backend challenges with blazing fast APIs and rock-solid database architectures!",
+      abilities: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Express", "FastAPI"],
+      mastery: 88,
+      gradient: "from-red-500 to-yellow-500"
+    },
+    {
+      name: "Goro Goro no AI",
+      type: "Lightning Intelligence",
+      description: "Harnessing the power of artificial intelligence to create solutions faster than lightning strikes!",
+      abilities: ["Machine Learning", "TensorFlow", "PyTorch", "OpenAI", "Computer Vision", "NLP"],
+      mastery: 85,
+      gradient: "from-blue-500 to-purple-500"
+    },
+    {
+      name: "Suna Suna no Cloud",
+      type: "Desert of Scalability",
+      description: "Like sand, my applications can scale infinitely and adapt to any environment in the cloud!",
+      abilities: ["AWS", "Docker", "Kubernetes", "CI/CD", "Microservices", "Serverless"],
+      mastery: 80,
+      gradient: "from-yellow-500 to-orange-500"
+    }
+  ];
+
+  const grandLineSkills = [
+    { name: "JavaScript/TypeScript", level: 95, island: "Logue Town" },
+    { name: "React/Next.js", level: 92, island: "Whiskey Peak" },
+    { name: "Python", level: 90, island: "Little Garden" },
+    { name: "Node.js", level: 88, island: "Drum Island" },
+    { name: "AI/ML", level: 85, island: "Alabasta" },
+    { name: "PostgreSQL", level: 82, island: "Jaya" },
+    { name: "AWS/Cloud", level: 80, island: "Skypiea" },
+    { name: "Docker/K8s", level: 78, island: "Water 7" }
   ];
 
   return (
-    <section id="skills" className="py-20 px-4 bg-gradient-to-b from-gray-900 to-anime-midnight">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="section-heading">Skills & Abilities</h2>
-        
-        <div className="mt-12 grid md:grid-cols-2 gap-8">
-          {/* Technical Skills */}
-          <div className="anime-card">
-            <h3 className="text-xl font-bold mb-6 text-anime-amber flex items-center">
-              <span className="mr-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </span>
-              Technical Skills
-            </h3>
-            
-            <div className="space-y-4">
-              {technicalSkills.map((skill, index) => (
-                <div key={index} className="space-y-1">
-                  <div className="flex justify-between">
-                    <span className="text-gray-300">{skill.name}</span>
-                    <span className="text-anime-teal">{skill.level}%</span>
-                  </div>
-                  <div className="skill-bar">
-                    <div 
-                      className="skill-progress" 
-                      data-width={`${skill.level}%`}
-                      style={{ width: '0%' }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
+    <section id="skills" className="py-20 px-4 bg-[#121212] relative overflow-hidden">
+      {/* Background One Piece Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-40 right-20 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-orange-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Haki & Devil Fruit Header */}
+        <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex items-center justify-center space-x-3 mb-6">
+            <Star className="w-8 h-8 text-purple-500" />
+            <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 bg-clip-text text-transparent">
+              Haki & Devil Fruits
+            </h2>
+            <Crown className="w-8 h-8 text-cyan-500" />
           </div>
           
-          {/* Entrepreneurial Skills */}
-          <div className="anime-card">
-            <h3 className="text-xl font-bold mb-6 text-anime-amber flex items-center">
-              <span className="mr-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </span>
-              Entrepreneurial Skills
-            </h3>
-            
-            <div className="space-y-4">
-              {entrepreneurialSkills.map((skill, index) => (
-                <div key={index} className="space-y-1">
-                  <div className="flex justify-between">
-                    <span className="text-gray-300">{skill.name}</span>
-                    <span className="text-anime-amber">{skill.level}%</span>
-                  </div>
-                  <div className="skill-bar">
-                    <div 
-                      className="skill-progress" 
-                      data-width={`${skill.level}%`}
-                      style={{ width: '0%', backgroundImage: 'linear-gradient(to right, #e6af2e, #c4161c)' }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="mb-6">
+            <p className="text-2xl md:text-3xl text-purple-400 jp-text font-bold">
+              覇気と悪魔の実
+            </p>
+            <p className="text-gray-400 italic">(Haki & Devil Fruit Powers)</p>
           </div>
+          
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Just like the strongest pirates in One Piece, I've mastered both Haki and Devil Fruit powers! 
+            These are my legendary abilities that help me conquer any coding challenge!
+          </p>
         </div>
-        
-        {/* Certifications */}
-        <div className="mt-12">
-          <h3 className="text-xl font-bold mb-6 text-anime-amber flex items-center">
-            <span className="mr-2">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-              </svg>
-            </span>
-            Certifications & Training
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {certifications.map((cert, index) => (
-              <div 
-                key={index} 
-                className="p-4 bg-gray-900/70 border border-anime-teal/20 rounded-md hover:border-anime-amber/50 transition-colors"
+
+        {/* Haki Powers */}
+        <div className={`mb-16 transform transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Three Types of Haki Mastery
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            {hakiPowers.map((haki, index) => (
+              <div
+                key={index}
+                className="group relative bg-[#1a1a1a] rounded-2xl border-2 border-gray-700/50 hover:border-purple-500/50 p-8 transition-all duration-500 hover:scale-105 cursor-pointer"
+                onClick={() => setActiveHaki(index)}
               >
-                <div className="flex items-start">
-                  <span className="text-anime-teal mr-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                  </span>
-                  <span className="text-gray-300">{cert}</span>
+                <div className={`absolute inset-0 bg-gradient-to-br ${haki.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`} />
+                
+                <div className="relative z-10">
+                  <div className="text-center mb-6">
+                    <div className={`mx-auto w-20 h-20 bg-gradient-to-br ${haki.color} rounded-full flex items-center justify-center shadow-2xl mb-4`}>
+                      <haki.icon className="w-10 h-10 text-white" />
+                    </div>
+                    
+                    <h4 className="text-2xl font-bold text-white mb-2">{haki.name}</h4>
+                    <p className="text-sm text-gray-400 jp-text">{haki.japaneseName}</p>
+                  </div>
+                  
+                  <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                    {haki.description}
+                  </p>
+                  
+                  <div className="mb-6">
+                    <div className="flex justify-between text-sm text-gray-400 mb-2">
+                      <span>Mastery Level</span>
+                      <span>{haki.mastery}%</span>
+                    </div>
+                    <div className="skill-bar">
+                      <div 
+                        className="skill-progress" 
+                        style={{ width: `${haki.mastery}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h5 className="text-sm font-semibold text-gray-300 mb-3">Real-World Applications:</h5>
+                    <div className="flex flex-wrap gap-2">
+                      {haki.realSkills.map((skill, skillIndex) => (
+                        <span 
+                          key={skillIndex}
+                          className="px-3 py-1 text-xs rounded-full bg-gray-800/80 text-gray-300 border border-gray-600/50"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        
-        {/* Leadership */}
-        <div className="mt-12 anime-card">
-          <h3 className="text-xl font-bold mb-6 text-anime-amber">Leadership & Entrepreneurship</h3>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="p-2 bg-anime-midnight rounded-full mr-3 mt-1">
-                  <svg className="w-5 h-5 text-anime-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-anime-teal">SRU E-Cell, SR University</h4>
-                  <p className="text-sm text-gray-400 mb-2">Chairperson • Jul 2024 - Present</p>
-                  <p className="text-gray-300 text-sm">Led strategic planning for entrepreneurship events, boosting student participation by 60%.</p>
+
+        {/* Devil Fruit Powers */}
+        <div className={`mb-16 transform transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+              Devil Fruit Encyclopedia
+            </h3>
+            <p className="text-gray-300">My legendary technical abilities that defy the laws of conventional programming!</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {devilFruitPowers.map((fruit, index) => (
+              <div
+                key={index}
+                className="group relative bg-[#1a1a1a] rounded-2xl border-2 border-gray-700/50 hover:border-orange-500/50 p-8 transition-all duration-500 hover:scale-105"
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${fruit.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`} />
+                
+                <div className="relative z-10">
+                  <div className="mb-6">
+                    <div className="flex items-center space-x-3 mb-3">
+                      <div className={`p-3 rounded-xl bg-gradient-to-br ${fruit.gradient} shadow-lg`}>
+                        <Code className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-white">{fruit.name}</h4>
+                        <p className="text-sm text-gray-400">{fruit.type}</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-gray-300 text-sm leading-relaxed mb-4">
+                      {fruit.description}
+                    </p>
+                  </div>
+                  
+                  <div className="mb-6">
+                    <div className="flex justify-between text-sm text-gray-400 mb-2">
+                      <span>Devil Fruit Mastery</span>
+                      <span>{fruit.mastery}%</span>
+                    </div>
+                    <div className="skill-bar">
+                      <div 
+                        className="skill-progress" 
+                        style={{ width: `${fruit.mastery}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h5 className="text-sm font-semibold text-gray-300 mb-3">Special Abilities:</h5>
+                    <div className="grid grid-cols-2 gap-2">
+                      {fruit.abilities.map((ability, abilityIndex) => (
+                        <span 
+                          key={abilityIndex}
+                          className="px-3 py-1 text-xs rounded-full bg-gray-800/80 text-gray-300 border border-gray-600/50 text-center"
+                        >
+                          {ability}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Grand Line Progress */}
+        <div className={`transform transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm rounded-3xl p-8 border-2 border-blue-500/20">
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Grand Line Journey Progress
+              </h3>
+              <p className="text-gray-300 mb-2">
+                グランドライン進歩
+              </p>
+              <p className="text-gray-400 italic mb-4">(Grand Line Progress)</p>
+              <p className="text-gray-300">
+                Each skill represents an island I've conquered on my journey through the Grand Line of programming!
+              </p>
             </div>
             
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="p-2 bg-anime-midnight rounded-full mr-3 mt-1">
-                  <svg className="w-5 h-5 text-anime-crimson" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {grandLineSkills.map((skill, index) => (
+                <div key={index} className="flex items-center space-x-4 p-4 bg-[#1a1a1a] rounded-xl border border-gray-700/50">
+                  <div className="flex-shrink-0">
+                    <Anchor className="w-6 h-6 text-blue-400" />
+                  </div>
+                  
+                  <div className="flex-grow">
+                    <div className="flex justify-between items-center mb-2">
+                      <div>
+                        <span className="text-white font-semibold">{skill.name}</span>
+                        <span className="text-xs text-gray-500 ml-2">({skill.island})</span>
+                      </div>
+                      <span className="text-sm text-blue-400 font-semibold">{skill.level}%</span>
+                    </div>
+                    
+                    <div className="skill-bar">
+                      <div 
+                        className="skill-progress" 
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-anime-teal">SRU Cyber Security Club</h4>
-                  <p className="text-sm text-gray-400 mb-2">Vice-Chairperson • Jul 2024 - Present</p>
-                  <p className="text-gray-300 text-sm">Spearheaded cybersecurity initiatives, workshops, and awareness campaigns for 200+ students.</p>
-                </div>
-              </div>
+              ))}
+            </div>
+            
+            <div className="text-center mt-8">
+              <p className="text-gray-300 italic">
+                "The skills I've gained aren't just tools - they're the power to make dreams come true!" - Future Pirate King of Code
+              </p>
             </div>
           </div>
         </div>

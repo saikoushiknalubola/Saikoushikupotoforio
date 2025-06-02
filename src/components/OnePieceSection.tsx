@@ -1,10 +1,11 @@
+
 import React, { useState, useEffect } from 'react';
-import { Anchor, Compass, Sword, Users, Target, Zap } from 'lucide-react';
+import { Anchor, Crown, Star, Heart, Zap, Users, Map, Treasure, Send } from 'lucide-react';
 import JoinCrewForm from './JoinCrewForm';
 
 const OnePieceSection = () => {
-  const [activeCrewMember, setActiveCrewMember] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -16,179 +17,136 @@ const OnePieceSection = () => {
       { threshold: 0.1 }
     );
 
-    const element = document.getElementById('onepiece-section');
+    const element = document.getElementById('one-piece-section');
     if (element) observer.observe(element);
 
     return () => observer.disconnect();
   }, []);
 
-  const crewMembers = [
+  const crewBenefits = [
     {
-      name: "The Captain",
-      role: "AI Navigator",
-      power: "Gomu Gomu no Code",
-      description: "Leading the crew through uncharted digital waters, turning impossible dreams into reality with the power of artificial intelligence.",
-      color: "from-red-500 to-orange-500",
-      icon: Anchor,
-      skills: ["Leadership", "AI/ML", "Vision"]
+      title: "Epic Adventures Await",
+      description: "Join me on legendary coding quests that'll challenge your skills and expand your horizons!",
+      icon: Map,
+      color: "from-blue-500 to-cyan-500"
     },
     {
-      name: "Technical Swordsman", 
-      role: "Full-Stack Developer",
-      power: "Three-Stack Style",
-      description: "Mastering frontend, backend, and database with the precision of a legendary swordsman's three-sword technique.",
-      color: "from-green-500 to-emerald-500",
-      icon: Sword,
-      skills: ["React", "Node.js", "Databases"]
+      title: "Treasure Hunting (Opportunities)",
+      description: "Discover amazing opportunities, collaborations, and projects that'll boost your career!",
+      icon: Treasure,
+      color: "from-yellow-500 to-orange-500"
     },
     {
-      name: "Digital Navigator",
-      role: "Data Scientist", 
-      power: "Weather Prediction Algorithms",
-      description: "Charting courses through complex data storms, predicting market trends like weather patterns on the Grand Line.",
-      color: "from-blue-500 to-cyan-500",
-      icon: Compass,
-      skills: ["Data Analysis", "Machine Learning", "Statistics"]
+      title: "Nakama Power",
+      description: "Build lasting friendships with fellow developers who share your passion for innovation!",
+      icon: Heart,
+      color: "from-pink-500 to-red-500"
     },
     {
-      name: "Innovation Sniper",
-      role: "Problem Solver",
-      power: "Precision Debugging",
-      description: "Taking down bugs from impossible distances with pinpoint accuracy and innovative solutions that never miss their mark.",
-      color: "from-yellow-500 to-amber-500", 
-      icon: Target,
-      skills: ["Problem Solving", "Innovation", "Quality Assurance"]
-    }
-  ];
-
-  const devilFruitPowers = [
-    {
-      name: "Code-Code Fruit",
-      power: "Transform ideas into functional applications",
-      mastery: 95
-    },
-    {
-      name: "AI-AI Fruit", 
-      power: "Harness machine learning algorithms",
-      mastery: 90
-    },
-    {
-      name: "Debug-Debug Fruit",
-      power: "Instantly locate and fix any bug",
-      mastery: 88
-    },
-    {
-      name: "Scale-Scale Fruit",
-      power: "Make applications handle massive loads",
-      mastery: 85
+      title: "Leveling Up Together",
+      description: "Learn cutting-edge technologies and level up your skills alongside an ambitious crew!",
+      icon: Zap,
+      color: "from-purple-500 to-indigo-500"
     }
   ];
 
   return (
-    <section id="onepiece-section" className="py-20 px-4 bg-gradient-to-b from-[#121212] to-[#1a1a1a] relative overflow-hidden">
-      {/* Animated background elements */}
+    <section id="one-piece-section" className="py-20 px-4 bg-gradient-to-br from-[#0a1628] via-[#121212] to-[#2d1810] relative overflow-hidden">
+      {/* One Piece Themed Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-40 right-20 w-40 h-40 bg-red-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-yellow-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+        {/* Floating treasure and adventure elements */}
+        <div className="absolute top-20 left-10 w-24 h-24 opacity-20 animate-float">
+          <Crown className="w-full h-full text-yellow-600" />
+        </div>
+        <div className="absolute bottom-32 right-16 w-20 h-20 opacity-25 animate-float" style={{ animationDelay: '2s' }}>
+          <Anchor className="w-full h-full text-blue-500" />
+        </div>
+        <div className="absolute top-1/3 right-1/4 w-16 h-16 opacity-15 animate-float" style={{ animationDelay: '1s' }}>
+          <Star className="w-full h-full text-orange-500" />
+        </div>
+        <div className="absolute bottom-1/4 left-1/4 w-18 h-18 opacity-30 animate-float" style={{ animationDelay: '3s' }}>
+          <Treasure className="w-full h-full text-yellow-500" />
+        </div>
+        
+        {/* Background glow effects */}
+        <div className="absolute top-40 left-20 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-40 right-20 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-red-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Epic Header */}
         <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="flex items-center justify-center space-x-4 mb-6">
-            <Anchor className="w-8 h-8 text-orange-500" />
-            <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
-              Straw Hat Developer Crew
+          <div className="flex items-center justify-center space-x-4 mb-8">
+            <Anchor className="w-12 h-12 text-orange-500 animate-pulse-glow" />
+            <h2 className="text-4xl md:text-7xl font-black bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+              Join My Crew!
             </h2>
-            <Anchor className="w-8 h-8 text-orange-500 scale-x-[-1]" />
+            <Crown className="w-12 h-12 text-red-500 animate-pulse-glow" />
           </div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Every great pirate needs a legendary crew. Meet the different roles I embody in my journey to become the King of Developers!
-          </p>
+          
+          <div className="mb-8">
+            <p className="text-3xl md:text-4xl text-orange-400 jp-text font-bold mb-2">
+              俺の仲間になれ！
+            </p>
+            <p className="text-gray-400 italic mb-6">(Become My Nakama!)</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
+              Ahoy, future nakama! Just like Luffy gathered the most amazing crew to conquer the Grand Line, 
+              I'm looking for incredible people to join my epic journey to revolutionize the tech world!
+            </p>
+            
+            <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 backdrop-blur-sm rounded-3xl p-8 border-2 border-orange-500/30 mb-12">
+              <p className="text-lg text-gray-300 italic leading-relaxed">
+                "A crew isn't just about having skilled people - it's about having people who believe in the same dream, 
+                who'll fight alongside you through any storm, and who make the journey as incredible as the destination!"
+              </p>
+              <p className="text-orange-400 font-bold mt-4 text-xl">
+                - Captain Saikoushik, Future Pirate King of Code
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Crew Members Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {crewMembers.map((member, index) => (
-            <div
-              key={index}
-              className={`relative group cursor-pointer transform transition-all duration-500 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              } ${activeCrewMember === index ? 'scale-105' : 'hover:scale-105'}`}
-              style={{ transitionDelay: `${index * 0.1}s` }}
-              onClick={() => setActiveCrewMember(index)}
-            >
-              <div className={`relative p-6 rounded-2xl border-2 transition-all duration-300 min-h-[300px] ${
-                activeCrewMember === index 
-                  ? 'border-orange-500/60 shadow-2xl shadow-orange-500/20' 
-                  : 'border-gray-700/50 hover:border-orange-500/40'
-              }`}>
-                {/* Background gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${member.color} opacity-10 rounded-2xl`} />
-                
-                {/* Icon */}
-                <div className="relative flex justify-center mb-4">
-                  <div className={`p-4 rounded-full bg-gradient-to-br ${member.color} shadow-lg`}>
-                    <member.icon className="w-8 h-8 text-white" />
-                  </div>
-                </div>
+        {/* Crew Benefits */}
+        <div className={`mb-16 transform transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Why Join the Straw Hat Developers?
+            </h3>
+            <p className="text-xl text-gray-300">
+              Here's what awaits you on our legendary adventure!
+            </p>
+          </div>
 
-                {/* Content */}
-                <div className="relative text-center">
-                  <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
-                  <p className="text-orange-400 font-semibold mb-2">{member.role}</p>
-                  <div className="bg-gray-800/50 rounded-lg p-3 mb-4">
-                    <p className="text-sm text-yellow-300 font-bold">Devil Fruit Power:</p>
-                    <p className="text-red-400 font-semibold">{member.power}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {crewBenefits.map((benefit, index) => (
+              <div
+                key={index}
+                className="group relative bg-[#1a1a1a] rounded-2xl border-2 border-gray-700/50 hover:border-orange-500/50 p-8 transition-all duration-500 hover:scale-105"
+                style={{ transitionDelay: `${index * 0.1}s` }}
+              >
+                <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`} />
+                
+                <div className="relative z-10 text-center">
+                  <div className={`mx-auto w-20 h-20 bg-gradient-to-br ${benefit.color} rounded-full flex items-center justify-center shadow-2xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <benefit.icon className="w-10 h-10 text-white" />
                   </div>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4">{member.description}</p>
                   
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {member.skills.map((skill, skillIndex) => (
-                      <span 
-                        key={skillIndex}
-                        className="px-3 py-1 text-xs rounded-full bg-gray-800/80 text-gray-300 border border-gray-600/50"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                  <h4 className="text-xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-red-400">
+                    {benefit.title}
+                  </h4>
+                  
+                  <p className="text-gray-400 leading-relaxed text-sm">
+                    {benefit.description}
+                  </p>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
 
-        {/* Devil Fruit Powers Section */}
-        <div className={`bg-gradient-to-r from-purple-900/30 to-red-900/30 rounded-3xl p-8 border-2 border-purple-500/30 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center space-x-3 mb-4">
-              <Zap className="w-8 h-8 text-purple-400" />
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Devil Fruit Mastery Levels
-              </h3>
-              <Zap className="w-8 h-8 text-purple-400" />
-            </div>
-            <p className="text-gray-300">The legendary powers I've awakened on my coding journey</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {devilFruitPowers.map((fruit, index) => (
-              <div key={index} className="bg-black/30 rounded-xl p-6 border border-purple-500/20">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-lg font-bold text-purple-300">{fruit.name}</h4>
-                  <span className="text-2xl font-bold text-white">{fruit.mastery}%</span>
-                </div>
-                <p className="text-gray-400 text-sm mb-4">{fruit.power}</p>
-                
-                {/* Mastery bar */}
-                <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
-                  <div 
-                    className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-1000 ease-out rounded-full shadow-lg shadow-purple-500/50"
-                    style={{ width: isVisible ? `${fruit.mastery}%` : '0%' }}
-                  />
+                {/* Sparkle effect */}
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
                 </div>
               </div>
             ))}
@@ -196,7 +154,73 @@ const OnePieceSection = () => {
         </div>
 
         {/* Call to Action */}
-        <JoinCrewForm />
+        <div className={`text-center transform transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {!showForm ? (
+            <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 backdrop-blur-sm rounded-3xl p-12 border-2 border-orange-500/20">
+              <div className="mb-8">
+                <h3 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+                  Ready to Set Sail?
+                </h3>
+                <p className="text-xl text-gray-300 mb-2">
+                  冒険の準備はできましたか？
+                </p>
+                <p className="text-gray-400 italic mb-6">(Are you ready for adventure?)</p>
+              </div>
+              
+              <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Whether you're a seasoned developer looking for your next epic quest, a student eager to learn from a future Pirate King, 
+                or just someone who believes in the power of dreams - there's a place for you in my crew!
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="group inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-110 shadow-2xl shadow-orange-500/40 text-lg"
+                >
+                  <Users className="w-6 h-6 group-hover:animate-bounce" />
+                  <span>Join My Crew!</span>
+                  <Crown className="w-6 h-6 group-hover:animate-pulse" />
+                </button>
+                
+                <a
+                  href="/connect"
+                  className="inline-flex items-center space-x-3 px-10 py-5 border-3 border-blue-500 text-blue-300 font-bold rounded-xl hover:bg-blue-500/10 transition-all duration-300 hover:scale-105 text-lg"
+                >
+                  <Send className="w-6 h-6" />
+                  <span>Direct Message</span>
+                </a>
+              </div>
+              
+              <div className="mt-8 text-center">
+                <p className="text-gray-400 italic">
+                  "The best crews aren't formed by chance - they're brought together by shared dreams and unbreakable bonds!"
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="bg-[#1a1a1a] rounded-3xl border-2 border-orange-500/30 p-8">
+              <div className="mb-6 text-center">
+                <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+                  Welcome to the Crew Application!
+                </h3>
+                <p className="text-gray-300">
+                  Fill out this form and let's start our legendary adventure together!
+                </p>
+              </div>
+              
+              <JoinCrewForm />
+              
+              <div className="text-center mt-6">
+                <button
+                  onClick={() => setShowForm(false)}
+                  className="text-gray-400 hover:text-gray-300 transition-colors duration-300"
+                >
+                  ← Back to crew info
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
