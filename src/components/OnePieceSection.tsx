@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Anchor, Crown, Star, Heart, Zap, Users, Map, Treasure, Send } from 'lucide-react';
+import { Anchor, Crown, Star, Heart, Zap, Users, Map, Gift, Send } from 'lucide-react';
 import JoinCrewForm from './JoinCrewForm';
 
 const OnePieceSection = () => {
@@ -33,7 +33,7 @@ const OnePieceSection = () => {
     {
       title: "Treasure Hunting (Opportunities)",
       description: "Discover amazing opportunities, collaborations, and projects that'll boost your career!",
-      icon: Treasure,
+      icon: Gift,
       color: "from-yellow-500 to-orange-500"
     },
     {
@@ -65,7 +65,7 @@ const OnePieceSection = () => {
           <Star className="w-full h-full text-orange-500" />
         </div>
         <div className="absolute bottom-1/4 left-1/4 w-18 h-18 opacity-30 animate-float" style={{ animationDelay: '3s' }}>
-          <Treasure className="w-full h-full text-yellow-500" />
+          <Gift className="w-full h-full text-yellow-500" />
         </div>
         
         {/* Background glow effects */}

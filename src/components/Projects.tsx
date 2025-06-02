@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { Github, ExternalLink, Code, Database, Smartphone, Brain, Globe, Zap, Star, Users, Map, Treasure, Crown } from 'lucide-react';
+import { Github, ExternalLink, Code, Database, Smartphone, Brain, Globe, Zap, Star, Users, Map, Gift, Crown } from 'lucide-react';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +32,7 @@ const Projects = () => {
       githubUrl: "https://github.com/saikoushiknalubola",
       liveUrl: "https://smart-finance-demo.vercel.app",
       gradient: "from-green-600 to-emerald-600",
-      icon: Treasure,
+      icon: Gift,
       category: "FinTech Adventure",
       bounty: "₹50,00,000"
     },
@@ -131,7 +130,7 @@ const Projects = () => {
             <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
               Legendary Adventures
             </h2>
-            <Treasure className="w-8 h-8 text-cyan-500" />
+            <Gift className="w-8 h-8 text-cyan-500" />
           </div>
           
           <div className="mb-6">
@@ -211,7 +210,7 @@ const Projects = () => {
                 {/* Treasure Found */}
                 <div className="mb-4">
                   <h5 className="text-sm font-semibold text-yellow-400 mb-2 flex items-center">
-                    <Treasure className="w-4 h-4 mr-2" />
+                    <Gift className="w-4 h-4 mr-2" />
                     Treasure Found:
                   </h5>
                   <div className="flex flex-wrap gap-1">
