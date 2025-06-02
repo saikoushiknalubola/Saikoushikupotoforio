@@ -5,16 +5,15 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Experience from '../components/Experience';
 import Projects from '../components/Projects';
+import Entrepreneurship from '../components/Entrepreneurship';
 import OnePieceSection from '../components/OnePieceSection';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 
 const Index = () => {
   useEffect(() => {
-    // Update page title
     document.title = "Saikoushik Nalubola | AI Engineer & Entrepreneur";
     
-    // Smooth scrolling for anchor links
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.currentTarget as HTMLAnchorElement;
       const href = target.getAttribute('href');
@@ -22,7 +21,7 @@ const Index = () => {
         e.preventDefault();
         const targetElement = document.querySelector(href);
         if (targetElement) {
-          const navbarHeight = 100; // Increased for better spacing
+          const navbarHeight = 80;
           window.scrollTo({
             top: targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight, 
             behavior: 'smooth'
@@ -35,7 +34,6 @@ const Index = () => {
       anchor.addEventListener('click', handleAnchorClick as EventListener);
     });
     
-    // Intersection observer for scroll animations
     const observerOptions = {
       root: null,
       rootMargin: '0px 0px -10px 0px',
@@ -53,7 +51,6 @@ const Index = () => {
       });
     }, observerOptions);
     
-    // Observe all sections
     const sections = document.querySelectorAll('.scroll-animate');
     sections.forEach(el => {
       observer.observe(el);
@@ -76,29 +73,31 @@ const Index = () => {
         <Hero />
       </div>
       
-      {/* Fixed spacing to prevent overlap */}
-      <div id="about" className="py-12 lg:py-20 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="about" className="py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <About />
       </div>
       
-      <div id="experience" className="py-12 lg:py-20 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="experience" className="py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Experience />
       </div>
       
-      <div id="projects" className="scroll-animate bg-[#121212] relative transition-all duration-700 pt-8" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="projects" className="scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Projects />
       </div>
       
-      {/* One Piece themed section with form */}
+      <div id="entrepreneurship" className="scroll-animate relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+        <Entrepreneurship />
+      </div>
+      
       <div className="scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <OnePieceSection />
       </div>
       
-      <div id="skills" className="py-12 lg:py-20 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="skills" className="py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Skills />
       </div>
       
-      <div id="contact" className="py-12 lg:py-20 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+      <div id="contact" className="py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Contact />
       </div>
     </Layout>
