@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState, useRef } from 'react';
-import { ChevronDown, Anchor, Compass, Star, Zap } from 'lucide-react';
+import { ChevronDown, Anchor, Compass, Star, Zap, Crown, Trophy } from 'lucide-react';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -9,7 +9,7 @@ const Hero = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
   const fullText = "海賊王になる男だ！";
-  const kingQuote = "I'm gonna be King of the Pirates!";
+  const kingQuote = "I'm gonna be King of the Code!";
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
@@ -53,181 +53,191 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen pt-24 pb-8 px-4 flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
+    <section className="min-h-screen pt-20 pb-32 px-4 flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
       {/* Background elements positioned to avoid text overlap */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Reduced opacity and carefully positioned */}
-        <div className="absolute top-32 left-2 sm:left-6 w-8 h-8 sm:w-12 sm:h-12 opacity-5 animate-float">
+        {/* Reduced opacity and carefully positioned to avoid main content */}
+        <div className="absolute top-32 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
           <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-            <div className="w-4 h-0.5 sm:w-6 sm:h-1 bg-red-600 rounded-full"></div>
+            <div className="w-3 h-0.5 sm:w-4 sm:h-0.5 bg-red-600 rounded-full"></div>
           </div>
         </div>
         
-        <div className="absolute bottom-32 right-2 sm:right-6 w-6 h-6 sm:w-10 sm:h-10 opacity-8 animate-float" style={{ animationDelay: '2s' }}>
+        <div className="absolute bottom-40 right-4 sm:right-8 w-5 h-5 sm:w-7 sm:h-7 opacity-15 animate-float" style={{ animationDelay: '2s' }}>
           <Star className="w-full h-full text-yellow-300" />
         </div>
         
-        <div className="absolute top-1/3 right-1 sm:right-4 w-8 h-8 sm:w-12 sm:h-12 opacity-5 animate-float" style={{ animationDelay: '4s' }}>
+        <div className="absolute top-1/3 right-2 sm:right-6 w-6 h-6 sm:w-8 sm:h-8 opacity-8 animate-float" style={{ animationDelay: '4s' }}>
           <Compass className="w-full h-full text-blue-400" />
         </div>
         
-        <div className="absolute bottom-1/3 left-2 sm:left-6 w-8 h-8 sm:w-12 sm:h-12 opacity-8 animate-float" style={{ animationDelay: '1s' }}>
+        <div className="absolute bottom-1/3 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-12 animate-float" style={{ animationDelay: '1s' }}>
           <Anchor className="w-full h-full text-blue-500" />
         </div>
       </div>
 
       {/* Main Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto w-full">
-        {/* Enhanced Profile Card */}
-        <div className="mb-8 sm:mb-10 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-amber-600/30 to-yellow-600/30 blur-3xl rounded-full"></div>
-          <div className="relative bg-gradient-to-br from-amber-50 to-yellow-100 text-black p-6 sm:p-8 rounded-2xl border-4 border-amber-800 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-500 max-w-lg mx-auto">
-            {/* Profile Image with better styling */}
-            <div className="mb-6">
+        {/* Enhanced Profile Card with Next Level Design */}
+        <div className="mb-8 sm:mb-12 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-600/40 to-yellow-600/40 blur-3xl rounded-full animate-pulse"></div>
+          <div className="relative bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 text-black p-6 sm:p-10 rounded-3xl border-4 border-amber-800 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-700 max-w-xl mx-auto hover:scale-105 group">
+            {/* Enhanced Profile Image with better styling */}
+            <div className="mb-8">
               <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full blur-lg opacity-50 animate-pulse"></div>
                 <img 
                   src="/lovable-uploads/1466490d-7b5c-4b9c-9b5e-584004601ca5.png" 
-                  alt="Saikoushik Nalubola"
-                  className="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto border-4 border-amber-800 shadow-xl object-cover"
+                  alt="Saikoushik Nalubola - Future King of Code"
+                  className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto border-6 border-amber-800 shadow-2xl object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-red-600 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
-                  <span className="text-white text-xs font-bold">👑</span>
+                <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center border-3 border-white shadow-xl animate-bounce">
+                  <Crown className="text-yellow-400 w-5 h-5" />
+                </div>
+                <div className="absolute -bottom-2 -left-2 w-8 h-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                  <Trophy className="text-yellow-300 w-4 h-4" />
                 </div>
               </div>
             </div>
             
-            <div className="space-y-2">
-              <div className="text-xl sm:text-2xl font-black mb-3 font-mono tracking-wider">WANTED</div>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight mb-2">SAIKOUSHIK NALUBOLA</div>
-              <div className="text-base sm:text-lg font-bold text-blue-800 mb-2">AI ENGINEER & ENTREPRENEUR</div>
-              <div className="text-xl sm:text-2xl font-black text-red-600 mb-2">BOUNTY: ∞ BERRIES</div>
-              <div className="text-sm sm:text-base font-semibold text-gray-700">DEAD OR ALIVE</div>
-              <div className="text-xs sm:text-sm font-medium text-gray-600 mt-3 italic">
-                "A man inspired by dreams and determined to change the world"
+            <div className="space-y-3">
+              <div className="text-2xl sm:text-3xl font-black mb-4 font-mono tracking-wider text-red-800">WANTED</div>
+              <div className="text-2xl sm:text-4xl md:text-5xl font-black leading-tight mb-3 bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+                SAIKOUSHIK NALUBOLA
+              </div>
+              <div className="text-lg sm:text-xl font-bold text-blue-800 mb-3">AI ENGINEER & ENTREPRENEUR</div>
+              <div className="text-2xl sm:text-3xl font-black text-red-600 mb-3">BOUNTY: ∞ BERRIES</div>
+              <div className="text-base sm:text-lg font-semibold text-gray-700">DEAD OR ALIVE</div>
+              <div className="text-sm sm:text-base font-medium text-gray-600 mt-4 italic leading-relaxed">
+                "A visionary developer inspired by epic adventures, determined to revolutionize technology and change the world"
+              </div>
+              
+              {/* Added status badges */}
+              <div className="flex justify-center space-x-2 mt-4">
+                <span className="px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full">ACTIVE</span>
+                <span className="px-3 py-1 bg-orange-600 text-white text-xs font-bold rounded-full">DANGEROUS</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Main Title */}
-        <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight transform transition-all duration-1000 ${
+        {/* Enhanced Main Title with better animations */}
+        <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-8 leading-tight transform transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-pulse-glow">
+          <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-pulse-glow block">
             Future
           </span>
-          <br />
-          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Pirate King
+          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent block">
+            King of Code
           </span>
-          <br />
-          <span className="bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent">
-            of Code
+          <span className="bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent block">
+            & Innovation
           </span>
         </h1>
 
-        {/* Japanese Quote */}
-        <div className={`mb-8 transform transition-all duration-1000 delay-500 ${
+        {/* Enhanced Japanese Quote Section */}
+        <div className={`mb-10 transform transition-all duration-1000 delay-500 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div className="relative inline-block">
-            <p className="text-xl sm:text-2xl md:text-3xl font-bold text-orange-400 jp-text mb-4 min-h-[2rem] sm:min-h-[3rem] flex items-center justify-center">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-400 jp-text mb-6 min-h-[3rem] sm:min-h-[4rem] flex items-center justify-center">
               {typedText}
-              <span className="animate-pulse ml-1 text-red-500">|</span>
+              <span className="animate-pulse ml-2 text-red-500">|</span>
             </p>
             
             {showKingQuote && (
               <div className="animate-fade-in">
-                <p className="text-base sm:text-lg md:text-xl text-gray-300 italic font-semibold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent animate-pulse-glow">
+                <p className="text-lg sm:text-xl md:text-2xl text-gray-300 italic font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent animate-pulse-glow">
                   "{kingQuote}"
                 </p>
-                <div className="mt-2 text-xs sm:text-sm text-gray-500">
-                  - The Man Who Will Revolutionize Tech
+                <div className="mt-3 text-sm sm:text-base text-gray-500">
+                  - The Developer Who Will Change Everything
                 </div>
               </div>
             )}
           </div>
         </div>
 
-        {/* Enhanced description */}
-        <div className={`mb-12 transform transition-all duration-1000 delay-700 ${
+        {/* Enhanced description with better layout */}
+        <div className={`mb-16 transform transition-all duration-1000 delay-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <div className="max-w-4xl mx-auto">
-            <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed mb-6 px-2">
+          <div className="max-w-5xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-10 px-4">
               Ahoy! I'm <span className="text-orange-400 font-bold">Saikoushik</span>, an AI Engineer and Entrepreneur on an epic quest to revolutionize technology! 
-              Inspired by the greatest pirate adventure ever told, I'm building 
+              Inspired by the greatest adventure story ever told, I'm building 
               <span className="text-blue-400 font-bold"> legendary AI solutions</span> that'll change the world!
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-8">
-              <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 p-4 rounded-xl border border-red-500/30">
-                <Zap className="w-8 h-8 text-red-400 mb-3 mx-auto" />
-                <h3 className="font-bold text-red-400 mb-2 text-sm sm:text-base">AI Mastery</h3>
-                <p className="text-xs sm:text-sm text-gray-300">Machine Learning & Deep Learning expertise</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-10">
+              <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 p-6 rounded-2xl border border-red-500/30 hover:scale-105 transition-transform duration-300">
+                <Zap className="w-10 h-10 text-red-400 mb-4 mx-auto" />
+                <h3 className="font-bold text-red-400 mb-3 text-lg">AI Mastery</h3>
+                <p className="text-sm text-gray-300">Machine Learning & Deep Learning expertise</p>
               </div>
               
-              <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-4 rounded-xl border border-blue-500/30">
-                <Star className="w-8 h-8 text-blue-400 mb-3 mx-auto" />
-                <h3 className="font-bold text-blue-400 mb-2 text-sm sm:text-base">Full-Stack Power</h3>
-                <p className="text-xs sm:text-sm text-gray-300">End-to-end development solutions</p>
+              <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-6 rounded-2xl border border-blue-500/30 hover:scale-105 transition-transform duration-300">
+                <Star className="w-10 h-10 text-blue-400 mb-4 mx-auto" />
+                <h3 className="font-bold text-blue-400 mb-3 text-lg">Full-Stack Power</h3>
+                <p className="text-sm text-gray-300">End-to-end development solutions</p>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-4 rounded-xl border border-purple-500/30 sm:col-span-2 lg:col-span-1">
-                <Compass className="w-8 h-8 text-purple-400 mb-3 mx-auto" />
-                <h3 className="font-bold text-purple-400 mb-2 text-sm sm:text-base">Entrepreneurial Spirit</h3>
-                <p className="text-xs sm:text-sm text-gray-300">Building startups and innovative solutions</p>
+              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-6 rounded-2xl border border-purple-500/30 hover:scale-105 transition-transform duration-300 sm:col-span-2 lg:col-span-1">
+                <Compass className="w-10 h-10 text-purple-400 mb-4 mx-auto" />
+                <h3 className="font-bold text-purple-400 mb-3 text-lg">Entrepreneurial Spirit</h3>
+                <p className="text-sm text-gray-300">Building startups and innovative solutions</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Call to Action Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center mb-20 transform transition-all duration-1000 delay-1000 ${
+        {/* Enhanced Call to Action Buttons */}
+        <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 transform transition-all duration-1000 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <a
             href="#about"
-            className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-lg hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-105 shadow-xl shadow-orange-500/30 inline-flex items-center justify-center space-x-2 min-w-[200px]"
+            className="w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-110 shadow-2xl shadow-orange-500/40 inline-flex items-center justify-center space-x-3 min-w-[240px] text-lg"
           >
             <span>Join My Adventure!</span>
-            <Anchor className="w-5 h-5" />
+            <Anchor className="w-6 h-6" />
           </a>
           
           <a
             href="#projects"
-            className="w-full sm:w-auto px-8 py-4 border-2 border-blue-500 text-blue-300 font-bold rounded-lg hover:bg-blue-500/10 transition-all duration-300 hover:scale-105 inline-flex items-center justify-center space-x-2 min-w-[200px]"
+            className="w-full sm:w-auto px-10 py-5 border-3 border-blue-500 text-blue-300 font-bold rounded-xl hover:bg-blue-500/10 transition-all duration-300 hover:scale-110 inline-flex items-center justify-center space-x-3 min-w-[240px] text-lg"
           >
             <span>Legendary Projects</span>
-            <Star className="w-5 h-5" />
+            <Star className="w-6 h-6" />
           </a>
         </div>
       </div>
 
-      {/* Perfectly Centered Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-3 z-10">
-        <div className="text-center mb-4">
-          <p className="text-orange-400 font-bold text-sm jp-text animate-pulse">
+      {/* Perfectly Centered and Aligned Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 z-20">
+        <div className="text-center">
+          <p className="text-orange-400 font-bold text-base jp-text animate-pulse mb-2">
             冒険が始まる
           </p>
-          <p className="text-gray-400 text-xs italic">
+          <p className="text-gray-400 text-sm italic">
             (The Adventure Begins)
           </p>
         </div>
         
         <button
           onClick={scrollToAbout}
-          className="group relative p-4 rounded-full bg-gradient-to-br from-orange-500/20 to-red-500/20 border-2 border-orange-500/40 hover:border-orange-400 transition-all duration-300 hover:scale-110 animate-float"
+          className="group relative p-4 rounded-full bg-gradient-to-br from-orange-500/30 to-red-500/30 border-2 border-orange-500/50 hover:border-orange-400 transition-all duration-300 hover:scale-110 animate-float backdrop-blur-sm"
           aria-label="Scroll to adventures"
         >
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-400/10 to-yellow-600/10 blur-lg group-hover:blur-xl transition-all duration-300"></div>
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-400/20 to-yellow-600/20 blur-lg group-hover:blur-xl transition-all duration-300"></div>
           
-          <ChevronDown className="w-6 h-6 text-orange-400 relative z-10 animate-bounce" />
+          <ChevronDown className="w-8 h-8 text-orange-400 relative z-10 animate-bounce group-hover:text-orange-300 transition-colors duration-300" />
           
-          <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
+          <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full animate-ping"></div>
         </button>
         
-        <div className="text-xs text-gray-500 text-center animate-scroll-hint">
+        <div className="text-sm text-gray-500 text-center font-medium animate-pulse">
           Scroll for Epic Adventures
         </div>
       </div>

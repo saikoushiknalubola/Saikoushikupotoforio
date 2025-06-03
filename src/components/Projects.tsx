@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Github, ExternalLink, Brain, Globe, Shield, Monitor, Leaf, Heart, Scale, Star, Users, Map, Gift, Crown } from 'lucide-react';
+import { Github, Brain, Globe, Shield, Monitor, Leaf, Heart, Scale, Star, Users, Map, Gift, Crown } from 'lucide-react';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -123,6 +123,10 @@ const Projects = () => {
     }
   ];
 
+  const handleViewCode = (githubUrl: string) => {
+    window.open(githubUrl, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <section id="projects" className="py-12 sm:py-20 px-4 bg-[#121212] relative overflow-hidden">
       {/* Background elements */}
@@ -242,15 +246,13 @@ const Projects = () => {
                 </div>
 
                 <div className="flex space-x-3">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => handleViewCode(project.githubUrl)}
                     className="flex-1 flex items-center justify-center space-x-2 py-2 sm:py-3 px-3 sm:px-4 bg-gray-800/80 hover:bg-gray-700/80 text-gray-300 hover:text-white rounded-lg transition-all duration-300 hover:scale-105 border border-gray-600/50 hover:border-gray-500/50"
                   >
                     <Github className="w-4 h-4" />
                     <span className="text-sm font-semibold">View Code</span>
-                  </a>
+                  </button>
                 </div>
               </div>
 
@@ -285,15 +287,13 @@ const Projects = () => {
                 <Star className="w-5 h-5" />
                 <span>Let's Collaborate!</span>
               </a>
-              <a
-                href="https://github.com/saikoushiknalubola"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => handleViewCode("https://github.com/saikoushiknalubola")}
                 className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-blue-500 text-blue-300 font-bold rounded-lg hover:bg-blue-500/10 transition-all duration-300 hover:scale-105"
               >
                 <Map className="w-5 h-5" />
                 <span>Explore All Projects</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
