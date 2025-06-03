@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from 'react';
-import { Github, Brain, Globe, Shield, Monitor, Leaf, Heart, Scale, Star, Users, Map, Gift, Crown } from 'lucide-react';
+import { Github, Brain, Globe, Shield, Monitor, Leaf, Heart, Scale, Star, Users, Map, Gift, Crown, ExternalLink } from 'lucide-react';
 
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -126,6 +127,10 @@ const Projects = () => {
     window.open(githubUrl, '_blank', 'noopener,noreferrer');
   };
 
+  const handleViewAllProjects = () => {
+    window.open("https://github.com/saikoushiknalubola", '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <section id="projects" className="py-12 sm:py-20 px-4 bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e] relative overflow-hidden">
       {/* Background elements */}
@@ -140,27 +145,32 @@ const Projects = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
+        {/* Header with outline */}
         <div className={`text-center mb-12 sm:mb-16 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="flex items-center justify-center space-x-3 mb-6">
-            <Map className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500" />
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-black bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
-              Legendary Projects
-            </h2>
-            <Gift className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-500" />
+          <div className="relative inline-block">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-3xl rounded-full animate-pulse"></div>
+            <div className="relative bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] rounded-3xl p-8 sm:p-12 border-2 border-blue-500/30 shadow-2xl">
+              <div className="flex items-center justify-center space-x-3 mb-6">
+                <Map className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500" />
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-black bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent" style={{ fontFamily: "'Pirata One', cursive" }}>
+                  Legendary Projects
+                </h2>
+                <Gift className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-500" />
+              </div>
+              
+              <div className="mb-6">
+                <p className="text-xl sm:text-2xl md:text-3xl text-blue-400 jp-text font-bold">
+                  伝説のプロジェクト
+                </p>
+                <p className="text-gray-400 italic">(Legendary Projects)</p>
+              </div>
+              
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
+                Every great developer has legendary projects! These are the real adventures I've conquered, 
+                the technical challenges I've defeated, and the innovative solutions I've built on my journey to become the King of Code!
+              </p>
+            </div>
           </div>
-          
-          <div className="mb-6">
-            <p className="text-xl sm:text-2xl md:text-3xl text-blue-400 jp-text font-bold">
-              伝説のプロジェクト
-            </p>
-            <p className="text-gray-400 italic">(Legendary Projects)</p>
-          </div>
-          
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
-            Every great developer has legendary projects! These are the real adventures I've conquered, 
-            the technical challenges I've defeated, and the innovative solutions I've built on my journey to become the King of Code!
-          </p>
         </div>
 
         {/* Projects Grid */}
@@ -247,10 +257,11 @@ const Projects = () => {
                 <div className="flex space-x-3">
                   <button
                     onClick={() => handleViewCode(project.githubUrl)}
-                    className="flex-1 flex items-center justify-center space-x-2 py-2 sm:py-3 px-3 sm:px-4 bg-gray-800/80 hover:bg-gray-700/80 text-gray-300 hover:text-white rounded-lg transition-all duration-300 hover:scale-105 border border-gray-600/50 hover:border-gray-500/50"
+                    className="flex-1 flex items-center justify-center space-x-2 py-2 sm:py-3 px-3 sm:px-4 bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 text-white rounded-lg transition-all duration-300 hover:scale-105 border border-gray-600/50 hover:border-blue-500/50 shadow-lg hover:shadow-blue-500/20"
                   >
                     <Github className="w-4 h-4" />
                     <span className="text-sm font-semibold">View Code</span>
+                    <ExternalLink className="w-3 h-3" />
                   </button>
                 </div>
               </div>
@@ -287,11 +298,12 @@ const Projects = () => {
                 <span>Let's Collaborate!</span>
               </a>
               <button
-                onClick={() => handleViewCode("https://github.com/saikoushiknalubola")}
+                onClick={handleViewAllProjects}
                 className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-blue-500 text-blue-300 font-bold rounded-lg hover:bg-blue-500/10 transition-all duration-300 hover:scale-105"
               >
                 <Map className="w-5 h-5" />
                 <span>Explore All Projects</span>
+                <ExternalLink className="w-4 h-4" />
               </button>
             </div>
           </div>
