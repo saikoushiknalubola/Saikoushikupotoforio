@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Github, Brain, Globe, Shield, Monitor, Leaf, Heart, Scale, Star, Users, Map, Gift, Crown } from 'lucide-react';
 
@@ -128,7 +127,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-12 sm:py-20 px-4 bg-[#121212] relative overflow-hidden">
+    <section id="projects" className="py-12 sm:py-20 px-4 bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e] relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-float" />
