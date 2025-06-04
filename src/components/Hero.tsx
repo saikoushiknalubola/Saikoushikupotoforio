@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { ChevronDown, Anchor, Compass, Star, Zap, Crown, Trophy } from 'lucide-react';
 
@@ -54,16 +53,16 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-[120vh] sm:min-h-[110vh] pt-32 sm:pt-28 pb-16 sm:pb-20 px-4 flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
+    <section className="min-h-[160vh] sm:min-h-[140vh] lg:min-h-[130vh] pt-24 sm:pt-28 pb-24 sm:pb-32 px-4 flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
       {/* Background elements positioned to avoid text overlap */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-60 sm:top-40 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
+        <div className="absolute top-80 sm:top-60 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
           <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
             <div className="w-3 h-0.5 sm:w-4 sm:h-0.5 bg-red-600 rounded-full"></div>
           </div>
         </div>
         
-        <div className="absolute bottom-80 sm:bottom-64 right-4 sm:right-8 w-5 h-5 sm:w-7 sm:h-7 opacity-15 animate-float" style={{ animationDelay: '2s' }}>
+        <div className="absolute bottom-96 sm:bottom-80 right-4 sm:right-8 w-5 h-5 sm:w-7 sm:h-7 opacity-15 animate-float" style={{ animationDelay: '2s' }}>
           <Star className="w-full h-full text-yellow-300" />
         </div>
         
@@ -77,9 +76,9 @@ const Hero = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
+      <div className="relative z-10 text-center max-w-4xl mx-auto w-full space-y-8 sm:space-y-10">
         {/* Enhanced Wanted Poster Card */}
-        <div className="mb-8 sm:mb-10 relative">
+        <div className="mb-8 sm:mb-12 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-amber-600/30 to-yellow-600/30 blur-2xl rounded-full animate-pulse"></div>
           <div className="relative bg-gradient-to-br from-[#F4E4BC] via-[#E8D5A3] to-[#D4C085] text-black p-5 sm:p-6 md:p-8 rounded-xl border-4 border-amber-900 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-700 max-w-[320px] sm:max-w-[380px] mx-auto hover:scale-105 group" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
             {/* Profile Image */}
@@ -123,7 +122,7 @@ const Hero = () => {
         </div>
 
         {/* Main Title */}
-        <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 leading-tight transform transition-all duration-1000 ${
+        <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-6 sm:mb-8 leading-tight transform transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`} style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
           <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-pulse-glow block">
@@ -138,11 +137,11 @@ const Hero = () => {
         </h1>
 
         {/* Japanese Quote Section */}
-        <div className={`mb-6 sm:mb-8 transform transition-all duration-1000 delay-500 ${
+        <div className={`mb-8 sm:mb-10 transform transition-all duration-1000 delay-500 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div className="relative inline-block">
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-orange-400 jp-text mb-3 sm:mb-4 min-h-[1.5rem] sm:min-h-[2rem] md:min-h-[2.5rem] flex items-center justify-center" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-orange-400 jp-text mb-3 sm:mb-4 min-h-[1.5rem] sm:min-h-[2rem] md-min-h-[2.5rem] flex items-center justify-center" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
               {typedText}
               <span className="animate-pulse ml-2 text-red-500">|</span>
             </p>
@@ -161,7 +160,7 @@ const Hero = () => {
         </div>
 
         {/* Description */}
-        <div className={`mb-8 sm:mb-10 transform transition-all duration-1000 delay-700 ${
+        <div className={`mb-10 sm:mb-12 transform transition-all duration-1000 delay-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div className="max-w-4xl mx-auto">
@@ -194,7 +193,7 @@ const Hero = () => {
         </div>
 
         {/* Call to Action Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 transform transition-all duration-1000 delay-1000 ${
+        <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 sm:mb-20 transform transition-all duration-1000 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <a
@@ -215,8 +214,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 z-20">
+      {/* Scroll Indicator - Positioned with more bottom spacing */}
+      <div className="absolute bottom-12 sm:bottom-16 lg:bottom-20 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 z-20">
         <div className="text-center bg-[#121212]/95 backdrop-blur-md rounded-xl px-6 py-4 border border-orange-500/40 shadow-xl max-w-xs">
           <p className="text-orange-400 font-bold text-sm sm:text-base jp-text animate-pulse mb-2" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
             冒険が始まる
