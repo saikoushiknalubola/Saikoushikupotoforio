@@ -53,16 +53,16 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen pt-20 sm:pt-24 pb-24 sm:pb-32 px-4 flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
+    <section className="min-h-screen pt-28 sm:pt-24 pb-32 sm:pb-32 px-4 flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
       {/* Background elements positioned to avoid text overlap */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-32 sm:top-40 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
+        <div className="absolute top-40 sm:top-40 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
           <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
             <div className="w-3 h-0.5 sm:w-4 sm:h-0.5 bg-red-600 rounded-full"></div>
           </div>
         </div>
         
-        <div className="absolute bottom-52 sm:bottom-64 right-4 sm:right-8 w-5 h-5 sm:w-7 sm:h-7 opacity-15 animate-float" style={{ animationDelay: '2s' }}>
+        <div className="absolute bottom-64 sm:bottom-64 right-4 sm:right-8 w-5 h-5 sm:w-7 sm:h-7 opacity-15 animate-float" style={{ animationDelay: '2s' }}>
           <Star className="w-full h-full text-yellow-300" />
         </div>
         
@@ -77,10 +77,10 @@ const Hero = () => {
 
       {/* Main Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
-        {/* Optimized Wanted Poster Card */}
-        <div className="mb-4 sm:mb-6 relative">
+        {/* Optimized Wanted Poster Card - Fixed mobile spacing */}
+        <div className="mb-6 sm:mb-6 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-amber-600/30 to-yellow-600/30 blur-2xl rounded-full animate-pulse"></div>
-          <div className="relative bg-gradient-to-br from-[#F4E4BC] via-[#E8D5A3] to-[#D4C085] text-black p-2.5 sm:p-3 md:p-4 rounded-xl border-3 border-amber-900 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-700 max-w-[240px] sm:max-w-[280px] mx-auto hover:scale-105 group" style={{ fontFamily: "'Pirata One', cursive" }}>
+          <div className="relative bg-gradient-to-br from-[#F4E4BC] via-[#E8D5A3] to-[#D4C085] text-black p-3 sm:p-3 md:p-4 rounded-xl border-3 border-amber-900 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-700 max-w-[200px] sm:max-w-[240px] mx-auto hover:scale-105 group" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
             {/* Profile Image */}
             <div className="mb-2">
               <div className="relative">
@@ -88,33 +88,33 @@ const Hero = () => {
                 <img 
                   src="/lovable-uploads/1466490d-7b5c-4b9c-9b5e-584004601ca5.png" 
                   alt="Saikoushik Nalubola - Future King of Code"
-                  className="relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full mx-auto border-3 border-amber-900 shadow-xl object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="relative w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 rounded-full mx-auto border-3 border-amber-900 shadow-xl object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute -top-0.5 -right-0.5 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg animate-bounce">
-                  <Crown className="text-yellow-400 w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3" />
+                <div className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg animate-bounce">
+                  <Crown className="text-yellow-400 w-2 h-2 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5" />
                 </div>
-                <div className="absolute -bottom-0.5 -left-0.5 w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
-                  <Trophy className="text-yellow-300 w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5" />
+                <div className="absolute -bottom-0.5 -left-0.5 w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                  <Trophy className="text-yellow-300 w-1.5 h-1.5 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2" />
                 </div>
               </div>
             </div>
             
             <div className="space-y-1">
-              <div className="text-sm sm:text-base md:text-lg font-black mb-1 tracking-wider text-red-800">WANTED</div>
-              <div className="text-base sm:text-lg md:text-xl font-black leading-tight mb-1 bg-gradient-to-r from-red-700 to-orange-700 bg-clip-text text-transparent">
+              <div className="text-xs sm:text-sm md:text-base font-black mb-1 tracking-wider text-red-800" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>WANTED</div>
+              <div className="text-sm sm:text-base md:text-lg font-black leading-tight mb-1 bg-gradient-to-r from-red-700 to-orange-700 bg-clip-text text-transparent" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
                 SAIKOUSHIK NALUBOLA
               </div>
-              <div className="text-xs sm:text-sm font-bold text-blue-800 mb-1">AI ENGINEER & ENTREPRENEUR</div>
-              <div className="text-sm sm:text-base md:text-lg font-black text-red-600 mb-1">BOUNTY: ∞ BERRIES</div>
-              <div className="text-xs font-semibold text-gray-700">DEAD OR ALIVE</div>
-              <div className="text-xs font-medium text-gray-600 mt-1.5 italic leading-relaxed">
+              <div className="text-xs sm:text-xs font-bold text-blue-800 mb-1" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>AI ENGINEER & ENTREPRENEUR</div>
+              <div className="text-xs sm:text-sm md:text-base font-black text-red-600 mb-1" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>BOUNTY: ∞ BERRIES</div>
+              <div className="text-xs font-semibold text-gray-700" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>DEAD OR ALIVE</div>
+              <div className="text-xs font-medium text-gray-600 mt-1.5 italic leading-relaxed" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
                 "A visionary developer inspired by epic adventures, determined to revolutionize technology"
               </div>
               
               {/* Status badges */}
               <div className="flex justify-center space-x-1.5 mt-1.5">
-                <span className="px-1.5 py-0.5 bg-green-600 text-white text-xs font-bold rounded-full">ACTIVE</span>
-                <span className="px-1.5 py-0.5 bg-orange-600 text-white text-xs font-bold rounded-full">DANGEROUS</span>
+                <span className="px-1.5 py-0.5 bg-green-600 text-white text-xs font-bold rounded-full" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>ACTIVE</span>
+                <span className="px-1.5 py-0.5 bg-orange-600 text-white text-xs font-bold rounded-full" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>DANGEROUS</span>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ const Hero = () => {
         {/* Enhanced Main Title */}
         <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-3 sm:mb-4 leading-tight transform transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{ fontFamily: "'Pirata One', cursive" }}>
+        }`} style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
           <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-pulse-glow block">
             Future
           </span>
@@ -140,17 +140,17 @@ const Hero = () => {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div className="relative inline-block">
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-orange-400 jp-text mb-2 sm:mb-3 min-h-[1.5rem] sm:min-h-[2rem] md:min-h-[2.5rem] flex items-center justify-center">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-orange-400 jp-text mb-2 sm:mb-3 min-h-[1.5rem] sm:min-h-[2rem] md:min-h-[2.5rem] flex items-center justify-center" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
               {typedText}
               <span className="animate-pulse ml-2 text-red-500">|</span>
             </p>
             
             {showKingQuote && (
               <div className="animate-fade-in">
-                <p className="text-sm sm:text-base md:text-lg text-gray-300 italic font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent animate-pulse-glow">
+                <p className="text-sm sm:text-base md:text-lg text-gray-300 italic font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent animate-pulse-glow" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
                   "{kingQuote}"
                 </p>
-                <div className="mt-1 text-xs text-gray-500">
+                <div className="mt-1 text-xs text-gray-500" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
                   - The Developer Who Will Change Everything
                 </div>
               </div>
@@ -163,7 +163,7 @@ const Hero = () => {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div className="max-w-4xl mx-auto">
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4 sm:mb-6 px-4">
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4 sm:mb-6 px-4" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
               Ahoy! I'm <span className="text-orange-400 font-bold">Saikoushik</span>, an AI Engineer and Entrepreneur on an epic quest to revolutionize technology! 
               Inspired by the greatest adventure story ever told, I'm building 
               <span className="text-blue-400 font-bold"> legendary AI solutions</span> that'll change the world!
@@ -172,32 +172,32 @@ const Hero = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-4 sm:mt-6">
               <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 p-3 rounded-xl border border-red-500/30 hover:scale-105 transition-transform duration-300">
                 <Zap className="w-6 h-6 text-red-400 mb-2 mx-auto" />
-                <h3 className="font-bold text-red-400 mb-1 text-sm">AI Mastery</h3>
-                <p className="text-xs text-gray-300">Machine Learning & Deep Learning expertise</p>
+                <h3 className="font-bold text-red-400 mb-1 text-sm" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>AI Mastery</h3>
+                <p className="text-xs text-gray-300" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Machine Learning & Deep Learning expertise</p>
               </div>
               
               <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-3 rounded-xl border border-blue-500/30 hover:scale-105 transition-transform duration-300">
                 <Star className="w-6 h-6 text-blue-400 mb-2 mx-auto" />
-                <h3 className="font-bold text-blue-400 mb-1 text-sm">Full-Stack Power</h3>
-                <p className="text-xs text-gray-300">End-to-end development solutions</p>
+                <h3 className="font-bold text-blue-400 mb-1 text-sm" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Full-Stack Power</h3>
+                <p className="text-xs text-gray-300" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>End-to-end development solutions</p>
               </div>
               
               <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-3 rounded-xl border border-purple-500/30 hover:scale-105 transition-transform duration-300 sm:col-span-2 lg:col-span-1">
                 <Compass className="w-6 h-6 text-purple-400 mb-2 mx-auto" />
-                <h3 className="font-bold text-purple-400 mb-1 text-sm">Entrepreneurial Spirit</h3>
-                <p className="text-xs text-gray-300">Building startups and innovative solutions</p>
+                <h3 className="font-bold text-purple-400 mb-1 text-sm" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Entrepreneurial Spirit</h3>
+                <p className="text-xs text-gray-300" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Building startups and innovative solutions</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Call to Action Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 transform transition-all duration-1000 delay-1000 ${
+        <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-12 sm:mb-16 transform transition-all duration-1000 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <a
             href="#about"
-            className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-110 shadow-2xl shadow-orange-500/40 inline-flex items-center justify-center space-x-3 min-w-[180px] text-sm border-2 border-transparent"
+            className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-110 shadow-2xl shadow-orange-500/40 inline-flex items-center justify-center space-x-3 min-w-[180px] text-sm border-2 border-transparent" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}
           >
             <span>Join My Adventure!</span>
             <Anchor className="w-4 h-4" />
@@ -205,7 +205,7 @@ const Hero = () => {
           
           <a
             href="#projects"
-            className="w-full sm:w-auto px-6 py-3 border-2 border-blue-500 bg-blue-500/10 backdrop-blur-sm text-blue-300 font-bold rounded-xl hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 hover:scale-110 inline-flex items-center justify-center space-x-3 min-w-[180px] text-sm shadow-lg shadow-blue-500/20"
+            className="w-full sm:w-auto px-6 py-3 border-2 border-blue-500 bg-blue-500/10 backdrop-blur-sm text-blue-300 font-bold rounded-xl hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 hover:scale-110 inline-flex items-center justify-center space-x-3 min-w-[180px] text-sm shadow-lg shadow-blue-500/20" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}
           >
             <span>Legendary Projects</span>
             <Star className="w-4 h-4" />
@@ -213,13 +213,13 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Perfectly Centered Scroll Indicator with proper spacing */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-3 z-20">
-        <div className="text-center">
-          <p className="text-orange-400 font-bold text-sm jp-text animate-pulse mb-1">
+      {/* Fixed Scroll Indicator with better mobile positioning */}
+      <div className="absolute bottom-8 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-2 z-20">
+        <div className="text-center bg-[#121212]/80 backdrop-blur-sm rounded-lg px-3 py-2 border border-orange-500/30">
+          <p className="text-orange-400 font-bold text-xs sm:text-sm jp-text animate-pulse mb-1" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
             冒険が始まる
           </p>
-          <p className="text-gray-400 text-xs italic">
+          <p className="text-gray-400 text-xs italic" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
             (The Adventure Begins)
           </p>
         </div>
@@ -236,7 +236,7 @@ const Hero = () => {
           <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
         </button>
         
-        <div className="text-xs text-gray-500 text-center font-medium animate-pulse">
+        <div className="text-xs text-gray-400 text-center font-medium animate-pulse bg-[#121212]/60 backdrop-blur-sm rounded px-2 py-1" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
           Scroll for Epic Adventures
         </div>
       </div>
