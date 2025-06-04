@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { ChevronDown, Anchor, Compass, Star, Zap, Crown, Trophy } from 'lucide-react';
 
@@ -53,7 +54,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen pt-32 sm:pt-28 pb-48 sm:pb-40 px-4 flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
+    <section className="min-h-[120vh] sm:min-h-[110vh] pt-32 sm:pt-28 pb-16 sm:pb-20 px-4 flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
       {/* Background elements positioned to avoid text overlap */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-60 sm:top-40 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
@@ -77,17 +78,17 @@ const Hero = () => {
 
       {/* Main Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
-        {/* Enhanced Wanted Poster Card - Increased size */}
+        {/* Enhanced Wanted Poster Card */}
         <div className="mb-8 sm:mb-10 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-amber-600/30 to-yellow-600/30 blur-2xl rounded-full animate-pulse"></div>
           <div className="relative bg-gradient-to-br from-[#F4E4BC] via-[#E8D5A3] to-[#D4C085] text-black p-5 sm:p-6 md:p-8 rounded-xl border-4 border-amber-900 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-700 max-w-[320px] sm:max-w-[380px] mx-auto hover:scale-105 group" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
-            {/* Profile Image - Much larger size */}
+            {/* Profile Image */}
             <div className="mb-4">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full blur-md opacity-40 animate-pulse"></div>
                 <img 
                   src="/lovable-uploads/1466490d-7b5c-4b9c-9b5e-584004601ca5.png" 
-                  alt="Saikoushik Nalubola - Future Pirate King"
+                  alt="Saikoushik Nalubola - Future Digital Pirate King"
                   className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full mx-auto border-4 border-amber-900 shadow-xl object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg animate-bounce">
@@ -96,7 +97,6 @@ const Hero = () => {
                 <div className="absolute -bottom-1 -left-1 w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
                   <Trophy className="text-yellow-300 w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
                 </div>
-                {/* Enhanced bounty animation */}
                 <div className="absolute -top-2 -left-2 w-8 h-8 bg-orange-500 rounded-full animate-ping opacity-30"></div>
                 <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-red-500 rounded-full animate-pulse"></div>
               </div>
@@ -114,7 +114,6 @@ const Hero = () => {
                 "A visionary captain sailing the digital seas, mastering AI technology to build revolutionary solutions that will change the world"
               </div>
               
-              {/* Status badges */}
               <div className="flex justify-center space-x-3 mt-3">
                 <span className="px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>ACTIVE</span>
                 <span className="px-3 py-1 bg-orange-600 text-white text-xs font-bold rounded-full" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>LEGENDARY</span>
@@ -123,7 +122,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Enhanced Main Title */}
+        {/* Main Title */}
         <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 sm:mb-6 leading-tight transform transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`} style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
@@ -154,21 +153,21 @@ const Hero = () => {
                   "{kingQuote}"
                 </p>
                 <div className="mt-2 text-xs sm:text-sm text-gray-500" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
-                  - A Developer's Dream to Conquer All Digital Seas
+                  - My Dream to Conquer All Digital Seas
                 </div>
               </div>
             )}
           </div>
         </div>
 
-        {/* Enhanced description */}
+        {/* Description */}
         <div className={`mb-8 sm:mb-10 transform transition-all duration-1000 delay-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div className="max-w-4xl mx-auto">
             <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-6 sm:mb-8 px-4" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
               Ahoy! I'm <span className="text-orange-400 font-bold">Saikoushik</span>, a passionate developer setting sail on the grandest adventure in the digital realm! 
-              With unwavering determination and an adventurous spirit inspired by legendary tales, I'm navigating through 
+              With unwavering determination and an adventurous spirit inspired by the greatest pirate tales, I'm navigating through 
               <span className="text-blue-400 font-bold"> uncharted AI territories</span> to build revolutionary solutions that'll transform the world!
             </p>
             
@@ -195,7 +194,7 @@ const Hero = () => {
         </div>
 
         {/* Call to Action Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-20 sm:mb-24 transform transition-all duration-1000 delay-1000 ${
+        <div className={`flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 transform transition-all duration-1000 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <a
@@ -216,7 +215,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Fixed Scroll Indicator with much better mobile positioning */}
+      {/* Scroll Indicator */}
       <div className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 z-20">
         <div className="text-center bg-[#121212]/95 backdrop-blur-md rounded-xl px-6 py-4 border border-orange-500/40 shadow-xl max-w-xs">
           <p className="text-orange-400 font-bold text-sm sm:text-base jp-text animate-pulse mb-2" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
