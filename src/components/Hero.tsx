@@ -54,7 +54,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-[250vh] sm:min-h-[220vh] md:min-h-[200vh] lg:min-h-[180vh] xl:min-h-[160vh] pt-24 sm:pt-28 pb-40 sm:pb-48 md:pb-56 lg:pb-64 xl:pb-72 px-4 flex flex-col justify-between items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
+    <section className="min-h-[350vh] sm:min-h-[300vh] md:min-h-[280vh] lg:min-h-[250vh] xl:min-h-[220vh] pt-24 sm:pt-28 pb-80 sm:pb-96 md:pb-[450px] lg:pb-[500px] xl:pb-[550px] px-4 flex flex-col justify-between items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
       {/* Background elements positioned to avoid text overlap */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-80 sm:top-60 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
@@ -194,7 +194,7 @@ const Hero = () => {
         </div>
 
         {/* Call to Action Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center mb-16 sm:mb-20 md:mb-24 lg:mb-28 transform transition-all duration-1000 delay-1000 ${
+        <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center mb-32 sm:mb-40 md:mb-48 lg:mb-56 xl:mb-64 transform transition-all duration-1000 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <a
@@ -215,8 +215,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator - Moved much lower with increased spacing */}
-      <div className="absolute bottom-24 sm:bottom-32 md:bottom-40 lg:bottom-48 xl:bottom-56 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 sm:space-y-6 z-20">
+      {/* Scroll Indicator - Positioned at the very bottom with maximum spacing */}
+      <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 xl:bottom-24 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 sm:space-y-6 z-20">
         <div className="text-center bg-[#121212]/95 backdrop-blur-md rounded-xl px-6 sm:px-8 py-4 sm:py-6 border border-orange-500/40 shadow-xl max-w-sm">
           <p className="text-orange-400 font-bold text-sm sm:text-base md:text-lg jp-text animate-pulse mb-2 sm:mb-3" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
             冒険が始まる
