@@ -221,9 +221,6 @@ const Hero = () => {
           <p className="text-orange-400 font-bold text-xs sm:text-sm jp-text animate-pulse mb-1 font-mono">
             冒険が始まる
           </p>
-          <p className="text-gray-300 text-xs italic font-medium font-mono">
-            The Adventure Begins
-          </p>
         </div>
         
         <button
