@@ -54,16 +54,16 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-[350vh] sm:min-h-[300vh] md:min-h-[280vh] lg:min-h-[250vh] xl:min-h-[220vh] pt-24 sm:pt-28 pb-80 sm:pb-96 md:pb-[450px] lg:pb-[500px] xl:pb-[550px] px-4 flex flex-col justify-between items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
+    <section className="min-h-screen sm:min-h-screen md:min-h-screen lg:min-h-screen xl:min-h-screen pt-16 sm:pt-20 pb-16 sm:pb-20 px-4 flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
       {/* Background elements positioned to avoid text overlap */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-80 sm:top-60 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
+        <div className="absolute top-1/4 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
           <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
             <div className="w-3 h-0.5 sm:w-4 sm:h-0.5 bg-red-600 rounded-full"></div>
           </div>
         </div>
         
-        <div className="absolute bottom-96 sm:bottom-80 right-4 sm:right-8 w-5 h-5 sm:w-7 sm:h-7 opacity-15 animate-float" style={{ animationDelay: '2s' }}>
+        <div className="absolute top-3/4 right-4 sm:right-8 w-5 h-5 sm:w-7 sm:h-7 opacity-15 animate-float" style={{ animationDelay: '2s' }}>
           <Star className="w-full h-full text-yellow-300" />
         </div>
         
@@ -76,56 +76,56 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Main Content - Centered with extra top spacing */}
-      <div className="flex-1 flex flex-col justify-start items-center relative z-10 text-center max-w-4xl mx-auto w-full space-y-6 sm:space-y-8 md:space-y-10 pt-16 sm:pt-20 md:pt-24 lg:pt-28">
+      {/* Main Content - Centered and optimized for mobile */}
+      <div className="flex-1 flex flex-col justify-center items-center relative z-10 text-center max-w-4xl mx-auto w-full space-y-4 sm:space-y-6 md:space-y-8">
         {/* Enhanced Wanted Poster Card */}
-        <div className="mb-6 sm:mb-8 md:mb-10 relative">
+        <div className="mb-4 sm:mb-6 md:mb-8 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-amber-600/30 to-yellow-600/30 blur-2xl rounded-full animate-pulse"></div>
-          <div className="relative bg-gradient-to-br from-[#F4E4BC] via-[#E8D5A3] to-[#D4C085] text-black p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl border-4 border-amber-900 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-700 max-w-[280px] sm:max-w-[320px] md:max-w-[380px] mx-auto hover:scale-105 group" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+          <div className="relative bg-gradient-to-br from-[#F4E4BC] via-[#E8D5A3] to-[#D4C085] text-black p-3 sm:p-4 md:p-5 lg:p-6 rounded-xl border-4 border-amber-900 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-700 max-w-[260px] sm:max-w-[300px] md:max-w-[350px] mx-auto hover:scale-105 group font-mono">
             {/* Profile Image */}
-            <div className="mb-3 sm:mb-4">
+            <div className="mb-2 sm:mb-3">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full blur-md opacity-40 animate-pulse"></div>
                 <img 
                   src="/lovable-uploads/1466490d-7b5c-4b9c-9b5e-584004601ca5.png" 
                   alt="Saikoushik Nalubola - Future Digital Pirate King"
-                  className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full mx-auto border-4 border-amber-900 shadow-xl object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="relative w-14 h-14 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full mx-auto border-4 border-amber-900 shadow-xl object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg animate-bounce">
-                  <Crown className="text-yellow-400 w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" />
+                <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg animate-bounce">
+                  <Crown className="text-yellow-400 w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3" />
                 </div>
-                <div className="absolute -bottom-1 -left-1 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
-                  <Trophy className="text-yellow-300 w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4" />
+                <div className="absolute -bottom-1 -left-1 w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                  <Trophy className="text-yellow-300 w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5" />
                 </div>
-                <div className="absolute -top-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 bg-orange-500 rounded-full animate-ping opacity-30"></div>
-                <div className="absolute -bottom-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 rounded-full animate-pulse"></div>
+                <div className="absolute -top-2 -left-2 w-5 h-5 sm:w-6 sm:h-6 bg-orange-500 rounded-full animate-ping opacity-30"></div>
+                <div className="absolute -bottom-2 -right-2 w-4 h-4 sm:w-5 sm:h-5 bg-red-500 rounded-full animate-pulse"></div>
               </div>
             </div>
             
-            <div className="space-y-2 sm:space-y-3">
-              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-black mb-2 sm:mb-3 tracking-wider text-red-800" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>WANTED</div>
-              <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-black leading-tight mb-2 sm:mb-3 bg-gradient-to-r from-red-700 to-orange-700 bg-clip-text text-transparent" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+            <div className="space-y-1 sm:space-y-2">
+              <div className="text-sm sm:text-base md:text-lg font-black mb-1 sm:mb-2 tracking-wider text-red-800 font-mono">WANTED</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-black leading-tight mb-1 sm:mb-2 bg-gradient-to-r from-red-700 to-orange-700 bg-clip-text text-transparent font-mono">
                 SAIKOUSHIK NALUBOLA
               </div>
-              <div className="text-xs sm:text-sm md:text-base font-bold text-blue-800 mb-2 sm:mb-3" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>DIGITAL PIRATE CAPTAIN & AI ARCHITECT</div>
-              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-black text-red-600 mb-2 sm:mb-3" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>BOUNTY: ∞ BERRIES</div>
-              <div className="text-xs sm:text-sm font-semibold text-gray-700" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>DEAD OR ALIVE</div>
-              <div className="text-xs sm:text-sm font-medium text-gray-600 mt-2 sm:mt-3 italic leading-relaxed" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+              <div className="text-xs sm:text-sm md:text-base font-bold text-blue-800 mb-1 sm:mb-2 font-mono">DIGITAL PIRATE CAPTAIN & AI ARCHITECT</div>
+              <div className="text-sm sm:text-base md:text-lg font-black text-red-600 mb-1 sm:mb-2 font-mono">BOUNTY: ∞ BERRIES</div>
+              <div className="text-xs sm:text-sm font-semibold text-gray-700 font-mono">DEAD OR ALIVE</div>
+              <div className="text-xs sm:text-sm font-medium text-gray-600 mt-1 sm:mt-2 italic leading-relaxed font-mono">
                 "A visionary captain sailing the digital seas, mastering AI technology to build revolutionary solutions that will change the world"
               </div>
               
-              <div className="flex justify-center space-x-2 sm:space-x-3 mt-2 sm:mt-3">
-                <span className="px-2 sm:px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>ACTIVE</span>
-                <span className="px-2 sm:px-3 py-1 bg-orange-600 text-white text-xs font-bold rounded-full" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>LEGENDARY</span>
+              <div className="flex justify-center space-x-1 sm:space-x-2 mt-1 sm:mt-2">
+                <span className="px-2 py-0.5 sm:py-1 bg-green-600 text-white text-xs font-bold rounded-full font-mono">ACTIVE</span>
+                <span className="px-2 py-0.5 sm:py-1 bg-orange-600 text-white text-xs font-bold rounded-full font-mono">LEGENDARY</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Main Title */}
-        <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black mb-4 sm:mb-6 md:mb-8 leading-tight transform transition-all duration-1000 ${
+        {/* Main Title - More compact for mobile */}
+        <h1 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-black mb-3 sm:mb-4 md:mb-6 leading-tight transform transition-all duration-1000 font-mono ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+        }`}>
           <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-pulse-glow block">
             Future Digital
           </span>
@@ -137,22 +137,22 @@ const Hero = () => {
           </span>
         </h1>
 
-        {/* Japanese Quote Section */}
-        <div className={`mb-6 sm:mb-8 md:mb-10 transform transition-all duration-1000 delay-500 ${
+        {/* Japanese Quote Section - More compact */}
+        <div className={`mb-4 sm:mb-6 md:mb-8 transform transition-all duration-1000 delay-500 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div className="relative inline-block">
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-orange-400 jp-text mb-2 sm:mb-3 md:mb-4 min-h-[1.2rem] sm:min-h-[1.5rem] md:min-h-[2rem] lg:min-h-[2.5rem] flex items-center justify-center" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-orange-400 jp-text mb-2 sm:mb-3 min-h-[1rem] sm:min-h-[1.5rem] md:min-h-[2rem] flex items-center justify-center font-mono">
               {typedText}
               <span className="animate-pulse ml-2 text-red-500">|</span>
             </p>
             
             {showKingQuote && (
               <div className="animate-fade-in">
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 italic font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent animate-pulse-glow" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+                <p className="text-xs sm:text-sm md:text-base text-gray-300 italic font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent animate-pulse-glow font-mono">
                   "{kingQuote}"
                 </p>
-                <div className="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-500" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+                <div className="mt-1 text-xs sm:text-sm text-gray-500 font-mono">
                   - My Dream to Conquer All Digital Seas
                 </div>
               </div>
@@ -160,85 +160,85 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Description */}
-        <div className={`mb-8 sm:mb-10 md:mb-12 transform transition-all duration-1000 delay-700 ${
+        {/* Description - More compact for mobile */}
+        <div className={`mb-6 sm:mb-8 md:mb-10 transform transition-all duration-1000 delay-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div className="max-w-4xl mx-auto">
-            <p className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed mb-4 sm:mb-6 md:mb-8 px-4" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+            <p className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed mb-3 sm:mb-4 md:mb-6 px-2 sm:px-4 font-mono">
               Ahoy! I'm <span className="text-orange-400 font-bold">Saikoushik</span>, a passionate developer setting sail on the grandest adventure in the digital realm! 
               With unwavering determination and an adventurous spirit inspired by the greatest pirate tales, I'm navigating through 
               <span className="text-blue-400 font-bold"> uncharted AI territories</span> to build revolutionary solutions that'll transform the world!
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6 md:mt-8">
-              <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 p-3 sm:p-4 rounded-xl border border-red-500/30 hover:scale-105 transition-transform duration-300">
-                <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-red-400 mb-2 sm:mb-3 mx-auto" />
-                <h3 className="font-bold text-red-400 mb-1 sm:mb-2 text-xs sm:text-sm md:text-base" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Special Powers</h3>
-                <p className="text-xs sm:text-sm text-gray-300" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>AI & Machine Learning Mastery</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mt-3 sm:mt-4 md:mt-6">
+              <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 p-2 sm:p-3 rounded-xl border border-red-500/30 hover:scale-105 transition-transform duration-300">
+                <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-red-400 mb-1 sm:mb-2 mx-auto" />
+                <h3 className="font-bold text-red-400 mb-1 text-xs sm:text-sm font-mono">Special Powers</h3>
+                <p className="text-xs text-gray-300 font-mono">AI & Machine Learning Mastery</p>
               </div>
               
-              <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-3 sm:p-4 rounded-xl border border-blue-500/30 hover:scale-105 transition-transform duration-300">
-                <Star className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400 mb-2 sm:mb-3 mx-auto" />
-                <h3 className="font-bold text-blue-400 mb-1 sm:mb-2 text-xs sm:text-sm md:text-base" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Crew Leadership</h3>
-                <p className="text-xs sm:text-sm text-gray-300" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Full-Stack Development Fleet</p>
+              <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-2 sm:p-3 rounded-xl border border-blue-500/30 hover:scale-105 transition-transform duration-300">
+                <Star className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mb-1 sm:mb-2 mx-auto" />
+                <h3 className="font-bold text-blue-400 mb-1 text-xs sm:text-sm font-mono">Crew Leadership</h3>
+                <p className="text-xs text-gray-300 font-mono">Full-Stack Development Fleet</p>
               </div>
               
-              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-3 sm:p-4 rounded-xl border border-purple-500/30 hover:scale-105 transition-transform duration-300 sm:col-span-2 lg:col-span-1">
-                <Compass className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400 mb-2 sm:mb-3 mx-auto" />
-                <h3 className="font-bold text-purple-400 mb-1 sm:mb-2 text-xs sm:text-sm md:text-base" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Grand Navigator</h3>
-                <p className="text-xs sm:text-sm text-gray-300" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Entrepreneurial Adventures</p>
+              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-2 sm:p-3 rounded-xl border border-purple-500/30 hover:scale-105 transition-transform duration-300 sm:col-span-2 lg:col-span-1">
+                <Compass className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400 mb-1 sm:mb-2 mx-auto" />
+                <h3 className="font-bold text-purple-400 mb-1 text-xs sm:text-sm font-mono">Grand Navigator</h3>
+                <p className="text-xs text-gray-300 font-mono">Entrepreneurial Adventures</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Call to Action Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center mb-32 sm:mb-40 md:mb-48 lg:mb-56 xl:mb-64 transform transition-all duration-1000 delay-1000 ${
+        {/* Call to Action Buttons - More compact for mobile */}
+        <div className={`flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center items-center mb-8 sm:mb-12 md:mb-16 transform transition-all duration-1000 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <a
             href="#about"
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-110 shadow-2xl shadow-orange-500/40 inline-flex items-center justify-center space-x-2 sm:space-x-3 min-w-[180px] sm:min-w-[200px] text-xs sm:text-sm md:text-base border-2 border-transparent" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}
+            className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-110 shadow-2xl shadow-orange-500/40 inline-flex items-center justify-center space-x-2 min-w-[160px] sm:min-w-[180px] text-xs sm:text-sm border-2 border-transparent font-mono"
           >
             <span>Join My Crew!</span>
-            <Anchor className="w-4 h-4 sm:w-5 sm:h-5" />
+            <Anchor className="w-3 h-3 sm:w-4 sm:h-4" />
           </a>
           
           <a
             href="#projects"
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-blue-500 bg-blue-500/10 backdrop-blur-sm text-blue-300 font-bold rounded-xl hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 hover:scale-110 inline-flex items-center justify-center space-x-2 sm:space-x-3 min-w-[180px] sm:min-w-[200px] text-xs sm:text-sm md:text-base shadow-lg shadow-blue-500/20 outline outline-2 outline-blue-400/50" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}
+            className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 border-2 border-blue-500 bg-blue-500/10 backdrop-blur-sm text-blue-300 font-bold rounded-xl hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 hover:scale-110 inline-flex items-center justify-center space-x-2 min-w-[160px] sm:min-w-[180px] text-xs sm:text-sm shadow-lg shadow-blue-500/20 outline outline-2 outline-blue-400/50 font-mono"
           >
             <span>Legendary Projects</span>
-            <Star className="w-4 h-4 sm:w-5 sm:h-5" />
+            <Star className="w-3 h-3 sm:w-4 sm:h-4" />
           </a>
         </div>
       </div>
 
-      {/* Scroll Indicator - Positioned at the very bottom with maximum spacing */}
-      <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 xl:bottom-24 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 sm:space-y-6 z-20">
-        <div className="text-center bg-[#121212]/95 backdrop-blur-md rounded-xl px-6 sm:px-8 py-4 sm:py-6 border border-orange-500/40 shadow-xl max-w-sm">
-          <p className="text-orange-400 font-bold text-sm sm:text-base md:text-lg jp-text animate-pulse mb-2 sm:mb-3" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+      {/* Scroll Indicator - Better positioned */}
+      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-2 sm:space-y-3 z-20">
+        <div className="text-center bg-[#121212]/95 backdrop-blur-md rounded-xl px-3 sm:px-4 py-2 sm:py-3 border border-orange-500/40 shadow-xl max-w-xs">
+          <p className="text-orange-400 font-bold text-xs sm:text-sm jp-text animate-pulse mb-1 font-mono">
             冒険が始まる
           </p>
-          <p className="text-gray-300 text-xs sm:text-sm md:text-base italic font-medium" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+          <p className="text-gray-300 text-xs italic font-medium font-mono">
             The Adventure Begins
           </p>
         </div>
         
         <button
           onClick={scrollToAbout}
-          className="group relative p-4 sm:p-5 rounded-full bg-gradient-to-br from-orange-500/40 to-red-500/40 border-2 border-orange-500/60 hover:border-orange-400 transition-all duration-300 hover:scale-110 animate-float backdrop-blur-md shadow-xl"
+          className="group relative p-2 sm:p-3 rounded-full bg-gradient-to-br from-orange-500/40 to-red-500/40 border-2 border-orange-500/60 hover:border-orange-400 transition-all duration-300 hover:scale-110 animate-float backdrop-blur-md shadow-xl"
           aria-label="Scroll to adventures"
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-400/30 to-yellow-600/30 blur-lg group-hover:blur-xl transition-all duration-300"></div>
           
-          <ChevronDown className="w-7 h-7 sm:w-8 sm:h-8 text-orange-400 relative z-10 animate-bounce group-hover:text-orange-300 transition-colors duration-300" />
+          <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400 relative z-10 animate-bounce group-hover:text-orange-300 transition-colors duration-300" />
           
-          <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-yellow-400 rounded-full animate-ping"></div>
+          <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 bg-yellow-400 rounded-full animate-ping"></div>
         </button>
         
-        <div className="text-xs sm:text-sm md:text-base text-gray-300 text-center font-medium animate-pulse bg-[#121212]/80 backdrop-blur-md rounded-lg px-4 sm:px-6 py-3 sm:py-4 border border-gray-600/40 max-w-sm" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+        <div className="text-xs text-gray-300 text-center font-medium animate-pulse bg-[#121212]/80 backdrop-blur-md rounded-lg px-3 py-2 border border-gray-600/40 max-w-xs font-mono">
           Scroll for Epic Adventures
         </div>
       </div>
