@@ -28,7 +28,7 @@ const OnePieceCharacters = () => {
       role: "Captain",
       description: "Future Pirate King with rubber powers and boundless determination",
       color: "from-red-500 to-orange-500",
-      image: "/lovable-uploads/c91f31d0-0e6f-41e6-a407-971ac42dd954.png"
+      image: "/lovable-uploads/e12c0309-bc19-4bb8-8cbb-1c162c4c8d7b.png"
     },
     {
       id: 2,
@@ -36,7 +36,7 @@ const OnePieceCharacters = () => {
       role: "Swordsman",
       description: "Three-sword style master aiming to be the world's greatest swordsman",
       color: "from-green-500 to-emerald-500",
-      image: "/lovable-uploads/c91f31d0-0e6f-41e6-a407-971ac42dd954.png"
+      image: "/lovable-uploads/443ab3d5-1005-4024-981c-3899edd41e47.png"
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ const OnePieceCharacters = () => {
       role: "Navigator", 
       description: "Cat burglar turned navigator with unmatched map-making skills",
       color: "from-orange-500 to-yellow-500",
-      image: "/lovable-uploads/c91f31d0-0e6f-41e6-a407-971ac42dd954.png"
+      image: "/lovable-uploads/34ae5369-9107-436f-b646-e20fae7b35b5.png"
     },
     {
       id: 4,
@@ -52,7 +52,7 @@ const OnePieceCharacters = () => {
       role: "Sniper",
       description: "Brave warrior of the sea with incredible marksmanship",
       color: "from-amber-500 to-orange-600",
-      image: "/lovable-uploads/c91f31d0-0e6f-41e6-a407-971ac42dd954.png"
+      image: "/lovable-uploads/bcef14db-23b2-4b09-b375-25d457ff5f48.png"
     },
     {
       id: 5,
@@ -60,7 +60,7 @@ const OnePieceCharacters = () => {
       role: "Cook",
       description: "Black leg fighting chef with a heart for adventure and food",
       color: "from-blue-500 to-indigo-500",
-      image: "/lovable-uploads/d4ea53b6-838c-4916-8b80-e960fd117da1.png"
+      image: "/lovable-uploads/0de4afea-d3fc-496e-a465-d3345b071e4d.png"
     },
     {
       id: 6,
@@ -68,7 +68,7 @@ const OnePieceCharacters = () => {
       role: "Doctor",
       description: "Reindeer doctor with transformative abilities and pure heart",
       color: "from-pink-500 to-rose-500",
-      image: "/lovable-uploads/d4ea53b6-838c-4916-8b80-e960fd117da1.png"
+      image: "/lovable-uploads/dc1b72e4-9c02-4089-8f52-06ad8e360e06.png"
     },
     {
       id: 7,
@@ -76,15 +76,15 @@ const OnePieceCharacters = () => {
       role: "Archaeologist",
       description: "Scholar seeking the true history with flower-flower fruit powers",
       color: "from-purple-500 to-violet-500",
-      image: "/lovable-uploads/d4ea53b6-838c-4916-8b80-e960fd117da1.png"
+      image: "/lovable-uploads/9acc0153-bb14-43ea-a124-5dab3571542e.png"
     },
     {
       id: 8,
-      name: "Franky",
-      role: "Shipwright",
-      description: "Cyborg shipwright building dreams with iron will",
-      color: "from-cyan-500 to-blue-500",
-      image: "/lovable-uploads/d4ea53b6-838c-4916-8b80-e960fd117da1.png"
+      name: "Brook",
+      role: "Musician",
+      description: "Skeleton musician bringing joy and soul to the crew",
+      color: "from-indigo-500 to-purple-500",
+      image: "/lovable-uploads/ff796d81-99a2-4c7c-b744-92798828be94.png"
     }
   ];
 
@@ -93,7 +93,7 @@ const OnePieceCharacters = () => {
       case "Captain": return Crown;
       case "Swordsman": return Zap;
       case "Navigator": return Anchor;
-      case "Sniper": case "Cook": case "Shipwright": return Star;
+      case "Sniper": case "Cook": case "Musician": return Star;
       case "Doctor": case "Archaeologist": return Heart;
       default: return Users;
     }
@@ -101,6 +101,16 @@ const OnePieceCharacters = () => {
 
   return (
     <section id="onepiece-characters" className="py-20 px-4 bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e] relative overflow-hidden">
+      {/* One Piece World Map Background */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <img 
+          src="/lovable-uploads/28b2b146-0483-4c6f-9178-a89ba5495e84.png"
+          alt="One Piece World Map"
+          className="w-full h-full object-cover scale-150 blur-sm"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-transparent to-[#0a0a0a]/80" />
+      </div>
+
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl animate-float" />
@@ -140,7 +150,7 @@ const OnePieceCharacters = () => {
             return (
               <div
                 key={character.id}
-                className="group relative bg-[#1a1a1a] rounded-2xl border-2 border-gray-700/50 hover:border-orange-500/50 overflow-hidden transition-all duration-500 hover:scale-105"
+                className="group relative bg-[#1a1a1a]/90 backdrop-blur-sm rounded-2xl border-2 border-gray-700/50 hover:border-orange-500/50 overflow-hidden transition-all duration-500 hover:scale-105 shadow-2xl"
                 style={{ transitionDelay: `${index * 0.1}s` }}
               >
                 {/* Background Gradient */}
@@ -158,7 +168,7 @@ const OnePieceCharacters = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-500" />
                   
                   {/* Role Icon */}
-                  <div className={`absolute top-4 right-4 w-12 h-12 bg-gradient-to-br ${character.color} rounded-full flex items-center justify-center shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}>
+                  <div className={`absolute top-4 right-4 w-12 h-12 bg-gradient-to-br ${character.color} rounded-full flex items-center justify-center shadow-xl opacity-90 group-hover:opacity-100 transition-opacity duration-500`}>
                     <IconComponent className="w-6 h-6 text-white" />
                   </div>
                 </div>
@@ -169,7 +179,7 @@ const OnePieceCharacters = () => {
                     <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-red-400 transition-all duration-300" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
                       {character.name}
                     </h3>
-                    <span className={`px-3 py-1 bg-gradient-to-r ${character.color} text-white text-xs font-bold rounded-full`} style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+                    <span className={`px-3 py-1 bg-gradient-to-r ${character.color} text-white text-xs font-bold rounded-full shadow-lg`} style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
                       {character.role}
                     </span>
                   </div>
@@ -181,19 +191,22 @@ const OnePieceCharacters = () => {
                   {/* Stats/Skills Bar */}
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs text-gray-500">
-                      <span>Power Level</span>
+                      <span>Crew Bond</span>
                       <span>100%</span>
                     </div>
-                    <div className="w-full bg-gray-800 rounded-full h-2">
-                      <div className={`h-full bg-gradient-to-r ${character.color} rounded-full animate-pulse`} style={{ width: '100%' }}></div>
+                    <div className="w-full bg-gray-800 rounded-full h-2 shadow-inner">
+                      <div className={`h-full bg-gradient-to-r ${character.color} rounded-full animate-pulse shadow-lg`} style={{ width: '100%' }}></div>
                     </div>
                   </div>
                 </div>
 
                 {/* Sparkle Effect */}
                 <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
+                  <div className="w-3 h-3 bg-yellow-400 rounded-full animate-ping shadow-lg"></div>
                 </div>
+
+                {/* Border Glow Effect */}
+                <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none`} style={{ boxShadow: `0 0 20px ${character.color.includes('red') ? '#ef4444' : character.color.includes('green') ? '#22c55e' : character.color.includes('blue') ? '#3b82f6' : character.color.includes('purple') ? '#a855f7' : '#f97316'}` }}></div>
               </div>
             );
           })}
@@ -201,7 +214,7 @@ const OnePieceCharacters = () => {
 
         {/* Bottom CTA */}
         <div className={`text-center mt-16 transform transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 backdrop-blur-sm rounded-3xl p-8 border-2 border-orange-500/20">
+          <div className="bg-gradient-to-r from-orange-500/10 to-red-500/10 backdrop-blur-sm rounded-3xl p-8 border-2 border-orange-500/20 shadow-2xl">
             <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
               Build Your Own Legendary Crew!
             </h3>
