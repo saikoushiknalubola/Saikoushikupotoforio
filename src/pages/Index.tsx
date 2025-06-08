@@ -8,6 +8,7 @@ import Projects from '../components/Projects';
 import Certifications from '../components/Certifications';
 import Entrepreneurship from '../components/Entrepreneurship';
 import OnePieceSection from '../components/OnePieceSection';
+import OnePieceCharacters from '../components/OnePieceCharacters';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 
@@ -92,6 +93,10 @@ const Index = () => {
       
       <div id="entrepreneurship" className="scroll-animate relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
         <Entrepreneurship />
+      </div>
+      
+      <div className="scroll-animate relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
+        <OnePieceCharacters />
       </div>
       
       <div className="scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
