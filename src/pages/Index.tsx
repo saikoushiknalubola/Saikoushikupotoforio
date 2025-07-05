@@ -2,16 +2,6 @@
 import React, { useEffect } from 'react';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
-import About from '../components/About';
-import Experience from '../components/Experience';
-import Projects from '../components/Projects';
-import Certifications from '../components/Certifications';
-import Entrepreneurship from '../components/Entrepreneurship';
-import OnePieceSection from '../components/OnePieceSection';
-import OnePieceCharacters from '../components/OnePieceCharacters';
-import GoldDRogerSection from '../components/GoldDRogerSection';
-import OnePieceMapSection from '../components/OnePieceMapSection';
-import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 
 const Index = () => {
@@ -75,46 +65,6 @@ const Index = () => {
     <Layout>
       <div id="hero" className="relative">
         <Hero />
-      </div>
-      
-      <div id="about" className="py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
-        <About />
-      </div>
-      
-      <div id="experience" className="py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
-        <Experience />
-      </div>
-      
-      <div id="projects" className="scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
-        <Projects />
-      </div>
-      
-      <div id="certifications" className="scroll-animate relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
-        <Certifications />
-      </div>
-      
-      <div id="entrepreneurship" className="scroll-animate relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
-        <Entrepreneurship />
-      </div>
-      
-      <div className="scroll-animate relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
-        <GoldDRogerSection />
-      </div>
-      
-      <div className="scroll-animate relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
-        <OnePieceMapSection />
-      </div>
-      
-      <div className="scroll-animate relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
-        <OnePieceCharacters />
-      </div>
-      
-      <div className="scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
-        <OnePieceSection />
-      </div>
-      
-      <div id="skills" className="py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>
-        <Skills />
       </div>
       
       <div id="contact" className="py-8 lg:py-12 scroll-animate bg-[#121212] relative transition-all duration-700" style={{ opacity: 1, transform: 'translateY(0)' }}>

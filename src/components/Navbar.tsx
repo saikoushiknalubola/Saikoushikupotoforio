@@ -47,10 +47,10 @@ const Navbar = () => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { name: 'About', icon: User, href: '#about' },
-    { name: 'Experience', icon: Briefcase, href: '#experience' },
-    { name: 'Projects', icon: Code, href: '#projects' },
-    { name: 'Skills', icon: FileText, href: '#skills' },
+    { name: 'About', icon: User, href: '/about' },
+    { name: 'Projects', icon: Code, href: '/projects' },
+    { name: 'Skills', icon: FileText, href: '/skills' },
+    { name: 'Business', icon: Briefcase, href: '/business' },
     { name: 'Contact', icon: Mail, href: '#contact' }
   ];
 
@@ -77,32 +77,54 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-2">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                className={cn(
-                  "relative px-4 py-3 rounded-lg transition-all duration-300 font-semibold tracking-wide text-sm",
-                  activeSection === link.href.substring(1) 
-                    ? "text-white bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40" 
-                    : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
-                )}
-              >
-                <span className="relative z-10 flex items-center">
-                  <link.icon className="w-4 h-4 mr-2 opacity-80" />
-                  {link.name}
-                </span>
-                
-                {/* Active indicator */}
-                {activeSection === link.href.substring(1) && (
-                  <span className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-orange-500 to-red-500 rounded-b-lg"></span>
-                )}
-              </a>
+              link.href.startsWith('#') ? (
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  className={cn(
+                    "relative px-4 py-3 rounded-lg transition-all duration-300 font-semibold tracking-wide text-sm",
+                    activeSection === link.href.substring(1) 
+                      ? "text-white bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40" 
+                      : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
+                  )}
+                >
+                  <span className="relative z-10 flex items-center">
+                    <link.icon className="w-4 h-4 mr-2 opacity-80" />
+                    {link.name}
+                  </span>
+                  
+                  {/* Active indicator */}
+                  {activeSection === link.href.substring(1) && (
+                    <span className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-orange-500 to-red-500 rounded-b-lg"></span>
+                  )}
+                </a>
+              ) : (
+                <Link 
+                  key={link.name} 
+                  to={link.href} 
+                  className="relative px-4 py-3 rounded-lg transition-all duration-300 font-semibold tracking-wide text-sm text-gray-400 hover:text-gray-200 hover:bg-white/5"
+                >
+                  <span className="relative z-10 flex items-center">
+                    <link.icon className="w-4 h-4 mr-2 opacity-80" />
+                    {link.name}
+                  </span>
+                </Link>
+              )
             ))}
+            
+            {/* One Piece page link */}
+            <Link 
+              to="/onepiece" 
+              className="flex items-center px-4 py-3 bg-gradient-to-r from-purple-600/20 to-blue-600/20 text-purple-300 rounded-lg hover:from-purple-500/30 hover:to-blue-500/30 transition-all duration-300 font-semibold text-sm border border-purple-500/40"
+            >
+              <Compass className="w-4 h-4 mr-2" />
+              One Piece
+            </Link>
             
             {/* Anime page link */}
             <Link 
               to="/anime" 
-              className="flex items-center px-4 py-3 bg-gradient-to-r from-purple-600/20 to-blue-600/20 text-purple-300 rounded-lg hover:from-purple-500/30 hover:to-blue-500/30 transition-all duration-300 font-semibold text-sm border border-purple-500/40"
+              className="flex items-center px-4 py-3 bg-gradient-to-r from-pink-600/20 to-red-600/20 text-pink-300 rounded-lg hover:from-pink-500/30 hover:to-red-500/30 transition-all duration-300 font-semibold text-sm border border-pink-500/40"
             >
               <Compass className="w-4 h-4 mr-2" />
               Anime World
@@ -156,35 +178,58 @@ const Navbar = () => {
             {/* Navigation Links */}
             <div className="flex-grow flex flex-col justify-center px-6 space-y-3 py-8">
               {navLinks.map((link, index) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={cn(
-                    "flex items-center space-x-4 px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 min-h-[56px] border-2",
-                    activeSection === link.href.substring(1) 
-                      ? "bg-gradient-to-r from-orange-500/20 to-red-500/20 text-white border-orange-500/50 shadow-lg" 
-                      : "bg-[#1a1a1a]/80 text-gray-300 border-gray-700/50 hover:border-orange-500/30 hover:bg-orange-500/10"
-                  )}
-                  onClick={toggleMobileMenu}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <link.icon className={cn(
-                    "w-6 h-6", 
-                    activeSection === link.href.substring(1) 
-                      ? "text-orange-400" 
-                      : "text-gray-400"
-                  )} />
-                  <span>{link.name}</span>
-                </a>
+                link.href.startsWith('#') ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className={cn(
+                      "flex items-center space-x-4 px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 min-h-[56px] border-2",
+                      activeSection === link.href.substring(1) 
+                        ? "bg-gradient-to-r from-orange-500/20 to-red-500/20 text-white border-orange-500/50 shadow-lg" 
+                        : "bg-[#1a1a1a]/80 text-gray-300 border-gray-700/50 hover:border-orange-500/30 hover:bg-orange-500/10"
+                    )}
+                    onClick={toggleMobileMenu}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <link.icon className={cn(
+                      "w-6 h-6", 
+                      activeSection === link.href.substring(1) 
+                        ? "text-orange-400" 
+                        : "text-gray-400"
+                    )} />
+                    <span>{link.name}</span>
+                  </a>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className="flex items-center space-x-4 px-6 py-4 rounded-xl font-semibold text-lg bg-[#1a1a1a]/80 text-gray-300 border-2 border-gray-700/50 hover:border-orange-500/30 hover:bg-orange-500/10 transition-all duration-300 min-h-[56px]"
+                    onClick={toggleMobileMenu}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <link.icon className="w-6 h-6 text-gray-400" />
+                    <span>{link.name}</span>
+                  </Link>
+                )
               ))}
               
-              {/* Anime page link for mobile */}
+              {/* One Piece page link for mobile */}
               <Link
-                to="/anime"
+                to="/onepiece"
                 className="flex items-center space-x-4 px-6 py-4 rounded-xl font-semibold text-lg bg-gradient-to-r from-purple-600/20 to-blue-600/20 text-purple-300 border-2 border-purple-500/50 transition-all duration-300 min-h-[56px]"
                 onClick={toggleMobileMenu}
               >
                 <Compass className="w-6 h-6 text-purple-400" />
+                <span>One Piece</span>
+              </Link>
+              
+              {/* Anime page link for mobile */}
+              <Link
+                to="/anime"
+                className="flex items-center space-x-4 px-6 py-4 rounded-xl font-semibold text-lg bg-gradient-to-r from-pink-600/20 to-red-600/20 text-pink-300 border-2 border-pink-500/50 transition-all duration-300 min-h-[56px]"
+                onClick={toggleMobileMenu}
+              >
+                <Compass className="w-6 h-6 text-pink-400" />
                 <span>Anime World</span>
               </Link>
             </div>
