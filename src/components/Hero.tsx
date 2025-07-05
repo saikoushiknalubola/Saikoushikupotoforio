@@ -1,13 +1,15 @@
 
 import React, { useEffect, useState, useRef } from 'react';
-import { ChevronDown, Anchor, ShipWheel } from 'lucide-react';
+import { ChevronDown, Anchor, Compass, Star, Zap, Crown, Trophy } from 'lucide-react';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [showKingQuote, setShowKingQuote] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  
   const fullText = "海賊王になる男だ！";
-  const kingQuote = "The Next Pirate King Sails the Digital Seas!";
+  const kingQuote = "I'm gonna be King of Pirates!";
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
@@ -35,6 +37,7 @@ const Hero = () => {
           }, 500);
         }
       }, 150);
+
       return () => clearInterval(typingTimer);
     }
   }, [isVisible, fullText]);
@@ -51,128 +54,196 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-between pt-20 px-2 pb-4 bg-gradient-to-br from-[#1e0e03] via-[#1a1a2e] to-[#082032] overflow-hidden">
-      {/* --- Pirate Ship Deck Layers --- */}
-      <div className="absolute inset-0 z-0 pointer-events-none select-none">
-        {/* Deck wood floor */}
-        <div className="absolute bottom-0 w-full h-[22vw] max-h-44 left-0 bg-[#7d5a37] rounded-t-[18vw] shadow-inner opacity-80"></div>
-        {/* Jolly Roger flags (left) */}
-        <img
-          src="/lovable-uploads/443ab3d5-1005-4024-981c-3899edd41e47.png"
-          alt="Pirate Flag"
-          className="absolute left-2 top-14 w-20 h-20 xs:w-16 xs:h-16 sm:w-24 sm:h-24 animate-float opacity-90 select-none"
-          style={{ zIndex: 2 }}
-        />
-        {/* Ropes */}
-        <div className="absolute left-0 right-0 top-8 flex flex-row items-center justify-between z-10 px-6 sm:px-12">
-          <div className="w-12 h-2 rounded bg-gradient-to-l from-yellow-300 to-yellow-700 opacity-70 rotate-[-18deg]" />
-          <ShipWheel size={28} className="text-yellow-500 opacity-80 animate-spin-slow" />
-          <div className="w-12 h-2 rounded bg-gradient-to-r from-yellow-700 to-yellow-300 opacity-70 rotate-[15deg]" />
+    <section className="min-h-[350vh] sm:min-h-[300vh] md:min-h-[280vh] lg:min-h-[250vh] xl:min-h-[220vh] pt-24 sm:pt-28 pb-80 sm:pb-96 md:pb-[450px] lg:pb-[500px] xl:pb-[550px] px-4 flex flex-col justify-between items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
+      {/* Background elements positioned to avoid text overlap */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-80 sm:top-60 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+            <div className="w-3 h-0.5 sm:w-4 sm:h-0.5 bg-red-600 rounded-full"></div>
+          </div>
         </div>
-        {/* Barrel */}
-        <img
-          src="/lovable-uploads/dc1b72e4-9c02-4089-8f52-06ad8e360e06.png"
-          alt="Deck Barrel"
-          className="absolute bottom-5 left-3 w-14 h-14 xs:w-12 xs:h-12 sm:w-16 sm:h-16 rounded-md shadow-md opacity-80"
-        />
-        {/* Treasure Chest */}
-        <img
-          src="/lovable-uploads/bcef14db-23b2-4b09-b375-25d457ff5f48.png"
-          alt="Treasure Chest"
-          className="absolute bottom-6 right-2 w-12 h-12 sm:w-16 sm:h-16 opacity-80"
-        />
-        {/* Animated clouds */}
-        <div className="absolute right-10 top-[15%] w-28 h-10 bg-gradient-to-r from-gray-50/70 to-gray-100/10 rounded-full opacity-40 animate-float"></div>
-        <div className="absolute left-8 top-20 w-16 h-7 bg-gradient-to-l from-gray-50/70 to-gray-100/0 rounded-full opacity-50 animate-float" style={{ animationDelay: "1s" }}></div>
+        
+        <div className="absolute bottom-96 sm:bottom-80 right-4 sm:right-8 w-5 h-5 sm:w-7 sm:h-7 opacity-15 animate-float" style={{ animationDelay: '2s' }}>
+          <Star className="w-full h-full text-yellow-300" />
+        </div>
+        
+        <div className="absolute top-1/2 right-2 sm:right-6 w-6 h-6 sm:w-8 sm:h-8 opacity-8 animate-float" style={{ animationDelay: '4s' }}>
+          <Compass className="w-full h-full text-blue-400" />
+        </div>
+        
+        <div className="absolute bottom-1/2 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-12 animate-float" style={{ animationDelay: '1s' }}>
+          <Anchor className="w-full h-full text-blue-500" />
+        </div>
       </div>
-      
-      {/* --- Hero Main Card --- */}
-      <div className="relative z-10 mt-2 mx-auto flex flex-col justify-center items-center w-full max-w-lg">
-        {/* Wanted Poster Frame */}
-        <div className="w-full bg-gradient-to-br from-[#e4c086] via-[#fbecd5] to-[#d5ae66] p-3 xs:p-2 sm:p-4 md:p-6 rounded-3xl border-4 border-[#86582a] shadow-xl max-w-xs mx-auto flex flex-col items-center space-y-2"
-          style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}
-        >
-          {/* Profile Image */}
-          <div className="relative w-28 h-28 sm:w-36 sm:h-36 mb-1">
-            <img
-              src="/lovable-uploads/919486d7-b403-4ad1-acd0-0a82c618aeaf.png"
-              className="w-full h-full object-cover rounded-full border-4 border-yellow-700 shadow-lg"
-              alt="Pirate King Avatar"
-            />
-            {/* Mini anchor on crown */}
-            <div className="absolute -bottom-2 right-2 w-7 h-7 flex items-center justify-center rounded-full border-2 border-white bg-yellow-400 shadow-lg animate-bounce">
-              <Anchor className="text-yellow-800 w-4 h-4" />
+
+      {/* Main Content - Centered with extra top spacing */}
+      <div className="flex-1 flex flex-col justify-start items-center relative z-10 text-center max-w-4xl mx-auto w-full space-y-6 sm:space-y-8 md:space-y-10 pt-16 sm:pt-20 md:pt-24 lg:pt-28">
+        {/* Enhanced Wanted Poster Card */}
+        <div className="mb-6 sm:mb-8 md:mb-10 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-600/30 to-yellow-600/30 blur-2xl rounded-full animate-pulse"></div>
+          <div className="relative bg-gradient-to-br from-[#F4E4BC] via-[#E8D5A3] to-[#D4C085] text-black p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl border-4 border-amber-900 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-700 max-w-[280px] sm:max-w-[320px] md:max-w-[380px] mx-auto hover:scale-105 group" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+            {/* Profile Image */}
+            <div className="mb-3 sm:mb-4">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full blur-md opacity-40 animate-pulse"></div>
+                <img 
+                  src="/lovable-uploads/1466490d-7b5c-4b9c-9b5e-584004601ca5.png" 
+                  alt="Saikoushik Nalubola - Future Digital Pirate King"
+                  className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full mx-auto border-4 border-amber-900 shadow-xl object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg animate-bounce">
+                  <Crown className="text-yellow-400 w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" />
+                </div>
+                <div className="absolute -bottom-1 -left-1 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                  <Trophy className="text-yellow-300 w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4" />
+                </div>
+                <div className="absolute -top-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 bg-orange-500 rounded-full animate-ping opacity-30"></div>
+                <div className="absolute -bottom-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 rounded-full animate-pulse"></div>
+              </div>
+            </div>
+            
+            <div className="space-y-2 sm:space-y-3">
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-black mb-2 sm:mb-3 tracking-wider text-red-800" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>WANTED</div>
+              <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-black leading-tight mb-2 sm:mb-3 bg-gradient-to-r from-red-700 to-orange-700 bg-clip-text text-transparent" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+                SAIKOUSHIK NALUBOLA
+              </div>
+              <div className="text-xs sm:text-sm md:text-base font-bold text-blue-800 mb-2 sm:mb-3" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>DIGITAL PIRATE CAPTAIN & AI ARCHITECT</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-black text-red-600 mb-2 sm:mb-3" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>BOUNTY: ∞ BERRIES</div>
+              <div className="text-xs sm:text-sm font-semibold text-gray-700" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>DEAD OR ALIVE</div>
+              <div className="text-xs sm:text-sm font-medium text-gray-600 mt-2 sm:mt-3 italic leading-relaxed" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+                "A visionary captain sailing the digital seas, mastering AI technology to build revolutionary solutions that will change the world"
+              </div>
+              
+              <div className="flex justify-center space-x-2 sm:space-x-3 mt-2 sm:mt-3">
+                <span className="px-2 sm:px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>ACTIVE</span>
+                <span className="px-2 sm:px-3 py-1 bg-orange-600 text-white text-xs font-bold rounded-full" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>LEGENDARY</span>
+              </div>
             </div>
           </div>
-          <div className="text-xl xs:text-xl sm:text-2xl font-bold tracking-wider text-[#c41818] drop-shadow" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>WANTED</div>
-          <div className="text-lg sm:text-xl font-black bg-gradient-to-r from-orange-700 to-yellow-800 bg-clip-text text-transparent">SAIKOUSHIK NALUBOLA</div>
-          <div className="text-xs sm:text-sm font-semibold text-blue-800">DIGITAL PIRATE KING & AI CAPTAIN</div>
-          <div className="text-base xs:text-lg sm:text-xl font-black text-orange-700">BOUNTY: ∞ BERRIES</div>
         </div>
 
-        {/* Slogan & Typing Animation */}
-        <div className="mt-4 sm:mt-7 text-center w-full">
-          <p className="jp-text text-lg sm:text-xl font-semibold text-orange-400 min-h-[2rem] inline-block" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
-            {typedText}<span className="text-red-500 animate-pulse">|</span>
-          </p>
-          {showKingQuote && (
-            <div className="mt-1 text-xs sm:text-base text-gray-300 font-bold animate-fade-in" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
-              "{kingQuote}"
+        {/* Main Title */}
+        <h1 className={`text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black mb-4 sm:mb-6 md:mb-8 leading-tight transform transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`} style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+          <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-pulse-glow block">
+            Future Digital
+          </span>
+          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent block">
+            Pirate King
+          </span>
+          <span className="bg-gradient-to-r from-green-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent block">
+            & Tech Innovator
+          </span>
+        </h1>
+
+        {/* Japanese Quote Section */}
+        <div className={`mb-6 sm:mb-8 md:mb-10 transform transition-all duration-1000 delay-500 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="relative inline-block">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-orange-400 jp-text mb-2 sm:mb-3 md:mb-4 min-h-[1.2rem] sm:min-h-[1.5rem] md:min-h-[2rem] lg:min-h-[2.5rem] flex items-center justify-center" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+              {typedText}
+              <span className="animate-pulse ml-2 text-red-500">|</span>
+            </p>
+            
+            {showKingQuote && (
+              <div className="animate-fade-in">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 italic font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent animate-pulse-glow" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+                  "{kingQuote}"
+                </p>
+                <div className="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-500" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+                  - My Dream to Conquer All Digital Seas
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Description */}
+        <div className={`mb-8 sm:mb-10 md:mb-12 transform transition-all duration-1000 delay-700 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed mb-4 sm:mb-6 md:mb-8 px-4" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+              Ahoy! I'm <span className="text-orange-400 font-bold">Saikoushik</span>, a passionate developer setting sail on the grandest adventure in the digital realm! 
+              With unwavering determination and an adventurous spirit inspired by the greatest pirate tales, I'm navigating through 
+              <span className="text-blue-400 font-bold"> uncharted AI territories</span> to build revolutionary solutions that'll transform the world!
+            </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mt-4 sm:mt-6 md:mt-8">
+              <div className="bg-gradient-to-br from-red-500/20 to-orange-500/20 p-3 sm:p-4 rounded-xl border border-red-500/30 hover:scale-105 transition-transform duration-300">
+                <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-red-400 mb-2 sm:mb-3 mx-auto" />
+                <h3 className="font-bold text-red-400 mb-1 sm:mb-2 text-xs sm:text-sm md:text-base" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Special Powers</h3>
+                <p className="text-xs sm:text-sm text-gray-300" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>AI & Machine Learning Mastery</p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 p-3 sm:p-4 rounded-xl border border-blue-500/30 hover:scale-105 transition-transform duration-300">
+                <Star className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400 mb-2 sm:mb-3 mx-auto" />
+                <h3 className="font-bold text-blue-400 mb-1 sm:mb-2 text-xs sm:text-sm md:text-base" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Crew Leadership</h3>
+                <p className="text-xs sm:text-sm text-gray-300" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Full-Stack Development Fleet</p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 p-3 sm:p-4 rounded-xl border border-purple-500/30 hover:scale-105 transition-transform duration-300 sm:col-span-2 lg:col-span-1">
+                <Compass className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400 mb-2 sm:mb-3 mx-auto" />
+                <h3 className="font-bold text-purple-400 mb-1 sm:mb-2 text-xs sm:text-sm md:text-base" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Grand Navigator</h3>
+                <p className="text-xs sm:text-sm text-gray-300" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>Entrepreneurial Adventures</p>
+              </div>
             </div>
-          )}
+          </div>
         </div>
 
-        {/* Pirate Persona Desc */}
-        <div className="mt-1 sm:mt-2 mb-1 w-full max-w-md mx-auto px-2 sm:px-3">
-          <p className="text-xs xs:text-sm sm:text-base text-gray-100 font-medium leading-normal" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
-            Ahoy! I’m <span className="text-orange-400 font-bold">Saikoushik</span>, sailing uncharted AI oceans, recruiting bold crewmates, and building legendary digital ships! <br />
-            <span className="text-blue-300 font-bold">Join my crew</span> to steer innovation and explore the New World of technology!
-          </p>
-        </div>
-
-        {/* Pirate Crew Badge Row */}
-        <div className="mt-1 flex flex-row justify-center items-center gap-2 mb-2">
-          <span className="px-3 py-1 bg-green-600 text-white rounded-full font-bold text-xs sm:text-sm">ACTIVE</span>
-          <span className="px-3 py-1 bg-orange-500 text-white rounded-full font-bold text-xs sm:text-sm">ONE PIECE HUNTER</span>
-        </div>
-
-        {/* Call-to-Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center items-center mt-2 mb-4 w-full">
+        {/* Call to Action Buttons */}
+        <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center mb-32 sm:mb-40 md:mb-48 lg:mb-56 xl:mb-64 transform transition-all duration-1000 delay-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
           <a
             href="#about"
-            className="anime-button-primary flex-1 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-110 shadow-2xl shadow-orange-500/40 inline-flex items-center justify-center space-x-2 sm:space-x-3 min-w-[180px] sm:min-w-[200px] text-xs sm:text-sm md:text-base border-2 border-transparent" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}
           >
-            <span>Join My Crew</span>
-            <Anchor className="w-4 h-4" />
+            <span>Join My Crew!</span>
+            <Anchor className="w-4 h-4 sm:w-5 sm:h-5" />
           </a>
+          
           <a
             href="#projects"
-            className="anime-button-secondary flex-1 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-blue-500 bg-blue-500/10 backdrop-blur-sm text-blue-300 font-bold rounded-xl hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 hover:scale-110 inline-flex items-center justify-center space-x-2 sm:space-x-3 min-w-[180px] sm:min-w-[200px] text-xs sm:text-sm md:text-base shadow-lg shadow-blue-500/20 outline outline-2 outline-blue-400/50" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}
           >
-            <span>Treasures Built</span>
-            <ShipWheel className="w-4 h-4" />
+            <span>Legendary Projects</span>
+            <Star className="w-4 h-4 sm:w-5 sm:h-5" />
           </a>
         </div>
       </div>
 
-      {/* --- Scroll Indicator (Pirate style) --- */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center w-full max-w-xs">
-        <div className="bg-[#121212]/95 backdrop-blur-md rounded-xl px-4 py-2 border border-orange-500/30 shadow text-center mb-1">
-          <p className="jp-text text-orange-400 font-bold text-sm">冒険が始まる</p>
-          <p className="text-gray-300 text-xs italic font-medium">Set Sail for Adventure</p>
+      {/* Scroll Indicator - Positioned at the very bottom with maximum spacing */}
+      <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 xl:bottom-24 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 sm:space-y-6 z-20">
+        <div className="text-center bg-[#121212]/95 backdrop-blur-md rounded-xl px-6 sm:px-8 py-4 sm:py-6 border border-orange-500/40 shadow-xl max-w-sm">
+          <p className="text-orange-400 font-bold text-sm sm:text-base md:text-lg jp-text animate-pulse mb-2 sm:mb-3" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+            冒険が始まる
+          </p>
+          <p className="text-gray-300 text-xs sm:text-sm md:text-base italic font-medium" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+            The Adventure Begins
+          </p>
         </div>
+        
         <button
           onClick={scrollToAbout}
-          className="p-4 bg-gradient-to-br from-orange-500/40 to-red-500/40 border-2 border-orange-500/60 hover:border-orange-400 rounded-full animate-float transition-all duration-300 shadow-lg"
+          className="group relative p-4 sm:p-5 rounded-full bg-gradient-to-br from-orange-500/40 to-red-500/40 border-2 border-orange-500/60 hover:border-orange-400 transition-all duration-300 hover:scale-110 animate-float backdrop-blur-md shadow-xl"
           aria-label="Scroll to adventures"
         >
-          <ChevronDown className="w-7 h-7 text-orange-400 animate-bounce" />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-400/30 to-yellow-600/30 blur-lg group-hover:blur-xl transition-all duration-300"></div>
+          
+          <ChevronDown className="w-7 h-7 sm:w-8 sm:h-8 text-orange-400 relative z-10 animate-bounce group-hover:text-orange-300 transition-colors duration-300" />
+          
+          <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-yellow-400 rounded-full animate-ping"></div>
         </button>
-        <div className="text-xs text-gray-300 mt-1">Scroll Down, Nakama!</div>
+        
+        <div className="text-xs sm:text-sm md:text-base text-gray-300 text-center font-medium animate-pulse bg-[#121212]/80 backdrop-blur-md rounded-lg px-4 sm:px-6 py-3 sm:py-4 border border-gray-600/40 max-w-sm" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+          Scroll for Epic Adventures
+        </div>
       </div>
     </section>
   );
 };
 
 export default Hero;
-
