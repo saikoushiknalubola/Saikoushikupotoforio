@@ -42,19 +42,19 @@ const Hero = () => {
     }
   }, [isVisible, fullText]);
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
       const navbarHeight = 80;
       window.scrollTo({
-        top: contactSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight,
+        top: aboutSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight,
         behavior: 'smooth'
       });
     }
   };
 
   return (
-    <section className="min-h-screen py-16 sm:py-20 md:py-24 px-4 flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
+    <section className="min-h-[350vh] sm:min-h-[300vh] md:min-h-[280vh] lg:min-h-[250vh] xl:min-h-[220vh] pt-24 sm:pt-28 pb-80 sm:pb-96 md:pb-[450px] lg:pb-[500px] xl:pb-[550px] px-4 flex flex-col justify-between items-center relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#121212] to-[#1a1a2e]">
       {/* Background elements positioned to avoid text overlap */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-80 sm:top-60 left-4 sm:left-8 w-6 h-6 sm:w-8 sm:h-8 opacity-10 animate-float">
@@ -76,27 +76,47 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Main Content - Centered */}
-      <div className="flex flex-col justify-center items-center relative z-10 text-center max-w-4xl mx-auto w-full space-y-4 sm:space-y-6 md:space-y-8">
-        {/* Pirate Ship Hero Image */}
+      {/* Main Content - Centered with extra top spacing */}
+      <div className="flex-1 flex flex-col justify-start items-center relative z-10 text-center max-w-4xl mx-auto w-full space-y-6 sm:space-y-8 md:space-y-10 pt-16 sm:pt-20 md:pt-24 lg:pt-28">
+        {/* Enhanced Wanted Poster Card */}
         <div className="mb-6 sm:mb-8 md:mb-10 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 blur-3xl rounded-full animate-pulse"></div>
-          <div className="relative bg-gradient-to-br from-[#1e3a8a]/20 via-[#1e40af]/30 to-[#1d4ed8]/20 backdrop-blur-sm p-2 sm:p-3 md:p-4 rounded-2xl border-4 border-blue-400/50 shadow-2xl transform hover:scale-105 transition-all duration-700 max-w-[320px] sm:max-w-[380px] md:max-w-[440px] mx-auto group overflow-hidden">
-            {/* Pirate Ship Image */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 via-transparent to-transparent rounded-xl"></div>
-              <img 
-                src="/lovable-uploads/0d175936-db19-4104-95c7-10447c6999ed.png" 
-                alt="Digital Pirate Captain - Saikoushik Nalubola"
-                className="w-full h-auto rounded-xl shadow-2xl object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              
-              {/* Floating Pirate Elements */}
-              <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center border-2 border-white shadow-lg animate-bounce">
-                <Crown className="text-white w-4 h-4 sm:w-5 sm:h-5" />
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-600/30 to-yellow-600/30 blur-2xl rounded-full animate-pulse"></div>
+          <div className="relative bg-gradient-to-br from-[#F4E4BC] via-[#E8D5A3] to-[#D4C085] text-black p-4 sm:p-5 md:p-6 lg:p-8 rounded-xl border-4 border-amber-900 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-700 max-w-[280px] sm:max-w-[320px] md:max-w-[380px] mx-auto hover:scale-105 group" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+            {/* Profile Image */}
+            <div className="mb-3 sm:mb-4">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full blur-md opacity-40 animate-pulse"></div>
+                <img 
+                  src="/lovable-uploads/1466490d-7b5c-4b9c-9b5e-584004601ca5.png" 
+                  alt="Saikoushik Nalubola - Future Digital Pirate King"
+                  className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full mx-auto border-4 border-amber-900 shadow-xl object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg animate-bounce">
+                  <Crown className="text-yellow-400 w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 xl:w-5 xl:h-5" />
+                </div>
+                <div className="absolute -bottom-1 -left-1 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                  <Trophy className="text-yellow-300 w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4" />
+                </div>
+                <div className="absolute -top-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 bg-orange-500 rounded-full animate-ping opacity-30"></div>
+                <div className="absolute -bottom-2 -right-2 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 rounded-full animate-pulse"></div>
               </div>
-              <div className="absolute -bottom-2 -left-2 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-red-600 to-red-700 rounded-full flex items-center justify-center border-2 border-white shadow-lg animate-pulse">
-                <Anchor className="text-white w-3 h-3 sm:w-4 sm:h-4" />
+            </div>
+            
+            <div className="space-y-2 sm:space-y-3">
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-black mb-2 sm:mb-3 tracking-wider text-red-800" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>WANTED</div>
+              <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-black leading-tight mb-2 sm:mb-3 bg-gradient-to-r from-red-700 to-orange-700 bg-clip-text text-transparent" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+                SAIKOUSHIK NALUBOLA
+              </div>
+              <div className="text-xs sm:text-sm md:text-base font-bold text-blue-800 mb-2 sm:mb-3" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>DIGITAL PIRATE CAPTAIN & AI ARCHITECT</div>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-black text-red-600 mb-2 sm:mb-3" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>BOUNTY: ∞ BERRIES</div>
+              <div className="text-xs sm:text-sm font-semibold text-gray-700" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>DEAD OR ALIVE</div>
+              <div className="text-xs sm:text-sm font-medium text-gray-600 mt-2 sm:mt-3 italic leading-relaxed" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
+                "A visionary captain sailing the digital seas, mastering AI technology to build revolutionary solutions that will change the world"
+              </div>
+              
+              <div className="flex justify-center space-x-2 sm:space-x-3 mt-2 sm:mt-3">
+                <span className="px-2 sm:px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>ACTIVE</span>
+                <span className="px-2 sm:px-3 py-1 bg-orange-600 text-white text-xs font-bold rounded-full" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>LEGENDARY</span>
               </div>
             </div>
           </div>
@@ -174,11 +194,11 @@ const Hero = () => {
         </div>
 
         {/* Call to Action Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center transform transition-all duration-1000 delay-1000 ${
+        <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center mb-32 sm:mb-40 md:mb-48 lg:mb-56 xl:mb-64 transform transition-all duration-1000 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <a
-            href="/about"
+            href="#about"
             className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold rounded-xl hover:from-orange-500 hover:to-red-500 transition-all duration-300 hover:scale-110 shadow-2xl shadow-orange-500/40 inline-flex items-center justify-center space-x-2 sm:space-x-3 min-w-[180px] sm:min-w-[200px] text-xs sm:text-sm md:text-base border-2 border-transparent" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}
           >
             <span>Join My Crew!</span>
@@ -186,7 +206,7 @@ const Hero = () => {
           </a>
           
           <a
-            href="/projects"
+            href="#projects"
             className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-blue-500 bg-blue-500/10 backdrop-blur-sm text-blue-300 font-bold rounded-xl hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-300 hover:scale-110 inline-flex items-center justify-center space-x-2 sm:space-x-3 min-w-[180px] sm:min-w-[200px] text-xs sm:text-sm md:text-base shadow-lg shadow-blue-500/20 outline outline-2 outline-blue-400/50" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}
           >
             <span>Legendary Projects</span>
@@ -195,8 +215,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator - Positioned at the bottom */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 z-20">
+      {/* Scroll Indicator - Positioned at the very bottom with maximum spacing */}
+      <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 xl:bottom-24 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 sm:space-y-6 z-20">
         <div className="text-center bg-[#121212]/95 backdrop-blur-md rounded-xl px-6 sm:px-8 py-4 sm:py-6 border border-orange-500/40 shadow-xl max-w-sm">
           <p className="text-orange-400 font-bold text-sm sm:text-base md:text-lg jp-text animate-pulse mb-2 sm:mb-3" style={{ fontFamily: "'Pirata One', 'Creepster', cursive" }}>
             冒険が始まる
@@ -207,9 +227,9 @@ const Hero = () => {
         </div>
         
         <button
-          onClick={scrollToContact}
+          onClick={scrollToAbout}
           className="group relative p-4 sm:p-5 rounded-full bg-gradient-to-br from-orange-500/40 to-red-500/40 border-2 border-orange-500/60 hover:border-orange-400 transition-all duration-300 hover:scale-110 animate-float backdrop-blur-md shadow-xl"
-          aria-label="Scroll to contact"
+          aria-label="Scroll to adventures"
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-400/30 to-yellow-600/30 blur-lg group-hover:blur-xl transition-all duration-300"></div>
           
