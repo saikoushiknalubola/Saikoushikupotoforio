@@ -129,7 +129,9 @@ const Projects = () => {
   };
 
   const handleViewAllProjects = () => {
-    window.open("https://github.com/saikoushiknalubola", '_blank', 'noopener,noreferrer');
+    const githubUrl = "https://github.com/saikoushiknalubola";
+    console.log("Opening GitHub profile:", githubUrl);
+    window.open(githubUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
