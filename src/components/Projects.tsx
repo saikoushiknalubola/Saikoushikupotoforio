@@ -124,17 +124,20 @@ const Projects = () => {
   ];
 
   const handleViewCode = (githubUrl: string, e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation();
-    console.log("Clicking View Code button, URL:", githubUrl);
+    console.log("=== BUTTON CLICK DEBUG ===");
+    console.log("Button clicked! URL:", githubUrl);
+    console.log("Event:", e);
+    
     try {
-      const newWindow = window.open(githubUrl, '_blank', 'noopener,noreferrer');
-      if (!newWindow) {
-        console.error("Failed to open new window - popup might be blocked");
-      } else {
-        console.log("Successfully opened new window");
-      }
+      console.log("Attempting to open:", githubUrl);
+      window.open(githubUrl, '_blank', 'noopener,noreferrer');
+      console.log("Window.open called successfully");
     } catch (error) {
-      console.error("Error opening GitHub URL:", error);
+      console.error("Error in handleViewCode:", error);
+      // Fallback - try direct navigation
+      window.location.href = githubUrl;
     }
   };
 
@@ -144,16 +147,14 @@ const Projects = () => {
       e.stopPropagation();
     }
     const githubUrl = "https://github.com/saikoushiknalubola";
-    console.log("Clicking Explore All Projects button, URL:", githubUrl);
+    console.log("=== VIEW ALL PROJECTS DEBUG ===");
+    console.log("Explore All Projects clicked, URL:", githubUrl);
     try {
-      const newWindow = window.open(githubUrl, '_blank', 'noopener,noreferrer');
-      if (!newWindow) {
-        console.error("Failed to open new window - popup might be blocked");
-      } else {
-        console.log("Successfully opened GitHub profile");
-      }
+      window.open(githubUrl, '_blank', 'noopener,noreferrer');
+      console.log("GitHub profile opened successfully");
     } catch (error) {
       console.error("Error opening GitHub profile:", error);
+      window.location.href = githubUrl;
     }
   };
 
@@ -246,7 +247,7 @@ const Projects = () => {
               </div>
 
               {/* Content */}
-              <div className="p-4 sm:p-6">
+              <div className="p-4 sm:p-6 relative z-20">
                 <div className="mb-4">
                   <h5 className="text-sm font-semibold text-red-400 mb-2 flex items-center">
                     <Crown className="w-4 h-4 mr-2" />
@@ -280,11 +281,20 @@ const Projects = () => {
                   <p className="text-xs text-gray-400">{project.crewGrowth}</p>
                 </div>
 
-                <div className="flex space-x-3">
+                <div className="flex space-x-3 relative z-30">
                   <button
-                    onClick={(e) => handleViewCode(project.githubUrl, e)}
-                    className="flex-1 flex items-center justify-center space-x-2 py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/30 text-sm font-bold cursor-pointer"
-                    style={{ minHeight: '44px' }}
+                    onClick={(e) => {
+                      console.log("=== DIRECT BUTTON CLICK ===");
+                      console.log("Button element clicked directly");
+                      handleViewCode(project.githubUrl, e);
+                    }}
+                    className="flex-1 flex items-center justify-center space-x-2 py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/30 text-sm font-bold relative z-40"
+                    style={{ 
+                      minHeight: '44px',
+                      position: 'relative',
+                      zIndex: 50,
+                      pointerEvents: 'auto'
+                    }}
                   >
                     <Github className="w-5 h-5" />
                     <span>View Code</span>
@@ -295,15 +305,22 @@ const Projects = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center px-3 py-3 border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300 rounded-lg transition-all duration-300 hover:scale-105 cursor-pointer"
-                    style={{ minHeight: '44px' }}
+                    onClick={(e) => {
+                      console.log("=== DIRECT LINK CLICK ===");
+                      console.log("Direct link clicked:", project.githubUrl);
+                    }}
+                    className="flex items-center justify-center px-3 py-3 border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300 rounded-lg transition-all duration-300 hover:scale-105 relative z-40"
+                    style={{ 
+                      minHeight: '44px',
+                      position: 'relative',
+                      zIndex: 50,
+                      pointerEvents: 'auto'
+                    }}
                   >
                     <ExternalLink className="w-5 h-5" />
                   </a>
                 </div>
               </div>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </div>
           ))}
         </div>
@@ -335,8 +352,17 @@ const Projects = () => {
                 <span>Let's Collaborate!</span>
               </a>
               <button
-                onClick={(e) => handleViewAllProjects(e)}
-                className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-blue-500 text-blue-300 font-bold rounded-lg hover:bg-blue-500/10 transition-all duration-300 hover:scale-105"
+                onClick={(e) => {
+                  console.log("=== EXPLORE ALL PROJECTS BUTTON ===");
+                  console.log("Explore All Projects button clicked");
+                  handleViewAllProjects(e);
+                }}
+                className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-blue-500 text-blue-300 font-bold rounded-lg hover:bg-blue-500/10 transition-all duration-300 hover:scale-105 relative z-40"
+                style={{ 
+                  position: 'relative',
+                  zIndex: 50,
+                  pointerEvents: 'auto'
+                }}
               >
                 <Map className="w-5 h-5" />
                 <span>Explore All Projects</span>
