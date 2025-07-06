@@ -125,13 +125,36 @@ const Projects = () => {
 
   const handleViewCode = (githubUrl: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    window.open(githubUrl, '_blank', 'noopener,noreferrer');
+    console.log("Clicking View Code button, URL:", githubUrl);
+    try {
+      const newWindow = window.open(githubUrl, '_blank', 'noopener,noreferrer');
+      if (!newWindow) {
+        console.error("Failed to open new window - popup might be blocked");
+      } else {
+        console.log("Successfully opened new window");
+      }
+    } catch (error) {
+      console.error("Error opening GitHub URL:", error);
+    }
   };
 
-  const handleViewAllProjects = () => {
+  const handleViewAllProjects = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     const githubUrl = "https://github.com/saikoushiknalubola";
-    console.log("Opening GitHub profile:", githubUrl);
-    window.open(githubUrl, '_blank', 'noopener,noreferrer');
+    console.log("Clicking Explore All Projects button, URL:", githubUrl);
+    try {
+      const newWindow = window.open(githubUrl, '_blank', 'noopener,noreferrer');
+      if (!newWindow) {
+        console.error("Failed to open new window - popup might be blocked");
+      } else {
+        console.log("Successfully opened GitHub profile");
+      }
+    } catch (error) {
+      console.error("Error opening GitHub profile:", error);
+    }
   };
 
   return (
@@ -301,7 +324,7 @@ const Projects = () => {
                 <span>Let's Collaborate!</span>
               </a>
               <button
-                onClick={handleViewAllProjects}
+                onClick={(e) => handleViewAllProjects(e)}
                 className="inline-flex items-center justify-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-blue-500 text-blue-300 font-bold rounded-lg hover:bg-blue-500/10 transition-all duration-300 hover:scale-105"
               >
                 <Map className="w-5 h-5" />

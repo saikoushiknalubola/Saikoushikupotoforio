@@ -81,7 +81,7 @@ const Hero = () => {
             <img 
               src="/lovable-uploads/46516734-5f93-48db-b7f2-53f2ffa7622e.png" 
               alt="Saikoushik Nalubola - AI Engineer & Digital Captain"
-              className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 mx-auto rounded-2xl border-4 border-orange-500/50 shadow-2xl object-cover hover:scale-105 transition-transform duration-500 bg-gradient-to-br from-blue-400/20 to-orange-400/20"
+              className="w-40 h-48 sm:w-48 sm:h-56 md:w-56 md:h-64 lg:w-64 lg:h-72 mx-auto rounded-2xl border-4 border-orange-500/50 shadow-2xl object-contain hover:scale-105 transition-transform duration-500 bg-gradient-to-br from-blue-400/20 to-orange-400/20"
             />
             {/* Pirate Flag Corner */}
             <div className="absolute -top-2 -right-2 w-8 h-8 md:w-12 md:h-12">
