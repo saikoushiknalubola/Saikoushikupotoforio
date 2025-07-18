@@ -6,15 +6,34 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [showKingQuote, setShowKingQuote] = useState(false);
+  const [nameLetters, setNameLetters] = useState<string[]>([]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
   const fullText = "海賊王になる男だ！";
   const kingQuote = "I'm gonna be King of Pirates!";
+  const fullName = "Saikoushik Nalubola";
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
     return () => clearTimeout(timer);
   }, []);
+
+  // Name animation effect
+  useEffect(() => {
+    if (isVisible) {
+      let i = 0;
+      const nameTimer = setInterval(() => {
+        if (i <= fullName.length) {
+          setNameLetters(fullName.split('').slice(0, i));
+          i++;
+        } else {
+          clearInterval(nameTimer);
+        }
+      }, 80);
+
+      return () => clearInterval(nameTimer);
+    }
+  }, [isVisible, fullName]);
 
   useEffect(() => {
     if (isVisible) {
@@ -93,13 +112,24 @@ const Hero = () => {
         </div>
 
         {/* Main Title */}
-        <h1 className={`text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 leading-tight transform transition-all duration-1000 ${
+        <h1 className={`text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 leading-tight transform transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent block">
-            Saikoushik Nalubola
+          <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent block overflow-hidden">
+            {nameLetters.map((letter, index) => (
+              <span 
+                key={index} 
+                className="inline-block animate-fade-in" 
+                style={{ 
+                  animationDelay: `${index * 80}ms`,
+                  animationFillMode: 'both'
+                }}
+              >
+                {letter === ' ' ? '\u00A0' : letter}
+              </span>
+            ))}
           </span>
-          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent block text-lg md:text-2xl lg:text-3xl xl:text-4xl mt-2">
+          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent block text-sm sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl mt-2">
             AI Engineer & Technology Entrepreneur
           </span>
         </h1>
