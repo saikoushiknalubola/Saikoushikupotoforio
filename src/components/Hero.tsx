@@ -115,14 +115,15 @@ const Hero = () => {
         <h1 className={`text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-4 leading-tight transform transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <span className="bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent block overflow-hidden">
+          <span className="block overflow-hidden">
             {nameLetters.map((letter, index) => (
               <span 
                 key={index} 
-                className="inline-block animate-fade-in" 
+                className="inline-block bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-fade-in" 
                 style={{ 
                   animationDelay: `${index * 80}ms`,
-                  animationFillMode: 'both'
+                  animationFillMode: 'forwards',
+                  opacity: 0
                 }}
               >
                 {letter === ' ' ? '\u00A0' : letter}
