@@ -265,14 +265,34 @@
 
 /* Enhanced animations */
 .animate-title-reveal, 
-.animate-fade-in,
 .animate-pulse-glow,
 .animate-float {
   animation-fill-mode: forwards !important;
   opacity: 1 !important;
 }
 
+/* Letter by letter animation */
+.animate-letter {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: letter-reveal 0.6s ease-out forwards;
+}
+
 /* Keyframe animations */
+@keyframes letter-reveal {
+  0% { 
+    opacity: 0; 
+    transform: translateX(-20px) scale(0.8); 
+  }
+  50% {
+    transform: translateX(5px) scale(1.1);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateX(0) scale(1); 
+  }
+}
+
 @keyframes title-reveal {
   0% { transform: translateY(20px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
