@@ -30,7 +30,7 @@ const Hero = () => {
   }, [isVisible, fullName]);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-black px-4 sm:px-6 pt-20 pb-16">
+    <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-black px-4 sm:px-6 pt-32 pb-16">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-blue-900/20 to-transparent"></div>
@@ -41,16 +41,15 @@ const Hero = () => {
       {/* Main Content Container */}
       <div className="relative z-10 text-center max-w-5xl mx-auto space-y-8">
         
-        {/* Profile Image with Glow Effect */}
-        <div className="relative mb-8">
-          <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
-            <img 
-              src="/lovable-uploads/46516734-5f93-48db-b7f2-53f2ffa7622e.png" 
-              alt="Saikoushik Nalubola"
-              className="relative w-40 h-48 sm:w-48 sm:h-56 md:w-56 md:h-64 lg:w-64 lg:h-72 mx-auto rounded-xl object-contain transition-all duration-700 hover:scale-105 shadow-2xl border border-gray-700/50"
-            />
-          </div>
+        {/* Profile Image */}
+        <div className={`relative mb-6 transform transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <img 
+            src="/lovable-uploads/46516734-5f93-48db-b7f2-53f2ffa7622e.png" 
+            alt="Saikoushik Nalubola"
+            className="w-32 h-40 sm:w-40 sm:h-48 md:w-48 md:h-56 mx-auto rounded-xl object-contain hover:scale-105 transition-all duration-500 shadow-lg border border-gray-700"
+          />
         </div>
 
         {/* Animated Name Title */}
